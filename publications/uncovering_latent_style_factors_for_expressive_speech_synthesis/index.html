@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Uncovering Latent Style Factors for Expressive Speech Synthesis"</title>
+    <style>
+      body {
+        font-family: Helvetica;
+      }
+      .transcript {
+        font-style: italic;
+      }
+      h3 {
+        margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Uncovering Latent Style Factors for Expressive Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <div><b>Paper:</b> TBU</div>
+    <div><b>Authors:</b> Yuxuan Wang, RJ Skerry-Ryan, Ying Xiao, Daisy Stanton, Joel Shor, Eric Battenberg, Rob Clark, Rif A. Saurous</div>
+    <div><b>Abstract:</b> Prosodic modeling is a core problem in speech synthesis. The key challenge is producing desirable prosody from textual input containing only phonetic information. In this preliminary study, we introduce the concept of ``style tokens'' in Tacotron, a recently proposed end-to-end neural speech synthesis model. Using style tokens, we aim to extract independent prosodic styles from training data. We show that without annotation data or an explicit supervision signal, our approach can automatically learn a variety of prosodic variations in a purely data-driven way. Importantly, each style token corresponds to a fixed style factor regardless of the given text sequence. As a result, we can control the prosodic style of synthetic speech in a somewhat predictable and globally consistent way.</div>
+
+    <h1></h1>
+    <BR>
+    <div>
+    <table>
+    <tr><td> <strong>"neutral prosody"</strong>: baseline model that is not trained with style tokens.</td></tr>    
+    <tr><td> <strong>"token id"</strong>: force the style attention head to only attend to the specified style token. Note: this method can lead to unintelligible speech since the training process learns to rely on a mixture of tokens, but it is a useful technique for getting a quick idea of the prosodic style each token corresponds to. </td></tr>
+    <tr><td> <strong>"mix w/ token id(s)"</strong>: broadcast-add the embedding vector of a token to the full style embedding matrix to bias the overall style. Multiple styles can be mixed by consecutively applying the operation. It is also possible to do more sophisticated mixing and style recreation (e.g. time-varying), which is not shown.</td></tr>
+
+    </table>
+    </div>
+
+    <h1></h1>
+
+    <div>
+      <i>"The Blue Lagoon is a 1980 American romance and adventure film directed by Randal Kleiser."</i>
+      <table>
+        <tr>
+          <th> neutral prosody </th>
+          <th> <audio controls><source src="demos/lagoon_neutral.wav"></audio></th>
+        </tr>      
+        <tr>
+          <th> token 0 </th>
+          <th> <audio controls><source src="demos/lagoon_tok0.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 1 </th>
+          <th> <audio controls><source src="demos/lagoon_tok1.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 2 </th>
+          <th> <audio controls><source src="demos/lagoon_tok2.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 3 </th>
+          <th> <audio controls><source src="demos/lagoon_tok3.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 4 </th>
+          <th> <audio controls><source src="demos/lagoon_tok4.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 5 </th>
+          <th> <audio controls><source src="demos/lagoon_tok5.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 6 </th>
+          <th> <audio controls><source src="demos/lagoon_tok6.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 7 </th>
+          <th> <audio controls><source src="demos/lagoon_tok7.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 8 </th>
+          <th> <audio controls><source src="demos/lagoon_tok8.wav"></audio></th>
+        </tr>         
+        <tr>
+          <th> token 9 </th>
+          <th> <audio controls><source src="demos/lagoon_tok9.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> mix w/ token 1 <BR>(sloppy) </th>
+          <th> <audio controls><source src="demos/lagoon_mix1.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> mix w/ token 4 <BR>(high pitched) </th>
+          <th> <audio controls><source src="demos/lagoon_mix4.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> mix w/ token 7 <BR>(prominence) </th>
+          <th> <audio controls><source src="demos/lagoon_mix7.wav"></audio></th>
+        </tr>            
+        <tr>
+          <th> mix w/ token 1+4 <BR> (sloppy & high pitched) </th>          
+          <th> <audio controls><source src="demos/lagoon_mix1_4.wav"></audio></th>
+        </tr>                            
+      </table>  
+    </div>
+
+  <h1></h1>
+
+  <div>
+      <i>"The forecast for San Mateo tomorrow is sixty one degrees and mostly sunny."</i>
+      <table>
+        <tr>
+          <th> neutral prosody </th>
+          <th> <audio controls><source src="demos/sanm_neutral.wav"></audio></th>
+        </tr>      
+        <tr>
+          <th> token 0 </th>
+          <th> <audio controls><source src="demos/sanm_tok0.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 1 </th>
+          <th> <audio controls><source src="demos/sanm_tok1.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 2 </th>
+          <th> <audio controls><source src="demos/sanm_tok2.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 3 </th>
+          <th> <audio controls><source src="demos/sanm_tok3.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 4 </th>
+          <th> <audio controls><source src="demos/sanm_tok4.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 5 </th>
+          <th> <audio controls><source src="demos/sanm_tok5.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 6 </th>
+          <th> <audio controls><source src="demos/sanm_tok6.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 7 </th>
+          <th> <audio controls><source src="demos/sanm_tok7.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> token 8 </th>
+          <th> <audio controls><source src="demos/sanm_tok8.wav"></audio></th>
+        </tr>         
+        <tr>
+          <th> token 9 </th>
+          <th> <audio controls><source src="demos/sanm_tok9.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> mix w/ token 1 <BR>(sloppy) </th>
+          <th> <audio controls><source src="demos/sanm_mix1.wav"></audio></th>
+        </tr>
+        <tr>
+          <th> mix w/ token 4 <BR>(high pitched) </th>
+          <th> <audio controls><source src="demos/sanm_mix4.wav"></audio></th>
+        </tr>    
+        <tr>
+          <th> mix w/ token 7 <BR>(prominence) </th>
+          <th> <audio controls><source src="demos/sanm_mix7.wav"></audio></th>
+        </tr>            
+        <tr>
+          <th> mix w/ token 1+4 <BR> (sloppy & high pitched) </th>          
+          <th> <audio controls><source src="demos/sanm_mix1_4.wav"></audio></th>
+        </tr>
+      </table>  
+    </div>
+
+  </body>
+</html>

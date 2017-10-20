@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Tacotron: Towards End-to-End Speech Synthesis"</title>
+    <style>
+      body {
+        font-family: Helvetica;
+      }
+      .transcript {
+        font-style: italic;
+      }
+      h3 {
+        margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Tacotron: Towards End-to-End Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <div><b>Paper:</b> <a href="https://arxiv.org/abs/1703.10135">arXiv</a></div>
+    <div><b>Authors:</b> Yuxuan Wang, RJ Skerry-Ryan, Daisy Stanton, Yonghui Wu, Ron J. Weiss, Navdeep Jaitly, Zongheng Yang, Ying Xiao, Zhifeng Chen, Samy Bengio, Quoc Le, Yannis Agiomyrgiannakis, Rob Clark, Rif A. Saurous</div>
+    <div><b>Abstract:</b> A text-to-speech synthesis system typically consists
+      of multiple stages, such as a text analysis frontend, an acoustic model
+      and an audio synthesis module. Building these components often requires
+      extensive domain expertise and may contain brittle design choices. In this
+      paper, we present Tacotron, an end-to-end generative text-to-speech model
+      that synthesizes speech directly from characters. Given &lt;text,
+      audio&gt; pairs, the model can be trained completely from scratch with
+      random initialization. We present several key techniques to make the
+      sequence-to-sequence framework perform well for this challenging
+      task. Tacotron achieves a 3.82 subjective 5-scale mean opinion score on US
+      English, outperforming a production parametric system in terms of
+      naturalness. In addition, since Tacotron generates speech at the frame
+      level, it's substantially faster than sample-level autoregressive
+      methods.</div>
+
+    <div><br/>All of the below phrases are unseen by Tacotron during training.</div>
+
+    <div>
+      <h3>Tacotron works well on out-of-domain and complex words.</h3>
+      <table>
+        <tr><td class="transcript">“Generative adversarial network or variational auto-encoder.”</td></tr>
+        <tr><td><audio controls><source src="demos/gan_or_vae_r2.wav"></audio></td></tr>
+      </table>
+
+      <table>
+        <tr><td class="transcript">“Basilar membrane and otolaryngology are not auto-correlations.”</td></tr>
+        <tr><td><audio controls><source src="demos/basilar.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron learns pronunciations based on phrase semantics.</h3>
+      <div>(Note how Tacotron pronounces "read" in the two phrases.)</div>
+      <table>
+        <tr><td class="transcript">“He has read the whole thing.”</td></tr>
+        <tr><td><audio controls><source src="demos/read_past.wav"></audio></td></tr>
+        <tr><td class="transcript">“He reads books.”</td></tr>
+        <tr><td><audio controls><source src="demos/reads.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron is somewhat robust to spelling errors.</h3>
+      <table>
+        <tr><td class="transcript">“Thisss isrealy awhsome.”</td></tr>
+        <tr><td><audio controls><source src="demos/awhsome.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron is sensitive to punctuation.</h3>
+      <div>(Note how the comma in the first phrase changes prosody.)</div>
+      <table>
+        <tr><td class="transcript">“This is your personal assistant, Google Home.”</td></tr>
+        <tr><td><audio controls><source src="demos/ghome_comma.wav"></audio></td></tr>
+        <tr><td class="transcript">“This is your personal assistant Google Home.”</td></tr>
+        <tr><td><audio controls><source src="demos/ghome_nocomma.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron learns stress and intonation.</h3>
+      <div>
+        (The speaker is instructed to stress on capitalized words in our
+        training set. So simply capitalizing some words will change the overall
+        intonation.)
+      </div>
+      <table>
+        <tr><td class="transcript">“The buses aren't the problem, they actually provide a solution.”</td></tr>
+        <tr><td><audio controls><source src="demos/bus_nostress.wav"></audio></td></tr>
+        <tr><td class="transcript">“The buses aren't the PROBLEM, they actually provide a SOLUTION.”</td></tr>
+        <tr><td><audio controls><source src="demos/bus_stress.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron's prosody changes when turning a statement into a question.</h3>
+      <table>
+        <tr><td class="transcript">“The quick brown fox jumps over the lazy dog.”</td></tr>
+        <tr><td><audio controls><source src="demos/fox_period.wav"></audio></td></tr>
+        <tr><td class="transcript">“Does the quick brown fox jump over the lazy dog?”</td></tr>
+        <tr><td><audio controls><source src="demos/fox_question.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <h2>Ablation Experiments</h2>
+
+    <div>
+      <h3>Comparing vanilla seq2seq vs. Tacotron</h3>
+      <span class="transcript">“Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span>
+      <table>
+        <tr><td>Vanilla seq2seq</td><td><audio controls><source src="demos/kuli_bline_fp0.5.wav"></audio></td></tr>
+        <tr><td>Tacotron</td><td><audio controls><source src="demos/kuli_new24k.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Comparing the GRU encoder vs. the CBHG encoder</h3>
+      <span class="transcript">“The blue lagoon is a nineteen eighty American romance adventure film.”</span>
+      <table>
+        <tr><td>GRU encoder</td><td><audio controls><source src="demos/lagoon_rnnenc_r5.wav"></audio></td></tr>
+        <tr><td>CBHG encoder</td><td><audio controls><source src="demos/lagoon_new24k_r5.wav"></audio></td></tr>
+      </table>
+
+      <span class="transcript">“Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</span>
+      <table>
+        <tr><td>GRU encoder</td><td><audio controls><source src="demos/kuli_rnnenc_r5.wav"></audio></td></tr>
+        <tr><td>CBHG encoder</td><td><audio controls><source src="demos/kuli_new24k.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Comparing with and without the post-processing network.</h3>
+      <span class="transcript">“Tajima Airport serves Toyooka.”</span>
+      <table>
+        <tr><td>Without</td><td><audio controls><source src="demos/tajima_nopost.wav"></audio></td></tr>
+        <tr><td>With</td><td><audio controls><source src="demos/tajima_new24k_r5.wav"></audio></td></tr>
+      </table>
+    </div>
+  </body>
+</html>
