@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions"</title>
+    <style>
+      body {
+        font-family: Helvetica;
+      }
+      .transcript {
+        font-style: italic;
+      }
+      h3 {
+        margin-bottom: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions"</h1>
+      </header>
+    </article>
+
+    <div><b>Paper:</b> <a href="https://arxiv.org/abs/1712.05884">arXiv</a></div>
+    <div><b>Authors:</b> Jonathan Shen, Ruoming Pang, Ron J. Weiss, Mike Schuster, Navdeep Jaitly, Zongheng Yang, Zhifeng Chen, Yu Zhang, Yuxuan Wang, RJ Skerry-Ryan, Rif A. Saurous, Yannis Agiomyrgiannakis, Yonghui Wu</div>
+    <div><b>Abstract:</b> This paper describes Tacotron 2, a neural network architecture for
+      speech synthesis directly from text. The system is composed of
+      a recurrent sequence-to-sequence feature prediction network that
+      maps character embeddings to mel-scale spectrograms, followed by
+      a modified WaveNet model acting as a vocoder to synthesize timedomain
+      waveforms from those spectrograms. Our model achieves a
+      mean opinion score (MOS) of 4.53 comparable to a MOS of 4.58 for
+      professionally recorded speech. To validate our design choices, we
+      present ablation studies of key components of our system and evaluate
+      the impact of using mel spectrograms as the input to WaveNet instead
+      of linguistic, duration, and F0 features. We further demonstrate
+      that using a compact acoustic intermediate representation enables
+      significant simplification of the WaveNet architecture.
+    </div>
+
+    <div><br/>All of the below phrases are unseen by Tacotron 2 during training.</div>
+
+    <div>
+      <h3>Tacotron 2 works well on out-of-domain and complex words.</h3>
+      <table>
+        <tr><td class="transcript">“Generative adversarial network or variational auto-encoder.”</td></tr>
+        <tr><td><audio controls><source src="demos/gan_or_vae.wav"></audio></td></tr>
+      </table>
+
+      <table>
+        <tr><td class="transcript">“Basilar membrane and otolaryngology are not auto-correlations.”</td></tr>
+        <tr><td><audio controls><source src="demos/basilar.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 learns pronunciations based on phrase semantics.</h3>
+      <div>(Note how Tacotron 2 pronounces "read" in the first two phrases.)</div>
+      <table>
+        <tr><td class="transcript">“He has read the whole thing.”</td></tr>
+        <tr><td><audio controls><source src="demos/read_past.wav"></audio></td></tr>
+        <tr><td class="transcript">“He reads books.”</td></tr>
+        <tr><td><audio controls><source src="demos/reads.wav"></audio></td></tr>
+        <tr><td class="transcript">“Don't desert me here in the desert!”</td></tr>
+        <tr><td><audio controls><source src="demos/desertdesert.wav"></audio></td></tr>
+        <tr><td class="transcript">“He thought it was time to present the present.”</td></tr>
+        <tr><td><audio controls><source src="demos/presentpresent.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 is somewhat robust to spelling errors.</h3>
+      <table>
+        <tr><td class="transcript">“Thisss isrealy awhsome.”</td></tr>
+        <tr><td><audio controls><source src="demos/awhsome.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 is sensitive to punctuation.</h3>
+      <div>(Note how the comma in the first phrase changes prosody.)</div>
+      <table>
+        <tr><td class="transcript">“This is your personal assistant, Google Home.”</td></tr>
+        <tr><td><audio controls><source src="demos/ghome_comma.wav"></audio></td></tr>
+        <tr><td class="transcript">“This is your personal assistant Google Home.”</td></tr>
+        <tr><td><audio controls><source src="demos/ghome_nocomma.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 learns stress and intonation.</h3>
+      <div>
+        (The speaker is instructed to stress on capitalized words in our
+        training set. So simply capitalizing some words will change the overall
+        intonation.)
+      </div>
+      <table>
+        <tr><td class="transcript">“The buses aren't the problem, they actually provide a solution.”</td></tr>
+        <tr><td><audio controls><source src="demos/bus_nostress.wav"></audio></td></tr>
+        <tr><td class="transcript">“The buses aren't the PROBLEM, they actually provide a SOLUTION.”</td></tr>
+        <tr><td><audio controls><source src="demos/bus_stress.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2's prosody changes when turning a statement into a question.</h3>
+      <table>
+        <tr><td class="transcript">“The quick brown fox jumps over the lazy dog.”</td></tr>
+        <tr><td><audio controls><source src="demos/fox_period.wav"></audio></td></tr>
+        <tr><td class="transcript">“Does the quick brown fox jump over the lazy dog?”</td></tr>
+        <tr><td><audio controls><source src="demos/fox_question.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 is good at tongue twisters.</h3>
+      <table>
+        <tr><td class="transcript">“Peter Piper picked a peck of pickled peppers. How many pickled peppers did Peter Piper pick?”</td></tr>
+        <tr><td><audio controls><source src="demos/peterpiper.wav"></audio></td></tr>
+        <tr><td class="transcript">“She sells sea-shells on the sea-shore. The shells she sells are sea-shells I'm sure.”</td></tr>
+        <tr><td><audio controls><source src="demos/seashells.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Additional Samples</h3>
+      <table>
+        <tr><td class="transcript">“Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.”</td></tr>
+        <tr><td><audio controls><source src="demos/kweli.wav"></audio></td></tr>
+        <tr><td class="transcript">“The blue lagoon is a nineteen eighty American romance adventure film.”</td></tr>
+        <tr><td><audio controls><source src="demos/bluelagoon.wav"></audio></td></tr>
+        <tr><td class="transcript">“Tajima Airport serves Toyooka.”</td></tr>
+        <tr><td><audio controls><source src="demos/tajima.wav"></audio></td></tr>
+      </table>
+    </div>
+
+    <div>
+      <h3>Tacotron 2 or Human?</h3>
+      <div>In the following examples, one is generated by Tacotron 2, and one is the recording of a human, but which is which?</div>
+      <table>
+        <tr><td></td><td class="transcript">“That girl did a video about Star Wars lipstick.”</td></tr>
+        <tr><td>1</td><td><audio controls><source src="demos/lipstick_gt.wav"></audio></td></tr>
+        <tr><td>2</td><td><audio controls><source src="demos/lipstick_gen.wav"></audio></td></tr>
+        <tr><td></td><td class="transcript">“She earned a doctorate in sociology at Columbia University.”</td></tr>
+        <tr><td>1</td><td><audio controls><source src="demos/columbia_gen.wav"></audio></td></tr>
+        <tr><td>2</td><td><audio controls><source src="demos/columbia_gt.wav"></audio></td></tr>
+        <tr><td></td><td class="transcript">“George Washington was the first President of the United States.”</td></tr>
+        <tr><td>1</td><td><audio controls><source src="demos/washington_gen.wav"></audio></td></tr>
+        <tr><td>2</td><td><audio controls><source src="demos/washington_gt.wav"></audio></td></tr>
+        <tr><td></td><td class="transcript">“I'm too busy for romance.”</td></tr>
+        <tr><td>1</td><td><audio controls><source src="demos/romance_gt.wav"></audio></td></tr>
+        <tr><td>2</td><td><audio controls><source src="demos/romance_gen.wav"></audio></td></tr>
+      </table>
+    </div>
+
+  </body>
+</html>
