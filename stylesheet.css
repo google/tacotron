@@ -1,7 +1,12 @@
-
-@import url(//fonts.googleapis.com/css?family=Roboto&lang=en);
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700');
 body {
    font-family: 'Roboto', Arial, sans-serif;
+}
+.paper_title {
+  font-style: italic;
+}
+.paper_date {
+  font-weight: bold;
 }
 #toc_container {
   background: #f9f9f9 none repeat scroll 0 0;
