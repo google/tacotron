@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <p><b>Authors</b>: Yuxuan Wang, Daisy Stanton, Yu Zhang, RJ Skerry-Ryan, Eric Battenberg, Joel Shor, Ying Xiao, Fei Ren, Ye Jia, Rif A. Saurous</p>
+
+    <div><b>Abstract:</b> In this work, we propose "Global Style Tokens" (GSTs), a bank of
+    embeddings that are jointly trained within Tacotron, a state-of-the-art end-to-end speech
+    synthesis system. The embeddings are trained with no explicit labels, yet learn to model a large
+    range of acoustic expressiveness. GSTs lead to a rich set of significant results. The soft
+    interpretable "labels" they generate can be used to control synthesis in novel ways, such as
+    varying speed and speaking style &mdash; independently of the text content.
+      They can also be used for
+    style transfer, replicating the speaking style of a single audio clip across an entire long-form
+    text corpus. When trained on noisy, unlabelled found data, GSTs learn to factorize noise and
+    speaker identity, providing a path towards highly scalable but robust speech synthesis. </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#neural_vocoder">Style Tokens with neural vocoding</a></li>
+        <ol>
+          <li><a href="#neural_vocoder.style_selection">Style Selection</a></li>
+          <li><a href="#neural_vocoder.doesnt_affect_prosody">Prosody vs Audio Quality</a></li>
+        </ol>
+      <li><a href="#style_control">Style control</a></li>
+        <ol>
+          <li><a href="#style_control.selection">Style selection</a></li>
+          <li><a href="#style_control.scaling">Style scaling</a></li>
+          <li><a href="#style_control.morphing">Text-side style control/morphing</a></li>
+        </ol>
+    <li><a href="#style_transfer">Style transfer</a></li>
+      <ol>
+        <li><a href="#style_transfer.parallel">Parallel transfer</a></li>
+        <li><a href="#style_transfer.nonparallel">Non-parallel transfer</a></li>
+      </ol>
+    <li><a href="#noisy_data">Artificial noisy data</a></li>
+      <ol>
+        <li><a href="#noisy_data.learned_tokens">Tokens learned from a noisy dataset</a></li>
+        <li><a href="#noisy_data.clean_token_synth">Synthesizing with a clean Style Token</a></li>
+      </ol>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div>
+      <a name="neural_vocoder"><h2>Style Tokens with neural vocoding</h2></a>
+      <div>
+        The experiments in our paper use the Griffin-Lim algorithm to convert the neural network's
+        predictions (spectrograms) to audio waveforms. We use Griffin-Lim because it's
+        relatively fast; it also demonstrates that the choice of vocoder doesn't affect Tacotron's prosody.
+        Before demonstrating the wide range of GST capabilities using only Griffin-Lim
+        vocoding, however, we first provide GST-augmented Tacotron samples with a neural (WaveNet) vocoder.
+        These show the combined power of good prosodic style and high audio fidelity.
+      </div>
+      <a name="neural_vocoder.style_selection"><h3>Style Selection</h3></a>
+      <a name="neural_audiobook"><h3>1. Long-form audiobook phrases </h3></a>
+
+       <div class="h3_explainer">Here we show the effect of conditioning a GST-augmented Tacotron on
+       individual Style Tokens. As you can hear, each token corresponds a distinct "style", and
+       synthesizing different phrases with the same token results in the same style.</div>
+
+      <div class="text_gst">Text: Thinking that he should probably wait for Filch to come back, Harry sank into a
+      moth-eaten chair next to the desk. There was only one thing on it apart from his half-completed form: a large, glossy, purple envelope with silver lettering on the
+      front.</div>
+      <table>
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_b.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_b_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_b_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_b_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_b_5.wav"></audio></td></tr>
+        </tbody>
+      </table>
+
+      <div class="text_gst">Text: She got up and went to the table to measure herself by it, and found that, as nearly
+      as she could guess, she was now about two feet high, and was going on shrinking rapidly: she
+      soon found out that the cause of this was the fan she was holding, and she dropped it hastily,
+        just in time to avoid shrinking away altogether.</div>
+
+      <table>
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_c.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_c_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_c_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_c_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_c_5.wav"></audio></td></tr>
+      </tbody></table>
+
+      <div class="text_gst">Text: Only the photographs on the mantelpiece really showed how much time had passed. Ten
+      years ago, there had been lots of pictures of what looked like a large pink beach ball wearing
+      different-colored bonnets - but Dudley Dursley was no longer a baby, and now the photographs
+      showed a large blond boy riding his first bicycle, on a carousel at the fair, playing a
+        computer game with his father, being hugged and kissed by his mother.</div>
+
+      <table>
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_a.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_a_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_a_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_a_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_hp_a_5.wav"></audio></td></tr>
+      </tbody></table>
+      <a name="neural_short_phrases"><h3>2. Short web search responses </h3></a>
+
+        <div class="h3_explainer">Here we again condition a GST-augmented Tacotron with individual Style Tokens. Note that
+        these short web search phrases are completely different than the long-form audiobook phrases
+        above, demonstrating that GSTs control style independently of the text domain.</div>
+
+      <div class="text_gst">Text: There are several listings for gas station..</div><table>
+
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_e.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_e_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_e_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_e_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_e_5.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: A subspace is a space that is wholly contained in another space.</div>
+      <table>
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_d.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_d_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_d_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_d_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_d_5.wav"></audio></td></tr>
+        </tbody>
+      </table>
+      <div class="text_gst">Text: United Airlines five six three from Los Angeles to New Orleans has Landed.</div><table>
+
+        <tbody>
+        <tr><td>Style 1</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_g.wav"></audio></td></tr>
+        <tr><td>Style 2</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_g_2.wav"></audio></td></tr>
+        <tr><td>Style 3</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_g_3.wav"></audio></td></tr>
+        <tr><td>Style 4</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_g_4.wav"></audio></td></tr>
+        <tr><td>Style 5</td><td><audio controls=""><source src="demos/gstwn/gstwn_vs_g_5.wav"></audio></td></tr>
+      </tbody></table>
+
+
+      <a name="neural_vocoder.doesnt_affect_prosody"><h3>Prosody vs Audio Quality</h3></a>
+      <div class="h3_explainer">
+        While WaveNet vocoding leads to high-fidelity audio, Global Style Tokens learn to capture
+        stylistic variation entirely during Tacotron training, independently of the vocoding
+        technique used afterwards. Here we include some samples to demonstrate that Tacotron models
+        prosody, while WaveNet provides last-mile audio quality.
+      </div>
+
+      <div class="text_gst">Text: She got up and went to the table to measure herself by it, and
+      found that, as nearly as she could guess, she was now about two feet high, and was going on
+      shrinking rapidly: she soon found out that the cause of this was the fan she was holding, and
+      she dropped it hastily, just in time to avoid shrinking away altogether.</div>
+
+      <table>
+        <tbody>
+        <tr><td>Baseline Tacotron (Griffin-Lim vocoding)</td><td><audio controls=""><source src="demos/syscmp/sys_cmp_tacotron_griffinlim.wav"></audio></td></tr>
+        <tr><td>Baseline Tacotron (WaveNet vocoding)</td><td><audio controls=""><source src="demos/syscmp/sys_cmp_tacotron_wavenet.wav"></audio></td></tr>
+        <tr><td>GST Tacotron (Griffin-Lim vocoding) (Style 1)</td><td><audio controls=""><source src="demos/syscmp/sys_cmp_gst_grffinlim.wav"></audio></td></tr>
+        <tr><td>GST Tacotron (WaveNet vocoding) (Style 1)</td><td><audio controls=""><source src="demos/syscmp/sys_cmp_gst_wavenet.wav"></audio></td></tr>
+        </tbody>
+      </table>
+    <div>
+      <a name="style_control"><h2>Style control</h2></a>
+      <div class="h2_explainer">
+        As noted above, the rest of the samples on this page use the Griffin-Lim algorithm to
+        produce waveforms. These again show that Global Style Tokens model style differences
+        entirely within Tacotron.</div>
+      </div>
+      <a name="style_control.selection"><h3>1. Style selection</h3></a>
+      <div class="h3_explainer">These samples refer to Section 6.1.1 of our paper, "Style selection".
+        They show the effect of conditioning the model on an individual style token.
+           Note how the same token yields the same style for different text inputs.</div>
+      <div class="text_gst">Text: Here you go, a link for Biondo Racing Products and other related pages.</div><table>
+
+        <tbody><tr><td>Token A</td><td><audio controls=""><source src="demos/control/token/a_tokA.mp3"></audio></td></tr>
+        <tr><td>Token B</td><td><audio controls=""><source src="demos/control/token/a_tokB.mp3"></audio></td></tr>
+        <tr><td>Token C</td><td><audio controls=""><source src="demos/control/token/a_tokC.mp3"></audio></td></tr>
+        <tr><td>Token D</td><td><audio controls=""><source src="demos/control/token/a_tokD.mp3"></audio></td></tr>
+        <tr><td>Token E</td><td><audio controls=""><source src="demos/control/token/a_tokE.mp3"></audio></td></tr>
+      </tbody></table>
+
+
+      <div class="text_gst">Text: The forecast for San Mateo tomorrow is sixty one degrees and Mostly Sunny.</div><table>
+
+        <tbody><tr><td>Token A</td><td><audio controls=""><source src="demos/control/token/b_tokA.mp3"></audio></td></tr>
+        <tr><td>Token B</td><td><audio controls=""><source src="demos/control/token/b_tokB.mp3"></audio></td></tr>
+        <tr><td>Token C</td><td><audio controls=""><source src="demos/control/token/b_tokC.mp3"></audio></td></tr>
+        <tr><td>Token D</td><td><audio controls=""><source src="demos/control/token/b_tokD.mp3"></audio></td></tr>
+        <tr><td>Token E</td><td><audio controls=""><source src="demos/control/token/b_tokE.mp3"></audio></td></tr>
+      </tbody></table>
+
+      <a name="style_control.scaling"><h3>2. Style scaling</h3></a>
+      <div class="h3_explainer">These samples refer to Section 6.1.2 of our paper, "Style scaling".
+        They show that multiplying a token embedding by a scalar value intensifies its style effect.
+        Note how the effect is <i>decreased</i> by negative values, despite the fact that they are not observed during training.</div>
+
+      <div class="text_gst">Text: Here you go, a link for Biondo Racing Products and other related pages.</div><b>Token A</b> (faster speaking rate)<table>
+
+        <tbody><tr><td>scale=-0.3</td><td><audio controls=""><source src="demos/control/scale/speed_-0.3.mp3"></audio></td></tr>
+        <tr><td>scale=0.1</td><td><audio controls=""><source src="demos/control/scale/speed_0.1.mp3"></audio></td></tr>
+        <tr><td>scale=0.3</td><td><audio controls=""><source src="demos/control/scale/speed_0.3.mp3"></audio></td></tr>
+        <tr><td>scale=0.5</td><td><audio controls=""><source src="demos/control/scale/speed_0.5.mp3"></audio></td></tr>
+      </tbody></table>
+      <b>Token B</b> (more animated speech)<table>
+
+        <tbody><tr><td>scale=-0.3</td><td><audio controls=""><source src="demos/control/scale/animate_-0.3.mp3"></audio></td></tr>
+        <tr><td>scale=0.1</td><td><audio controls=""><source src="demos/control/scale/animate_0.1.mp3"></audio></td></tr>
+        <tr><td>scale=0.3</td><td><audio controls=""><source src="demos/control/scale/animate_0.3.mp3"></audio></td></tr>
+        <tr><td>scale=0.5</td><td><audio controls=""><source src="demos/control/scale/animate_0.5.mp3"></audio></td></tr>
+      </tbody></table>
+
+
+      <a name="style_control.morphing"><h3>3. Text-side style control/morphing</h3></a>
+      <div class="h3_explainer">These samples refer to Section 6.1.4 of our paper, "Text-side style control/morphing".
+          Here we show how style can be "morphed" by conditioning the encoder on different
+          tokens as text input progresses. The top two samples demonstrate each token alone,
+          and are followed by two morphed variations.</div>
+
+     <div class="text_gst">Text: Computer phone calls, which do everything from selling magazine subscriptions to reminding
+      people about meetings have become the telephone equivalent of junk mail.</div><table>
+        <tbody><tr><td>Token A alone (fast)</td><td><audio controls=""><source src="demos/control/text/token_fast.mp3"></audio></td></tr>
+        <tr><td>Token B alone (low pitched)</td><td><audio controls=""><source src="demos/control/text/token_low.mp3"></audio></td></tr>
+        <tr><td>Token A → B</td><td><audio controls=""><source src="demos/control/text/fast_low.mp3"></audio></td></tr>
+        <tr><td>Token A → B → A</td><td><audio controls=""><source src="demos/control/text/fast_low_fast.mp3"></audio></td></tr>
+      </tbody></table>
+    </div>
+
+
+
+    <div>
+      <a name="style_transfer"><h2>Style transfer</h2></a>
+      <div class="h2_explainer">Style transfer is an active area of research that aims to synthesize a phrase in the prosodic style of a given audio clip.</div>
+      <a name="style_transfer.parallel"><h3>1. Parallel transfer</h3></a>
+      <div class="h3_explainer">These samples refer to Section 6.2.1 of our paper, "Parallel Style Transfer".
+           In <i>parallel</i> style transfer, the synthesizer is given an audio clip matching the text it's asked to synthesize
+           (i.e. the source and target text are the same). Global Style Tokens are designed to be
+           robust, so they don't transfer prosody perfectly. In these samples, prosodic style
+           is transferred, though without fine time-aligned variations.</div>
+
+      <div class="text_gst">Text: Pull his canoe home with your line, Fisherman.</div>
+      <table>
+        <tbody><tr><td>Raw audio (reference)</td><td><audio controls=""><source src="demos/transfer/parallel/pull_gt.mp3"></audio></td></tr>
+        <tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/transfer/parallel/pull_base.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/transfer/parallel/pull_gst.mp3"></audio></td></tr>
+      </tbody></table>
+
+      <div class="text_gst">Text: You are not so important after all, Pau Amma, he said.</div>
+      <table>
+        <tbody><tr><td>Raw audio (reference)</td><td><audio controls=""><source src="demos/transfer/parallel/you_are_not_gt.mp3"></audio></td></tr>
+        <tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/transfer/parallel/you_are_not_base.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/transfer/parallel/you_are_not_gst.mp3"></audio></td></tr>
+      </tbody></table>
+
+
+      <a name="style_transfer.nonparallel"><h3>2. Non-parallel transfer</h3></a>
+      <div class="h3_explainer">These samples refer to Section 6.2.2 of our paper, "Non-Parallel Style Transfer".
+        In <i>non-parallel</i> style transfer, the TTS system must transfer prosodic style
+        when the source and target text are completely different.
+        Below, contrast the monotonous prosody of the baseline with examples of long-form
+        synthesis with a narrative source style.</div>
+
+     <div class="text_gst">Source 1: Something, however, happened this time that had not happened before;
+          his stare into my face, through the glass and across the room, was as deep and hard as then,
+          but it quitted me for a moment during which I could still watch it, see it fix successively several other things.</div><table>
+
+        <tbody><tr><td><audio controls=""><source src="demos/transfer/guided/seed_b.mp3"></audio></td></tr>
+      </tbody></table>
+
+     <div class="text_gst"> Target 1: He was pale as smoke, and Harry could see right through him to the dark sky and
+      torrential rain outside. "You look troubled, young Potter," said Nick, folding a transparent
+      letter as he spoke and tucking it inside his doublet. "So do you," said Harry.</div><table>
+
+        <tbody><tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/transfer/guided/base_b.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/transfer/guided/gst_seed_b.mp3"></audio></td></tr>
+      </tbody></table>
+
+
+     <div class="text_gst">Source 2: She got up and went to the table to measure herself by it, and found that, as
+      nearly as she could guess, she was now about two feet high, and was going on shrinking
+      rapidly: she soon found out that the cause of this was the fan she was holding, and she
+      dropped it hastily, just in time to avoid shrinking away altogether.</div><table>
+
+        <tbody><tr><td><audio controls=""><source src="demos/transfer/guided/seed_c.mp3"></audio></td></tr>
+      </tbody></table>
+
+     <div class="text_gst"> Target 2: Harry got slowly out of bed and started looking for socks. He found a pair
+      under his bed and, after pulling a spider off one of them, put them on. Harry was used to
+      spiders, because the cupboard under the stairs was full of them, and that was where he slept.
+      </div><table>
+
+        <tbody><tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/transfer/guided/base_c.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/transfer/guided/gst_seed_c.mp3"></audio></td></tr>
+      </tbody></table>
+
+
+    </div>
+    <div>
+      <a name="noisy_data"><h2>Artificial noisy data</h2></a>
+      <div class="h2_explainer">These samples refer to Section 7.1 of our paper, "Artificial Noisy Data".</div>
+      <a name="noisy_data.learned_tokens"><h3>1. Tokens learned from a noisy dataset</h3></a>
+      <div class="h3_explainer">Here we play samples conditioning on tokens learned from training on a noisy dataset.
+	      Tacotron learned to disentangle various acoustic factors, with the resulting tokens roughly corresponding to music, reverberation, noise, and clean speech.</div>
+      <div class="text_gst">Text: The avocado is a pear-shaped fruit with leathery skin, smooth edible flesh and a large stone.</div><table>
+
+        <tbody><tr><td>Token A (music)</td><td><audio controls=""><source src="demos/mtr/tok_music.mp3"></audio></td></tr>
+        <tr><td>Token B (reverb)</td><td><audio controls=""><source src="demos/mtr/tok_reverb.mp3"></audio></td></tr>
+        <tr><td>Token C (noise)</td><td><audio controls=""><source src="demos/mtr/tok_noise.mp3"></audio></td></tr>
+        <tr><td>Token D (clean)</td><td><audio controls=""><source src="demos/mtr/tok_clean.mp3"></audio></td></tr>
+      </tbody></table>
+      <a name="noisy_data.clean_token_synth"><h3>2. Synthesizing with a clean Style Token</h3></a>
+      <div class="h3_explainer">Here we play samples from both a baseline and GST Tacotron where 90% of the training data had artificial noise added to it.
+        The GST output is synthesized by conditioning on a clean token,
+        manually identified after training.</div>
+
+      <div class="text_gst">Text: The Blue Lagoon is a nineteen eighty American romance and adventure film directed by Randal Kleiser.</div><table>
+
+        <tbody><tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/mtr/base_a.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/mtr/gst_a.mp3"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: The avocado is a pear-shaped fruit with leathery skin, smooth edible flesh and a large stone.</div><table>
+
+        <tbody><tr><td>Baseline Tacotron</td><td><audio controls=""><source src="demos/mtr/base_b.mp3"></audio></td></tr>
+        <tr><td>GST Tacotron</td><td><audio controls=""><source src="demos/mtr/gst_b.mp3"></audio></td></tr>
+      </tbody></table>
+
+    </div>
+
+
+
+
+
+
+</body></html>

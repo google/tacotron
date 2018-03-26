@@ -1,0 +1,1242 @@
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <script>
+      function play(path) {
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }
+    </script>
+  </head>
+  <body>
+    <audio controls="" id="player"></audio>
+    <article>
+      <header>
+        <h1>Audio samples from "Towards End-to-End Prosody Transfer for Expressive Speech Synthesis with Tacotron"</h1>
+      </header>
+    </article>
+
+    <p><b>Authors</b>: RJ Skerry-Ryan, Eric Battenberg, Ying Xiao, Yuxuan Wang, Daisy Stanton, Joel Shor, Ron Weiss, Rob Clark, Rif A. Saurous</p>
+
+    <div><p><b>Abstract:</b>
+    We present an extension to the Tacotron speech synthesis architecture that learns a latent embedding space of prosody, derived from a reference acoustic representation containing the desired prosody.
+    We show that conditioning Tacotron on this learned embedding space results in synthesized audio that matches the prosody of the reference signal with fine time detail even when the reference and synthesis speakers are different.
+    Additionally, we show that a reference prosody embedding can be used to synthesize text that is different from that of the reference utterance.
+    We define several quantitative and subjective metrics for evaluating prosody transfer, and report results with accompanying audio samples from single-speaker and 44-speaker Tacotron models on a prosody transfer task.
+    </p>
+    </div>
+    <p>This page contains a set of audio samples in support of the conclusions in our paper: we suggest that the reader listen to the samples in conjunction with reading the paper. <b>All utterances were unseen in training.</b></p>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#sec1_unseen">1. Prosody transfer from unseen speakers onto a single-speaker model</a></li>
+      <li><a href="#sec2_seen">2. Prosody transfer from speakers seen in training</a></li>
+      <li><a href="#sec3_multispeaker">3. Prosody transfer from an unseen speaker onto a multi-speaker model</a></li>
+      <li><a href="#sec4_bottleneck_params">4. Varying prosody embedding bottleneck dimension and activation</a></li>
+      <li><a href="#sec5_templated">5. Same speaker prosody transfer with text perturbations</a></li>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+  <a name="sec1_unseen"><h2>1. Prosody transfer from unseen speakers onto a single-speaker model</h2></a>
+<p>A single-speaker model trained on audiobook recordings, conditioned on utterances from an expressive corpus of digital assistant responses. The model never saw these speakers nor digital-assistant-style utterances during training. The base model uses no prosody embedding, while the tanh-128 model uses a 128-dimensional tanh-scaled prosody embedding computed from the reference utterance.</p>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00000.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: How do bureaucrats wrap presents? With lots of red tape.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00001.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00002.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00003.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: Why are libraries so strict? They have to go by the book.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00004.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00005.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00006.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: Why are fish so smart? Because they hang out in schools so much.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00007.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00008.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00009.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: Heaps of things. Like fairy bread, how the surf is today and why magpies swoop.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00010.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00011.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00012.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: The past, the present, and the future walk into a bar. It was tense.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00013.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00014.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00015.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: I usually down a cup of java script. Then I put on nature sounds and run a few strenuous searches to improve my speed</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00016.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00017.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00018.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: I don't have eyes, but I don't need them to know the vibe in here feels good</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00019.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00020.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00021.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: What time do you go to the dentist? At tooth-hurty!</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00022.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00023.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00024.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: Sweet dreams are made of these. Friendly Assistants who work hard to please</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00025.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00026.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00027.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: You are what you eat. So I guess I'm a whole lot of data and a little bit of pizza recipes.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00028.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00029.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00030.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: Men say they know many things; But lo! they have taken wings, The arts and sciences, And a thousand appliances; The wind that blows Is all that any body knows.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00031.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00032.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00033.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: Do you prefer chocolate or jelly? Which would you like in your belly? You could make a good case, For a cool ice cream base, But I'd argue against vermicelli</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00034.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00035.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00036.wav');">reference North American male</button>
+<br/><span class="text_e2e">Text: Halloween Edition it is! Remember to follow the moves as I say them.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00037.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00038.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00039.wav');">reference North American male</button>
+<br/><span class="text_e2e">Text: Why are archaeologists so annoyed? They always have a bone to pick.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00040.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00041.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00042.wav');">reference North American male</button>
+<br/><span class="text_e2e">Text: That one sailed RIGHT over my head.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00043.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00044.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00045.wav');">reference North American male</button>
+<br/><span class="text_e2e">Text: Wear your heart on your sleeve. It'll terrify people.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00046.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00047.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<a name="sec2_seen"><h2>2. Prosody transfer from speakers seen during training</h2></a>
+<p>Using our 44 speaker dataset, we trained a baseline and prosody encoder model. Below, on the left are a set of reference utterances &mdash; we want to capture the prosody of these utterances. On the right are utterances synthesized with this prosody, but with a voice already in the dataset (these are labeled tanh-128). We also provide a baseline, from a Tacotron model with no prosody encoder. Notice how we are able to capture the prosody of the reference speaker, yet with the voice characteristics of the target voice.</p>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00048.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: The group didn't *WALK* through Central Park, they *RAN* through it.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00049.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00050.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00051.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00052.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00053.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00054.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00055.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00056.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00057.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00058.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00059.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00060.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00061.wav');">reference North American male</button>
+<br/><span class="text_e2e">Text: That'd be some cosmic conversation.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00062.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00063.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00064.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00065.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00066.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00067.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00068.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00069.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00070.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00071.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00072.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00073.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00074.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: No no, dear reader.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00075.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00076.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00077.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00078.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00079.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00080.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00081.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00082.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00083.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00084.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00085.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00086.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00087.wav');">reference Australian female</button>
+<br/><span class="text_e2e">Text: *IS* that Utah travel agency?</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00088.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00089.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00090.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00091.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00092.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00093.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00094.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00095.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00096.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00097.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00098.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00099.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00100.wav');">reference British female</button>
+<br/><span class="text_e2e">Text: Happy Halloween.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00101.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00102.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00103.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00104.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00105.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00106.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00107.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00108.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00109.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00110.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00111.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00112.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00113.wav');">reference British male</button>
+<br/><span class="text_e2e">Text: No one at fort griswold had been excepting anything especially after there had been six years of false alarms</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00114.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00115.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00116.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00117.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00118.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00119.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00120.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00121.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00122.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00123.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00124.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00125.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00126.wav');">reference Indian female</button>
+<br/><span class="text_e2e">Text: Only one was deployed, while they need a hundred teams.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00127.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00128.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00129.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00130.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00131.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00132.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00133.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00134.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00135.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00136.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00137.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00138.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00139.wav');">reference Indian female</button>
+<br/><span class="text_e2e">Text: Quick as he himself thought, he was to keep the batsman on toes.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+<th>North American male</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>British male</th>
+<th>Indian female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00140.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00141.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00142.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00143.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00144.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00145.wav');">Indian female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00146.wav');">North American female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00147.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00148.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00149.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00150.wav');">British male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00151.wav');">Indian female</button></td>
+
+</tr>
+</table></td>
+</table>
+<a name="sec3_multispeaker"><h2>3. Prosody transfer from an unseen speaker onto a multi-speaker model</h2></a>
+<p>A 44-speaker model conditioned on utterances from an emotive corpus of audiobook recordings. The 44-speaker model was not exposed to the audiobook speaker, nor any audiobook-style recordings in training. We are able to transfer the extreme variations in prosody from the audiobook speaker to our 44-speakers, despite having far less prosodic variation in the training dataset.</p>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00152.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: "Wait a minute!" called the Scarecrow.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00153.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00154.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00155.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00156.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00157.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00158.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00159.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00160.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00161.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: It will be good for both of you.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00162.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00163.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00164.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00165.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00166.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00167.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00168.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00169.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00170.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: "Oh, now and then," said Lucy, who had rather enjoyed herself.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00171.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00172.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00173.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00174.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00175.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00176.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00177.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00178.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00179.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: I've swallowed a pollywog.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00180.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00181.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00182.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00183.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00184.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00185.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00186.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00187.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00188.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: Not in that way.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00189.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00190.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00191.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00192.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00193.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00194.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00195.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00196.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00197.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: I charge you by all that is sacred, not to attempt concealment.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00198.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00199.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00200.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00201.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00202.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00203.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00204.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00205.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00206.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: I have escaped; and that I should escape, may be a matter of grateful wonder to you and myself.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00207.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00208.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00209.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00210.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00211.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00212.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00213.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00214.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00215.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: His had a cold, ugly look of dislike and contempt, and indifference to what would happen.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00216.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00217.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00218.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00219.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00220.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00221.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00222.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00223.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00224.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: I hate helping to hang heavy, hot, hairy hides on them.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>Australian female</th>
+<th>British female</th>
+<th>North American male</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00225.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00226.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00227.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00228.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00229.wav');">Australian female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00230.wav');">British female</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00231.wav');">North American male</button></td>
+
+<td class="synthesis"><button onclick="play('demos/00232.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<a name="sec4_bottleneck_params"><h2>4. Varying prosody embedding bottleneck dimension and activation.</h2></a>
+<p>This experiment examines the effect of changing the bottleneck size and activation of the prosody encoder. In general, the larger the bottleneck, the more faithful the reproduction of the reference prosody&mdash;but some of the speaker characteristics start leaking through. Interestingly,the softmax activation enforces a more aggressive bottlenecking of information.</p>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00233.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: 'It's spoilt, of course!' Here he looked at Tweedledee, who immediately sat down on the ground, and tried to hide himself under the umbrella.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00234.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>softmax-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00235.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>softmax-16:</b></td>
+<td class="synthesis"><button onclick="play('demos/00236.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-16:</b></td>
+<td class="synthesis"><button onclick="play('demos/00237.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-32:</b></td>
+<td class="synthesis"><button onclick="play('demos/00238.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-64:</b></td>
+<td class="synthesis"><button onclick="play('demos/00239.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00240.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00241.wav');">reference North American female</button>
+<br/><span class="text_e2e">Text: So, to punish it, she held it up to the Looking-glass, that it might see how sulky it was -- 'and if you're not good directly,' she added, 'I'll put you through into Looking-glass House.</span></td>
+
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00242.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>softmax-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00243.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>softmax-16:</b></td>
+<td class="synthesis"><button onclick="play('demos/00244.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-16:</b></td>
+<td class="synthesis"><button onclick="play('demos/00245.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-32:</b></td>
+<td class="synthesis"><button onclick="play('demos/00246.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-64:</b></td>
+<td class="synthesis"><button onclick="play('demos/00247.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00248.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<a name="sec5_templated"><h2>5. Same speaker prosody transfer with text perturbations.</h2></a>
+<p>A single-speaker model trained on audiobook recordings. In these examples, the left-hand column contains an unseen reference utterance from the same speaker. On the right-hand side, we synthesize a perturbed version of that text: on top is synthesis with no conditioning, and on the bottom is the single-speaker model conditioned on the reference utterance.</p>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00249.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: 'I can now,' said the Leopard.</span><br/>
+<span class="text_e2e">Perturbed text: 'I can now,' said the Porcupine.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00250.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00251.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00252.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: For the first time in her life she had been danced tired.</span><br/>
+<span class="text_e2e">Perturbed text: For the last time in his life he had been handily embarrassed.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00253.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00254.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00255.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Second--Her family was very ancient and noble.</span><br/>
+<span class="text_e2e">Perturbed text: First--Her family was very sarcastic and horrible.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00256.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00257.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00258.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Never again shall Eleanor Lavish be a friend of mine.</span><br/>
+<span class="text_e2e">Perturbed text: Never again shall Bartholomew Bigglesby be a son of mine.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00259.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00260.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00261.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Now it is all dark.</span><br/>
+<span class="text_e2e">Perturbed text: Later it will all be lost.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00262.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00263.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00264.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Never!</span><br/>
+<span class="text_e2e">Perturbed text: Forever!</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00265.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00266.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00267.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: So I did.</span><br/>
+<span class="text_e2e">Perturbed text: So I didn't.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00268.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00269.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00270.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Oh, yes.</span><br/>
+<span class="text_e2e">Perturbed text: Oh, no.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00271.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00272.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00273.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: I cannot think why this wall is here, nor what it is made of.</span><br/>
+<span class="text_e2e">Perturbed text: I do not know why this guy is here, or what his name is.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00274.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00275.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+<table>
+<tr><td class="reference"><b>Reference:</b><button onclick="play('demos/00276.wav');">North American female reference</button>
+<br/><span class="text_e2e">Reference text: Alice was not much surprised at this, she was getting so used to queer things happening.</span><br/>
+<span class="text_e2e">Perturbed text: Eric was not much surprised at this, he was getting so used to TensorFlow breaking.</span><br/></td>
+<td><table>
+<thead><tr><th>Voice</th>
+<th>North American female</th>
+</tr></thead>
+<tr><td class="algorithm"><b>base:</b></td>
+<td class="synthesis"><button onclick="play('demos/00277.wav');">North American female</button></td>
+
+</tr>
+<tr><td class="algorithm"><b>tanh-128:</b></td>
+<td class="synthesis"><button onclick="play('demos/00278.wav');">North American female</button></td>
+
+</tr>
+</table></td>
+</table>
+
+  </body>
+</html>
