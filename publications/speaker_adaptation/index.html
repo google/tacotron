@@ -1,0 +1,272 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio samples from "Transfer Learning from Speaker Verification to Multispeaker Text-To-Speech Synthesis"</h1>
+        </header>
+      </article>
+
+      <p><b>Paper:</b> <a href="https://arxiv.org/abs/...">arXiv</a></p>
+      <p><b>Authors:</b> Ye Jia &ast;, Yu Zhang &ast;, Ron J. Weiss &ast;,
+        Quan Wang, Jonathan Shen, Fei Ren, Zhifeng Chen, Patrick Nguyen,
+        Ruoming Pang, Ignacio Lopez Moreno, Yonghui Wu. (&ast;: equal contribution.)
+      </p>
+
+      <p><b>Abstract:</b>
+        We describe a neural network-based system for text-to-speech (TTS)
+        synthesis that is able to generate speech audio in the voice of many
+        different speakers, including those unseen during training. Our system
+        consists of three independently trained components: (1) a speaker
+        encoder network, trained on a speaker verification task using an
+        independent dataset of noisy speech from thousands of speakers without
+        transcripts, to generate a fixed-dimensional embedding vector from
+        seconds of reference speech from a target speaker; (2) a
+        sequence-to-sequence synthesis network based on Tacotron 2, which
+        generates a mel spectrogram from text, conditioned on the speaker
+        embedding; (3) an auto-regressive WaveNet-based vocoder that converts
+        the mel spectrogram into a sequence of time domain waveform samples. We
+        demonstrate that the proposed model is able to transfer the knowledge of
+        speaker variability learned by the discriminatively-trained speaker
+        encoder to the new task, and is able to synthesize natural speech from
+        speakers that were not seen during training. We quantify the importance
+        of training the speaker encoder on a large and diverse speaker set in
+        order to obtain the best generalization performance. Finally, we show
+        that randomly sampled speaker embeddings can be used to synthesize speech
+        in the voice of novel speakers dissimilar from those used in training,
+        indicating that the model has learned a high quality speaker representation.
+      </p>
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+      <h2>Speaker Adaptation for Unseen Speakers</h2>
+
+      <p><i>Each column corresponds to a single speaker. The speaker name is in "Dataset SpeakerID" format. All speakers are unseen during training. The first row is the reference audio used to compute the speaker embedding. The rows below that are synthesized by our model using that speaker embedding.</i></p>
+
+      <p><i>These examples are sampled from the evaluation set for Table 1 and Table 2 in the paper. </i></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>VCTK p240</th><th>VCTK p260</th><th>LibriSpeech 1320</th><th>LibriSpeech 3575</th><th>LibriSpeech 6829</th><th>LibriSpeech 8230</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="6"><span><b>Reference:</b></td></span>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/groundtruth/p240_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/groundtruth/p260_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/groundtruth/1320_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/groundtruth/3575_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/groundtruth/6829_00000.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/groundtruth/8230_00000.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span><b>Synthesized:</b></span></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>0: Take a look at these pages for crooked creek drive.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00002.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00002.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="6"><span>1: There are several listings for gas station.</span></td></tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00006.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00006.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr><td colspan="6"><span>2: Here's the forecast for the next four days.</span></td></tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00027.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00027.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>3: Here is some information about the Gospel of John.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00038.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00038.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>4: His motives were more pragmatic and political.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00053.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00053.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>5: She had three brothers and two sisters.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00062.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00062.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>6: This work reflects a quest for lost identity, a recuperation of an unknown past.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00073.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00073.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>7: There were many editions of these works still being used in the nineteenth century.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00078.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00078.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>8: Modern birds are classified as coelurosaurs by nearly all palaeontologists.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00082.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00082.wav" type="audio/wav"></audio></td>
+    </tr>
+    <tr>
+      <td colspan="6"><span>9: He was being fitted for ruling the state, in the words of his biographer.</span></td>
+    </tr>
+    <tr>
+      <td><audio controls=""><source src="demos/synthesized/p240_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/p260_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/1320_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/3575_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/6829_00091.wav" type="audio/wav"></audio></td>
+      <td><audio controls=""><source src="demos/synthesized/8230_00091.wav" type="audio/wav"></audio></td>
+    </tr>
+  </tbody>
+</table>
+
+      <h2>Example Synthesis of a Sentence in Different Voices</h2>
+
+      <p><i>We compare the same sentence synthesized using different speaker embeddings.</i></p>
+
+      <p><i>These examples correspond to Figure 2 in the paper. The mel spectrograms are visualized for reference utterances used to generate speaker embeddings (left), and the corresponding synthesizer outputs (right). The text-to-spectrogram alignment is shown in red. Three speakers held out of the train sets are used: one male (top) and two female (center and bottom).</i></p>
+
+      <div><img src="demos/images/example_synthesis.png"></img></div>
+
+      <table>
+        <thead>
+          <tr><th>Reference</th><th>Synthesized</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><audio controls><source src="demos/examples/reference_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/examples/synthesized_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/examples/reference_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/examples/synthesized_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/examples/reference_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/examples/synthesized_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Fictitious Speakers</h2>
+
+      <p><i>Brand new voices created by randomly sampling from the embedding space. The synthesizer is trained on the LibriSpeech dataset. These examples correspond to Figure 5 in the paper.</i></p>
+
+      <div><img src="demos/images/fictitious_speakers.png"></img></div>
+
+      <table>
+        <thead>
+          <tr><th colspan=2>Synthesized</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><audio controls><source src="demos/fictitious/fictitious-000.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/fictitious/fictitious-001.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/fictitious/fictitious-002.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/fictitious/fictitious-003.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/fictitious/fictitious-004.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/fictitious/fictitious-005.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Transferring Across Language</h2>
+
+      <p><i>Reference audios are recorded by paper authors. The synthesizer is trained on the LibriSpeech dataset. The speaker encoder is only trained on US English dataset.</i></p>
+
+      <table>
+        <thead>
+          <tr><th>Reference</th><th>Synthesized</th><th>Text</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><audio controls><source src="demos/cross_language/chinese_reference_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/cross_language/chinese_synthesized_1.wav" type="audio/wav"></audio></td>
+            <td><span>a long time ago, the second December, a cup of water.</span></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/cross_language/chinese_reference_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/cross_language/chinese_synthesized_2.wav" type="audio/wav"></audio></td>
+            <td><span>a long time ago, the second December, a cup of water.</span></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/cross_language/french_reference_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/cross_language/french_synthesized_1.wav" type="audio/wav"></audio></td>
+            <td><span>a long time ago, the second December, a cup of water.</span></td>
+          </tr>
+          <tr>
+            <td><audio controls><source src="demos/cross_language/french_reference_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls><source src="demos/cross_language/french_synthesized_2.wav" type="audio/wav"></audio></td>
+            <td><span>a long time ago, the second December, a cup of water.</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+</html>
