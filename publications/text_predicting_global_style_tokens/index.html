@@ -1,0 +1,364 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Predicting Expressive Speaking Style From Text in End-to-End Speech Synthesis"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Predicting Expressive Speaking Style From Text in End-to-End Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <p><b>Authors</b>: Daisy Stanton, Yuxuan Wang, RJ Skerry-Ryan</p>
+    <div><b>Abstract:</b> Global Style Tokens (GSTs) are a recently-proposed method to learn latent disentangled representations of high-dimensional data.
+      GSTs can be used within Tacotron, a state-of-the-art end-to-end speech synthesis system, to uncover expressive factors of variation in speaking style.
+      In this work, we introduce the Text-Predicting Global Style Token (TP-GST) architecture, which treats GST combination weights or style embeddings as ``virtual'' speaking style labels within Tacotron.
+      TP-GST learns to predict stylistic renderings from text alone, requiring neither explicit labels during training, nor auxiliary inputs for inference.
+      We show that, when trained on an expressive speech dataset, our system can render text with more pitch and energy variation than two state-of-the-art baseline models.
+      We further demonstrate that TP-GSTs can synthesize speech with background noise removed, and corroborate these analyses with positive results on human-rated listener preference audiobook tasks.
+      Finally, we demonstrate that multi-speaker TP-GST models successfully factorize speaker identity and speaking style.
+      </div>
+
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#singlespeaker">Single Speaker Experiments</a></li>
+        <ol>
+          <li><a href="#singlespeaker.tokens">Style token variation</a></li>
+          <li><a href="#singlespeaker.unsupervised_prediction.tpcw">Synthesizing with text-predicted style based on GST combination weights (TPCW-GST)</a></li>
+          <li><a href="#singlespeaker.unsupervised_prediction.tpse">Synthesizing with text-predicted style based on GST style embedding (TPSE-GST)</a></li>
+          <li><a href="#singlespeaker.unsupervised_prediction.denoising">Automatically removing background noise</a></li>
+        </ol>
+      <li><a href="#multispeaker">Multiple Speaker Experiments</a></li>
+        <ol>
+          <li><a href="#multispeaker.tokens">Speaker-independent style tokens</a></li>
+          <li><a href="#multispeaker.unsupervised_prediction">Synthesizing with text-predicted style</a></li>
+        </ol>
+    </ul>
+    </div>
+
+    <div>
+      <a name="singlespeaker"><h2>Single Speaker Experiments</h2></a>
+      <div class="h2_explainer">
+        These examples refer to Section 4.1 of our paper, "Single Speaker Experiments".
+      </div>
+    </div>
+      <a name="singlespeaker.tokens"><h3>1. Style token variation</h3></a>
+      <div class="h3_explainer">These samples show the effect of conditioning a single-speaker TP-GST model on an individual style token.
+           They demonstate that, as in a GST-Tacotron, a TP-GST system learns a rich set of style tokens during training.<br><br>
+           These samples use the Griffin-Lim algorithm to produce waveforms, which shows that style tokens learn to represent speaking style variations
+           independent of the vocoder used.
+
+    </div>
+      <div class="text_gst">Text: And I have found both freedom of loneliness and the safety from being understood, for those who understand us enslave something in us.</div>
+    <table>
+      <tbody>
+        <tr><td>Token A</td><td><audio controls=""><source src="singlespeaker/tokens/token_19__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token B</td><td><audio controls=""><source src="singlespeaker/tokens/token_16__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token C</td><td><audio controls=""><source src="singlespeaker/tokens/token_06__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token D</td><td><audio controls=""><source src="singlespeaker/tokens/token_17__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token E</td><td><audio controls=""><source src="singlespeaker/tokens/token_04__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token F</td><td><audio controls=""><source src="singlespeaker/tokens/token_12__And_I_have.wav"></audio></td></tr>
+        <tr><td>Token G</td><td><audio controls=""><source src="singlespeaker/tokens/token_08__And_I_have.wav"></audio></td></tr>
+      </tbody>
+    </table>
+
+    <div>
+      <a name="singlespeaker.unsupervised_prediction.tpcw"><h3>2. Synthesizing with text-predicted style based on GST combination weights (TPCW-GST)</h3></a>
+      <div class="h3_explainer">The following samples compare synthesis from a baseline Tacotron vs a system Synthesizing with text-predicted style based on GST combination weights in inference mode ("TPCW-GST").
+        Note how the text-prediction system often leads to clearer, more expressive speech.<br><br>
+
+        These samples were generated using a WaveNet vocoder to illustrate the maximum spectral quality possible in both systems.
+      </div>
+      <div class="text_gst">Text: And without a backward glance at Harry, Filch ran flat-footed from the office, Mrs. Norris streaking alongside him. Peeves was the school poltergeist, a grinning, airborne menace who lived to cause havoc and distress.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000094.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000094.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "I expect they've let it rot to give it a stronger flavor," said Hermione knowledgeably, pinching her nose and leaning closer to look at the putrid haggis. "Can we move? I feel sick," said Ron.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000134.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000134.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: There had been a flying motorcycle in it. He had a funny feeling he'd had the same dream before. His aunt was back outside the door. "Are you up yet?" she demanded.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000005.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000005.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: Uncle Vernon now came in, smiling jovially as he shut the door. "Tea, Marge?" he said. "And what will Ripper take?"</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000200.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000200.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "Have you - did you read -?" he sputtered. "No," Harry lied quickly. Filch's knobbly hands were twisting together.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000104.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000104.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "This is boring," Dudley moaned. He shuffled away. Harry moved in front of the tank and looked intently at the snake.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/tacobase_00000054.wav"></audio></td><td>TPCW-GST</td><td><audio controls=""><source src="singlespeaker/tpcw_vs_baseline/gst_tpcw_00000054.wav"></audio></td></tr>
+      </tbody></table>
+      <a name="singlespeaker.unsupervised_prediction.tpse"><h3>3. Synthesizing with text-predicted style based on GST style embedding (TPSE-GST)</h3></a>
+      <div class="h3_explainer">The following samples compare synthesis from a baseline Tacotron vs a system using a text-predicted style in inference mode ("TPSE-GST").
+     This system predicts a style embedding directly; anecdotally, it results in even clearer, more expressive speech than a TPCW-GST system.<br><br>
+
+      These samples were generated using a WaveNet vocoder to illustrate the maximum spectral quality possible in both systems.</div>
+      <div class="text_gst">Text: "Thirty-six," he said, looking up at his mother and father. "That's two less than last year." "Darling, you haven't counted Auntie Marge's present, see, it's here under this big one from Mommy and Daddy."</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000019.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000019.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: Harry sat up and gasped; the glass front of the boa constrictor's tank had vanished. The great snake was uncoiling itself rapidly, slithering out onto the floor. People throughout the reptile house screamed and started running for the exits.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000061.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000061.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: But nobody heard much more. Sir Patrick and the rest of the Headless Hunt had just started a game of Head Hockey and the crowd were turning to watch. Nearly Headless Nick tried vainly to recapture his audience, but gave up as Sir Patrick's head went sailing past him to loud cheers.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000150.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000150.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "Harry, what was that all about?" said Ron, wiping sweat off his face. "I couldn't hear anything-- ." But Hermione gave a sudden gasp, pointing down the corridor. "Look!"</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000159.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000159.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: Go with Errol. Ron'll look after you. I'll write him a note, explaining. And don't look at me like that" - Hedwig's large amber eyes were reproachful - "it's not my fault. It's the only way I'll be allowed to visit Hogsmeade with Ron and Hermione."</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000193.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000193.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "Do something about your hair!" Aunt Petunia snapped as he reached the hall. Harry couldn't see the point of trying to make his hair lie flat. Aunt Marge loved criticizing him, so the untidier he looked, the happier she would be.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/tacobase_00000195.wav"></audio></td><td>TPSE-GST</td><td><audio controls=""><source src="singlespeaker/tpse_vs_baseline/gst_tpse_00000195.wav"></audio></td></tr>
+      </tbody></table>
+    </div>
+
+
+
+    <div>
+      <a name="singlespeaker.unsupervised_prediction.denoising"><h3>4. Automatically removing background noise</h3></a>
+      <div class="h3_explainer">These samples refer to Section 4.1.4 of our paper, "Automatic Denoising".<br><br>
+
+        About 10% of the recordings used to train the models used to synthesize the output below
+        have some high-frequency background noise. The samples below show that while the baseline Tacotron model reproduces this noise,
+        the TP-GST samples have removed this noise without using any supervision.<br><br>
+        These samples were generated using a WaveNet vocoder to illustrate the maximum spectral quality possible in both systems.
+      </div>
+      <div class="text_gst">Text: When he was dressed he went down the hall into the kitchen. The table was almost hidden beneath all Dudley's birthday presents. It looked as though Dudley had gotten the new computer he wanted, not to mention the second television and the racing bike.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/denoising/tacobase_00000009.wav"></audio></td><td>TP-GST</td><td><audio controls=""><source src="singlespeaker/denoising/gst_tpse_00000009.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: "Thirty-six," he said, looking up at his mother and father. "That's two less than last year." "Darling, you haven't counted Auntie Marge's present, see, it's here under this big one from Mommy and Daddy."</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/denoising/tacobase_00000019.wav"></audio></td><td>TP-GST</td><td><audio controls=""><source src="singlespeaker/denoising/gst_tpse_00000019.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: With a quick glance at the door to check that Filch wasn't on his way back, Harry picked up the envelope and read: kwikspell A Correspondence Course in Beginners' Magic. Intrigued, Harry flicked the envelope open and pulled out the sheaf of parchment inside.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/denoising/tacobase_00000097.wav"></audio></td><td>TP-GST</td><td><audio controls=""><source src="singlespeaker/denoising/gst_tpse_00000097.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: Harry was at the point of telling Ron and Hermione about Filch and the Kwikspell course when the salamander suddenly whizzed into the air, emitting loud sparks and bangs as it whirled wildly round the room..</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/denoising/tacobase_00000119.wav"></audio></td><td>TP-GST</td><td><audio controls=""><source src="singlespeaker/denoising/gst_tpse_00000119.wav"></audio></td></tr>
+      </tbody></table>
+      <div class="text_gst">Text: The horses galloped into the middle of the dance floor and halted, rearing and plunging. At the front of the pack was a large ghost who held his bearded head under his arm, from which position he was blowing the horn. The ghost leapt down, lifted his head high in the air so he could see over the crowd -- everyone laughed --, and strode over to Nearly Headless Nick, squashing his head back onto his neck.</div>
+      <table><tbody>
+        <tr><td>Tacotron</td><td><audio controls=""><source src="singlespeaker/denoising/tacobase_00000145.wav"></audio></td><td>TP-GST</td><td><audio controls=""><source src="singlespeaker/denoising/gst_tpse_00000145.wav"></audio></td></tr>
+      </tbody></table>
+    </div>
+
+
+
+    <div>
+      <a name="multispeaker"><h2>Multi-Speaker Experiments</h2></a>
+      <div class="h2_explainer">
+        These samples refer to Section 4.2 of our paper, "Multiple Speaker Experiments".
+      </div>
+    </div>
+    <a name="multispeaker.tokens"><h3>Speaker-independent style tokens</h3></a>
+    <div class="h3_explainer">
+         Like the single-speaker examples above, these samples show the effect of
+         conditioning a multi-speaker TP-GST model on the same style token.
+         The output below is generated by a multi-speaker model, trained on one expressive and 21 neutral prosody datasets.
+         Note that conditioning on speaker ID results in audio that preserves that speaker's voice,
+         while also using the speaking style learned by the style token during
+         training.<br><br>
+
+        These samples use the Griffin-Lim algorithm to produce waveforms,
+        which shows that style tokens learn to represent speaking style variations
+        independent of the vocoder used.
+    </div>
+    <div class="text_gst">Text: "Why do you bore me with these dreams of yours? They get more childish every time! You can't dream anything but sentimental nonsense!"</div>
+    <table>
+      <tbody>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Expressive voice</th>
+          <th>Neutral voice 1</th>
+          <th>Neutral voice 2</th>
+        </tr>
+        <tr><td>Token A</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/33__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/33__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/33__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token B</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/00__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/00__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/00__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token C</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/03__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/03__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/03__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token D</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/11__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/11__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/11__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token E</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/14__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/14__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/14__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token F</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/18__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/18__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/18__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token G</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/21__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/21__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/21__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token H</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/26__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/26__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/26__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Token I</td>
+          <td><audio controls=""><source src="multispeaker/tokens/expressive/02__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral1/02__scale_0_3__Why_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/tokens/neutral2/02__scale_0_3__Why_do_you.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a name="multispeaker.unsupervised_prediction"><h3>Synthesizing with text-predicted style</h3></a>
+    <div class="h3_explainer">
+        This section compares a baseline Tacotron versus TP-GST. The TP-GST model is the same as in the previous section, and the baseline Tacotron was trained using the same multi-speaker setup.
+        The samples below show each model conditioned on one expressive voice and two neutral voices.<br><br>
+
+        Note that, when conditioned on the <b>expressive</b> dataset speaker ID, the multi-speaker TP-GST systems
+      yield higher quality output and more stylistic variation than a multi-speaker Tacotron.
+      This is consistent with the single-speaker model results.  As expected,
+      when conditioned on the prosodically <b>neutral</b> speaker IDs, the style
+      predicted by the multi-speaker TP-GST matches the limited dynamic range of the dataset.<br><br>
+
+        These samples use the Griffin-Lim algorithm to produce waveforms.
+    </div>
+    <div class="text_gst">Text: "Oh, to travel, to travel!" cried he; "there is no greater happiness in the world: it is the height of my ambition."</div>
+    <table>
+      <tbody>
+        <tr>
+          <th>System</th>
+          <th>Baseline Tacotron</th>
+          <th>TPCW-GST</th>
+          <th>TPSE-GST</th>
+        </tr>
+        <tr><td>Expressive voice</td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_comb_weights_1_0__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_style_embedding_1_0__Oh__to_travel_.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 1</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_comb_weights_1_0__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_style_embedding_1_0__Oh__to_travel_.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 2</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_comb_weights_1_0__Oh__to_travel_.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_style_embedding_1_0__Oh__to_travel_.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text_gst">Text: "Then commit them over again," he said gravely. "To get back one's youth, one has merely to repeat one's follies."</div>
+    <table>
+      <tbody>
+        <tr>
+          <th>System</th>
+          <th>Baseline Tacotron</th>
+          <th>TPCW-GST</th>
+          <th>TPSE-GST</th>
+        </tr>
+        <tr><td>Expressive voice</td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_comb_weights_1_0__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_style_embedding_1_0__Then_commit_them.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 1</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_comb_weights_1_0__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_style_embedding_1_0__Then_commit_them.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 2</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_comb_weights_1_0__Then_commit_them.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_style_embedding_1_0__Then_commit_them.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+   <div class="text_gst">Text: "Who do you think you are?" he said, in a harsh voice. "How dare you insult my sister?"</div>
+    <table>
+      <tbody>
+        <tr>
+          <th>System</th>
+          <th>Baseline Tacotron</th>
+          <th>TPCW-GST</th>
+          <th>TPSE-GST</th>
+        </tr>
+        <tr><td>Expressive voice</td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_comb_weights_1_0__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_style_embedding_1_0__Who_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 1</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_comb_weights_1_0__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_style_embedding_1_0__Who_do_you.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 2</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_comb_weights_1_0__Who_do_you.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_style_embedding_1_0__Who_do_you.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+
+   <div class="text_gst">Text: How the sunshine cheers me, and how sweet and refreshing is the rain; my happiness overpowers me, no one in the world can feel happier than I am.</div>
+    <table>
+      <tbody>
+        <tr>
+          <th>System</th>
+          <th>Baseline Tacotron</th>
+          <th>TPCW-GST</th>
+          <th>TPSE-GST</th>
+        </tr>
+        <tr><td>Expressive voice</td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_comb_weights_1_0_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/expressive/text_predicted_style_embedding_1_0_How_the_sunshine.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 1</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_comb_weights_1_0_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral1/text_predicted_style_embedding_1_0_How_the_sunshine.wav"></audio></td>
+        </tr>
+        <tr><td>Neutral voice 2</td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_comb_weights_1_0_How_the_sunshine.wav"></audio></td>
+          <td><audio controls=""><source src="multispeaker/phrases/neutral2/text_predicted_style_embedding_1_0_How_the_sunshine.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+</body></html>
