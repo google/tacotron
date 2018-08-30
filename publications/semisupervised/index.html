@@ -1,0 +1,638 @@
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Audio samples from "Semi-Supervised Training for Improving Data Efficiency in End-to-End Speech Synthesis"</title>
+      <link rel="stylesheet" href="../../stylesheet.css">
+      <link rel="shortcut icon" href="../../images/taco.png">
+   </head>
+   <body>
+      <article>
+         <header>
+            <h1>Audio samples from "Semi-Supervised Training for Improving Data Efficiency in End-to-End Speech Synthesis"</h1>
+         </header>
+      </article>
+      <p><b>Paper: </b><a href="">arXiv</a></p>
+      <p><b>Authors: </b>Yu-An Chung, Yuxuan Wang, Wei-Ning Hsu, Yu Zhang, RJ Skerry-Ryan</p>
+      <div><b>Abstract: </b>Although end-to-end text-to-speech (TTS) models such as Tacotron have shown excellent results, they typically require a sizable set of high-quality &lttext, audio&gt pairs for training, which are expensive to collect.
+        In this paper, we propose a semi-supervised training framework to improve the data efficiency of Tacotron.
+        The idea is to allow Tacotron to utilize textual and acoustic knowledge contained in large, publicly-available text and speech corpora.
+        Importantly, these external data are unpaired and potentially noisy.
+		Specifically, first we embed each word in the input text into word vectors and condition the Tacotron encoder on them.
+        We then use an unpaired speech corpus to pre-train the Tacotron decoder in the acoustic domain.
+        Finally, we fine-tune the model using available paired data.
+        We demonstrate that the proposed framework enables Tacotron to generate intelligible speech using less than half an hour of paired training data.
+      </div>
+      <p>All phrases below are unseen by Tacotron during training. <a href="../../index.html">Click here for more from the Tacotron team.</a><br><br>Since the focus of this work is to enable Tacotron training on small data, all audio samples on this demo page were synthesized using the Griffin-Lim algorithm for fast experiment cycles.
+      </p>
+      <p class="toc_title">Contents</p>
+      <div id="toc_container">
+         <ul>
+            <li><a href="#baseline_limit">Data requirements of the baseline Tacotron</a></li>
+            <li><a href="#encoder_config">Encoder conditioning</a></li>
+            <li><a href="#decoder_fast_adapt">Decoder pre-training</a></li>
+            <li><a href="#overall">Overall comparison</a></li>
+         </ul>
+      </div>
+      <p>&nbsp;</p>
+      <div>
+         <a name="baseline_limit">
+            <h2>Data requirements of the baseline Tacotron</h2>
+         </a>
+      </div>
+      <div>
+         These samples refer to Section 3.1 of our paper, which aims to search for the least amount of training data needed for a baseline Tacotron to produce intelligible speech.
+         We varied the amount of data using "shards" as a unit, where each shard contains about 24 minutes of speech.
+         As you can hear, audios produced by Tacotron trained on 100 shards (about 40 hours) and 25 shards (about 10 hours) sound almost identically good.
+         When trained on 5 (about 2 hours) to 1.5 shards (about 36 minutes), Tacotron is still able to produce intelligible speech.
+         When trained on less than 1 shard (about 24 minutes), Tacotron fails to produce intelligible speech.
+      </div>
+      <br>
+      <table>
+         <thead>
+            <tr>
+               <th>0.5 shards</th>
+               <th>1 shard</th>
+               <th>1.5 shards</th>
+               <th>2 shards</th>
+               <th>2.5 shards</th>
+               <th>3 shards</th>
+               <th>5 shards</th>
+               <th>25 shards</th>
+               <th>100 shards</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td colspan="7">
+                  <div class="text_gst">Text: I wish I had arms so I could give you a hug. But for now maybe a joke or some music might help.</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/0.5s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/1s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/1.5s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/2s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/2.5s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/3s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/5s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/25s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/100s_00000318.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="7">
+                  <div class="text_gst">Text: I don't think you've told me. What's his name?</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/0.5s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/1s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/1.5s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/2s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/2.5s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/3s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/5s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/25s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/baseline_limit/100s_00000750.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div>
+         <a name="encoder_config">
+            <h2>Encoder conditioning</h2>
+         </a>
+         <div>
+            These samples refer to Section 3.2 of our paper.
+            The four encoder conditioning configurations are:
+            <ul>
+               <li>Input-concat: Concatenate the word vectors to the encoder input token embeddings to form the new encoder input.</li>
+               <li>Top-concat: Concatenate the word vectors to the encoder top features to form the new text representations to be fed to decoder.</li>
+               <li>Input-attention: Use a separate attention head between the word vectors and the encoder input token embeddings. The attention takes each token embedding as an attention query and produces a context vector, which is the weighted sum of all the word vectors. The context vector and the token embedding are then concatenated to form the new encoder input.</li>
+               <li>Top-attention: Same as Input-concat but now the attention is applied between the word vectors and the encoder top features.</li>
+            </ul>
+            All four configurations were trained on 1 shard of data (24 minutes), which is the threshold found <a href="#baseline_limit">above</a>.
+            As you can hear, by conditioning pre-trained word vectors at either location (encoder input or top) using either approach (concatenation or attention), Tacotron is able to produce intelligible speech, significantly outperforming the baseline Tacotron.
+            Among the four configurations, top-concat is the best based on our informal listening and objective tests.
+         </div>
+      </div>
+      <br>
+      <table>
+         <thead>
+            <tr>
+               <th>Baseline Tacotron</th>
+               <th>Input-concat</th>
+               <th>Top-concat</th>
+               <th>Input-attention</th>
+               <th>Top-attention</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td colspan="5">
+                  <div class="text_gst">"Text: I am sorry, I don't support Navigation. You can ask me on your mobile device and I can get you to your destination."</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/baseline_00000037.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/input-concat_00000037.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/top-concat_00000037.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/input-attention_00000037.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/top-attention_00000037.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="5">
+                  <div class="text_gst">"Text: I'm a bit of an outsider on the food chain, but I find the culinary sciences fascinating According to Wikipedia, almonds are stone fruits related to cherries, plums and peaches. They aren't actually true nuts – their fruit is called a "drupe""</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/baseline_00000227.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/input-concat_00000227.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/top-concat_00000227.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/input-attention_00000227.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/encoder_config/top-attention_00000227.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div>
+         <a name="decoder_fast_adapt">
+            <h2>Decoder pre-training</h2>
+         </a>
+         <div>
+           These samples demonstrate the effectiveness of decoder pre-training, which improves data efficiency while also enables fast adaptation to the fine-tuning data.
+           Here the speech is synthesized by models trained around only 1000 steps (very early stage of training) using 1 shard of data (24 minutes).
+           As you can hear, speech produced by pre-trained Tacotron significantly outperforms those produced by the baseline Tacotron in terms of both intelligibility and audio quality.
+           Note that even after the training converges, the baseline Tacotron is still unable to produce intelligible speech.
+         </div>
+      </div>
+      <br>
+      <table>
+         <thead>
+            <tr>
+               <th>Baseline Tacotron</th>
+               <th>Tacotron w/ pre-trained decoder</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td colspan="5">
+                  <div class="text_gst">"Text: It's fifty seven degrees with light showers and snow."</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/fast_adapt/base_exp1.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/fast_adapt/dec_exp1.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="5">
+                  <div class="text_gst">"Text: Sodium hydride is used as a strong base in organic synthesis."</div>
+               </td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/fast_adapt/base_exp2.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/fast_adapt/dec_exp2.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div>
+         <a name="overall">
+            <h2>Overall comparison</h2>
+         </a>
+         <div>
+            We present audio samples produced by all Tacotron variants trained on varying amounts of small data, ranging from about 12 minutes to about 72 minutes (remember that each shard is about 24 minutes).
+            Each row below corresponds to a Tacotron variant and each column the amount of training data.
+         </div>
+      </div>
+      <br>
+      <table>
+         <thead>
+            <tr>
+               <th>0.5 shards</th>
+               <th>1 shard</th>
+               <th>1.5 shards</th>
+               <th>2 shards</th>
+               <th>2.5 shards</th>
+               <th>3 shards</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td colspan="6">
+                  <div class="text_gst">Text: Here's what a monkey sounds like.</div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Baseline Tacotron</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_0.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_1s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_1.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_2s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_2.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_3s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ only encoder conditioning</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_0.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_1s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_1.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_2s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_2.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_3s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ only pre-trained decoder</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_0.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_1s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_1.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_2s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_2.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_3s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ both encoder conditioning and pre-trained decoder</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_0.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_1s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_1.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_2s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_2.5s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_3s_00000417.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6">
+                  <div class="text_gst">Text: Because of their moves, some rules for pairs' skating were changed.</div>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Baseline Tacotron</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_0.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_1s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_1.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_2s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_2.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/base_3s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ only encoder conditioning</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_0.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_1s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_1.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_2s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_2.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc_3s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ only pre-trained decoder</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_0.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_1s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_1.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_2s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_2.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/dec_3s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="6"><span><b>Tacotron w/ both encoder conditioning and pre-trained decoder</b></span></td>
+            </tr>
+            <tr>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_0.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_1s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_1.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_2s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_2.5s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="demos/demo_matrix/enc-dec_3s_00000577.wav" type="audio/wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>
