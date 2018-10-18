@@ -1,0 +1,1090 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Hierarchical Generative Modeling for Controllable Speech Synthesis"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Hierarchical Generative Modeling for Controllable Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <p><b>Paper:</b> <a href="https://arxiv.org/abs/1810.07217">arXiv</a></p>
+    <p><b>Authors</b>: Wei-Ning Hsu, Yu Zhang, Ron J. Weiss, Heiga Zen, Yonghui Wu, Yuxuan Wang, Yuan Cao, Ye Jia, Zhifeng Chen, Jonathan Shen, Patrick Nguyen, Ruoming Pang</p>
+
+    <div><b>Abstract:</b>
+      This paper proposes a neural end-to-end text-to-speech model which can control latent attributes in the generation of speech, that are rarely annotated in the training data (e.g. speaking styles, accents, background noise level, and recording conditions). The model is formulated as a conditional generative model with two levels of hierarchical latent variables. The first level is a categorical variable, which represents attribute groups (e.g. clean/noisy) and provides interpretability. The second level, conditioned on the first, is a multivariate Gaussian variable, which characterizes specific attribute configurations (e.g. noise level, speaking rate) and enables disentangled fine-grained control over these attributes. This amounts to using a Gaussian mixture model (GMM) for the latent distribution. Extensive evaluation of the proposed model demonstrates its ability to control the aforementioned attributes. In particular, it is capable of consistently synthesizing high-quality clean speech regardless of the quality of the training data for the target speaker.
+    </div>
+
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    &nbsp;
+
+    <div>
+    	<b>Note:</b>
+    	<span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#multispk_en">Multi-Speaker English Corpus</a></li>
+        <ol>
+          <li><a href="#multispk_en.sample">Random Samples by Mixture Component</a></li>
+          <li><a href="#multispk_en.control">Control of Latent Attributes</a></li>
+        </ol>
+      <li><a href="#noisy_multispk_en">Noisy Multi-Speaker English Corpus</a></li>
+        <ol>
+          <li><a href="#noisy_multispk_en.sample">Random Samples from Noisy and Clean Components</a></li>
+          <li><a href="#noisy_multispk_en.control">Control of Background Noise Level</a></li>
+        </ol>
+      <li><a href="#singlespk_audiobook">Single-Speaker Audiobook Corpus</a></li>
+        <ol>
+          <li><a href="#singlespk_audiobook.transfer">Non-Parallel Style Transfer</a></li>
+          <li><a href="#singlespk_audiobook.sample">Random Style Samples</a></li>
+          <li><a href="#singlespk_audiobook.control">Control of Style Attributes</a></li>
+        </ol>
+      <li><a href="#crowdsourced_audiobook">Crowd-Sourced Audiobook Corpus</a></li>
+        <ol>
+          <li><a href="#crowdsourced_audiobook.control">Control of Style, Channel, and Noise Attributes</a></li>
+          <li><a href="#crowdsourced_audiobook.high_qual">Synthesizing High-Quality Speech for Low-Quality Speakers</a></li>
+          <li><a href="#crowdsourced_audiobook.clone">Inferring Speaker Representations of Unseen Speakers</a></li>
+        </ol>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+
+		<!-- Section 4.1 -->
+		<div>
+      <a name="multispk_en"><h2>Multi-Speaker English Corpus (Section 4.1)</h2></a>
+      <div>
+      	We used a proprietary dataset of 385 hours of high-quality English speech from 84 professional voice talents with accents from the United States (US), Great Britain (GB), Australia (AU), and Singapore (SG). Speaker labels were not seen during training, and were only used for evaluation.
+      </div>
+      
+      <a name="multispk_en.sample"><h3>Random Samples by Mixture Component</h3></a>
+			<div class="h3_explainer">
+				We present random samples drawn from several mixture components. Theses samples correspond to Appendix D.1. Each of them models a speaker cluster. We choose a passage that can emphasize accent difference for text conditioning.
+			</div>
+
+      <div class="text_gst">Text: The fake lawyer from New Orleans is caught again.</div>
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Component 1:</br>male</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m1_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Component 3:</br>US female (low-pitched)</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m3_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m3_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Component 4:</br>GB/AU female</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m4_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m4_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m4_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Component 5:</br>US female (high-pitched)</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m5_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m5_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m5_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Component 7:</br>US/SG male</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m7_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m7_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m7_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Component 8:</br>US/SG Female </td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m8_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m8_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_sample/wav/rand_m8_3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <a name="multispk_en.control"><h3>Control of Latent Attributes</h3></a>
+      <div class="h3_explainer">
+        We demonstrate the ability to independently control a latent attribute by changing a single dimension of a latent attribute representation while keeping other dimensions fixed. The values set to the target dimension are shown in the first row, where &mu; and &sigma; denote the mean and standard deviation of that dimension, respectively. Theses samples correspond to Appendix D.2.
+      </div>
+
+      <div class="text_gst">Text: The fake lawyer from New Orleans is caught again.</div>
+
+      <h4>Dimension 2: Speed (Fast -> Slow)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 2&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 2&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix6_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix6_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix6_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix7_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix7_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim2/wav/control_dim2_mix7_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Dimension 3: Accent (US -> British)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 2&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 2&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix4_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix4_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix4_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim3/wav/control_dim3_mix1_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Dimension 9: Pitch (High -> Low)</h4>
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Sample 1</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix9_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix9_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix9_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2</td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix8_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix8_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/multispk/speaker_control/dim9/wav/control_dim9_mix8_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <p>&nbsp;</p>
+		
+		<!-- Section 4.2 -->
+		<div>
+      <a name="noisy_multispk_en"><h2>Noisy Multi-Speaker English Corpus (Section 4.2)</h2></a>
+      <div>
+         We artificially generate training sets using a room simulator to add background noise and reverberation to clean speech from the multi-speaker English corpus above. Noise was added to a random selection of 50% of utterances by each speaker, holding out two speakers (one male and one female) for whom noise was added to all of their utterances.  In this experiment, we provided speaker labels as input to the decoder, and only expect the latent attribute representations to capture the acoustic condition of each utterance.
+      </div>
+      
+      <a name="noisy_multispk_en.sample"><h3>Random Samples from Noisy and Clean Components</h3></a>
+			<div class="h3_explainer">
+				These samples correspond to Section 4.2.1 / Appendix E.1. As shown in Figure 3 in our paper, the mixture components form two distinct clusters, one for clean speech and one for noisified speech. Here we select one component from each cluster, and draw three latent attribute representation samples from each component. For each sample, we synthesize one utterance conditioning on three speakers, two of which are the held-out speakers. All three samples drawn from a noisy component generate noisy speech, where the type of noise is consistent regardless of the conditioned speaker. All three samples drawn from a clean component generate clean speech, even for the two held-out speakers that have no clean training data, as discussed in Section 4.2.3 in our paper.
+			</div>
+
+      <div class="text_gst">Text: This model is trained on multi-speaker English data.</div>
+
+      <h4>Samples from a Noisy Component</h4>
+      <table>
+        <tbody>
+      	<tr>
+          <td></td>
+          <td align="center">
+          	Sample 1<br>
+          	Loud Wideband Noise
+          </td>
+          <td align="center">
+          	Sample 2<br>
+          	Low-Frequency Noise, Reverb
+          </td>
+          <td align="center">
+          	Sample 3<br>
+          	Musical Noise
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Clean Speaker 1</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_0_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_0_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Noisy Speaker A</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_1_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_1_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Noisy Speaker B</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_2_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_2_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_noisy_2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Samples from a Clean Component</h4>
+      <table>
+        <tbody>
+      	<tr>
+          <td></td>
+          <td align="center">Sample 1</td>
+          <td align="center">Sample 2</td>
+          <td align="center">Sample 3</td>
+        </tr>
+        <tr>
+          <td nowrap>Clean Speaker 1</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_0_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_0_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Noisy Speaker A</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_1_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_1_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Noisy Speaker B</td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_2_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_2_1.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/noisy_multispk/noise_sample/nmse_sample_clean_2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <a name="noisy_multispk_en.control"><h3>Control of Background Noise Level</h3></a>
+      <div class="h3_explainer">
+      	These samples correspond to Section 4.2.2 / Appendix E.2. We demonstrate that the level of noise can be controlled by changing one dimension, and this dimension is automatically determined by the per-dimension linear discriminative analysis. The values set to the noise-level dimension are shown in the first row.
+      </div>
+
+      <div class="text_gst">Text: Traversing the noise level dimension.</div>
+      <table>
+        <tbody>
+      	<tr>
+          <td nowrap>Noise-Level Dim =</td>
+          <td align="center">-0.6</td>
+          <td align="center">-0.2</td>
+          <td align="center">0.2</td>
+        </tr>
+        <tr>
+          <td nowrap>
+          	Sample 1:<br>
+          	Speaker 1
+          </td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk0_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk0_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>
+          	Sample 2:<br>
+          	Speaker 1
+          </td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk0_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk0_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>
+          	Sample 3:<br>
+          	Speaker A
+          </td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp0_spk1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>
+          	Sample 4:<br>
+          	Speaker A
+          </td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/noisy_multispk/noise_control/dim13/wav/control_dim13_comp1_spk1_4.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>&nbsp;</p>
+
+		<!-- Section 4.3 -->
+		<div>
+      <a name="singlespk_audiobook"><h2>Single-Speaker Audiobook Corpus (Section 4.3)</h2></a>
+      <div>
+         We evaluated the ability of the proposed model to sample and control speaking styles. A single speaker US English audiobook dataset of 147 hours, recorded by professional speaker, Catherine Byers, from the 2013 Blizzard Challenge is used for training.
+      </div>
+      
+      <!-- Section 4.3.1 -->
+      <a name="singlespk_audiobook.transfer"><h3>Non-Parallel Style Transfer</h3></a>
+      <div class="h3_explainer">
+      	These samples correspond to Appendix F.2 in our paper. We demonstrate the ability of our model to synthesize speech that resembles the prosody or style of a given reference utterance. The first row of audio samples are the reference utterances. Condition on each style, we synthesize four utterances, which have different text content from that of the reference, and are shown in the same column as the reference utterance.
+      </div>
+
+      <div class="text_gst">
+	      Reference 1 Text: I haven't the least idea what you're talking about, said Alice.<br>
+	      Reference 2 Text: "That's made a-purpose," said the Djinn, "all because you missed those three days.<br>
+	    	Reference 3 Text: "And I shall get my courage," said the Lion thoughtfully.<br>
+	      Reference 4 Text: She was not going through any acute mental process or reasoning with herself, nor was she striving to explain to her satisfaction the motive of her action.<br>
+      </div>
+      <div class="text_gst">
+	      Synthesized 1 Text: By water in the midst of water!<br>
+	      Synthesized 2 Text: We must burn the house down! said the Rabbit's voice; and Alice called out as loud as she could, If you do.<br>
+	    	Synthesized 3 Text: And she began fancying the sort of thing that would happen: Miss Alice!<br>
+	    	Synthesized 4 Text: She tasted a bite, and she read a word or two, and she sipped the amber wine and wiggled her toes in the silk stockings.<br>
+      </div>
+      <table>
+        <tbody>
+      	<tr>
+          <td nowrap></td>
+          <td align="center">
+          	Style 1<br>
+          	Tremulous, High-Pitched
+          </td>
+          <td align="center">
+          	Style 2<br>
+          	Prolonged, Medium-Low-Pitched
+          </td>
+          <td align="center">
+          	Style 3<br>
+          	Rough, Low-Pitched
+          </td>
+          <td align="center">
+          	Style 4<br>
+          	Narrative
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Reference</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/ref_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/ref_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/ref_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/ref_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Synthesized 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_0_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_0_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Synthesized 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Synthesized 3</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_2_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_2_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Synthesized 4</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_3_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_3_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_transfer/wav/syn_3_4.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <!-- Section 4.3.2-1 -->
+      <a name="singlespk_audiobook.sample"><h3>Random Style Samples</h3></a>
+      
+      <div class="h3_explainer">
+      	Here we draw ten random latent attribute representations from the prior, and synthesize three utterances for each sample. These samples refer to Section 4.3.1 / Appendix F.3 in our paper.
+      	Each column conditions on the same text, and each row conditions on the same latent attribute representation.
+      	The ten samples show wide variation of speaking rate, rhythm, pitch, and tone.
+      	When conditioning on the same latent attribute representation, the style is consistent across utterances of different texts.
+      </div>
+
+      <div class="text_gst">
+      	Text 1: Lady Jane Grey had carried fashion to the point of knowing Hebrew.<br>
+	      Text 2: And how soon was the alarm raised along the countryside?<br>
+	      Text 3: And as she raised one slim white hand to brush back some wisps that floated by her face, I saw distinctly the webs between her fingers.<br>
+      </div>
+      <table>
+        <tbody>
+      	<tr>
+          <td nowrap></td>
+          <td align="center">
+          	Text 1
+          </td>
+          <td align="center">
+          	Text 2
+          </td>
+          <td align="center">
+          	Text 3
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_0.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_0.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_1.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_1.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 3</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_2.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_2.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 4</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_3.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_3.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 5</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_4.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_4.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 6</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_5.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_5.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_5.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 7</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_6.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_6.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_6.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 8</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_7.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_7.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_7.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 9</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_8.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_8.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_8.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Style 10</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_0_9.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_1_9.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/singlespk_audiobook/style_sample/wav/rand_2_9.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <!-- Section 4.3.2-2 -->
+      <a name="singlespk_audiobook.control"><h3>Control of Style Attributes</h3></a>
+
+      <div class="h3_explainer">
+      	These samples refer to Section 4.3.1 / Appendix F.4 in our paper. We show that several aspects of speaking style/prosody can be controlled by changing the value of one dimension to the latent attribute representation. For each property, we generate two random latent attribute representations from the prior as seeds (sample 1 and sample 2). For each seed, we set the target dimension with three different values and synthesize two utterances (text 1 and text 2) for each value, which are shown in the first row.
+      </div>
+      
+      <div class="text_gst">
+      	Text 1: "Luck has taken us into its own hands," Eric laughed.<br>
+	      Text 2: Mrs. Lynde drove home, meeting several people on the road and stopping to tell them about the hall.<br>
+      </div>
+
+      <h4>Dimension 3: Deepness, Masculinity (Less -> More)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Dim 3=</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat1_text2_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim3/wav/control_dim3_lat3_text2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Dimension 7: Speed, Emphasis of Ending (Fast -> Slow)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Dim 7=</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat3_text2_2.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Sample 2, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim7/wav/control_dim7_lat5_text2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Dimension 8: Excitement (Less -> More)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Dim 8=</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat2_text2_2.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Sample 2, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim8/wav/control_dim8_lat1_text2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h4>Dimension 14: Roughness (More -> Less)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Dim 14=</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 1, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat2_text2_2.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Sample 2, Text 1</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text1_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Sample 2, Text 2</td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text2_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/singlespk_audiobook/style_control/dim14/wav/control_dim14_lat8_text2_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+    </div>
+
+
+    <div>
+      <a name="crowdsourced_audiobook"><h2>Crowd-Sourced Audiobook Corpus (Section 4.4)</h2></a>
+      <div>
+         We used an audiobook dataset derived from the same subset of LibriVox audiobooks used for the LibriSpeech corpus (Panayotov et al., 2015), but sampled at 24kHz and segmented differently, making it appropriate for TTS instead of speech recognition. The corpus contains recordings from thousands of speakers, with wide variation in recording conditions and speaking style. Speaker identity is often highly correlated with the recording channel and background noise level, since many speakers tended to use the same microphone in a consistent recording environment.
+      </div>
+
+      <a name="crowdsourced_audiobook.control"><h3>Control of Style, Channel, and Noise Attributes</h3></a>
+
+      <div class="h3_explainer">
+      	These samples correspond to Appendix G.1 in our paper. We demonstrate the ability of our model to control a wide variety of attributes, each of which can be independently manipulated by changing the value of one dimension. To traverse each dimension, we the mean of the same mixture component as the seed, and set the target dimension with three different values. For each value, four utterances are synthesized, conditioning on two speakers and two texts.
+      </div>
+      
+      <div class="text_gst">
+      	Text 1: How many times am I to be compelled to beg that of you!<br>
+	      Text 2: I halted at a window farther down the street and studied him; then returned to pass him again, and watched him patiently.<br>
+      </div>
+
+      <h4>Dimension 0: Pitch (Low -> High)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim0/wav/control_dim0_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+      
+      <h4>Dimension 1: Band-Pass Filter (High-Pass -> Low-Pass)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim1/wav/control_dim1_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+      
+      <h4>Dimension 2: Reverberation (More -> Less)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim2/wav/control_dim2_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+      
+      <h4>Dimension 4: Noise (More -> Less)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim4/wav/control_dim4_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+      
+      <h4>Dimension 12: Length of Pause between Sentences (Short -> Long)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 2&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 2&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim12/wav/control_dim12_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+      
+      <h4>Dimension 13: Speaking Rate (High -> Low)</h4>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap>Val =</td>
+        	<td align="center">&mu; - 4&sigma;</td>
+        	<td align="center">&mu;</td>
+        	<td align="center">&mu; + 4&sigma;</td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 1, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 1, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text1_spk1_2.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Text 2, Speaker 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk0_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk0_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk0_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Text 2, Speaker 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/latent_control/dim13/wav/control_dim13_text2_spk1_2.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+
+      <p>&nbsp;</p>
+      	
+      <a name="crowdsourced_audiobook.high_qual"><h3>Synthesizing High-Quality Speech for Low-Quality Speakers</h3></a>
+      <div>
+        These samples refer to Section 4.4 and Appendix G.2 in our paper. We select several low-quality speakers from the training set, whose recordings contain a perceivable amount of background noise. We present the original recording from each speaker, and synthesized results of that speaker speaking different text content, conditioning on different latent attribute representations.The results of our proposed high-quality synthesis methods are shown in the <i>"Synthesized &mdash; Denoised Latent"</i> and <i>"Synthesized &mdash; Component 5 mean"</i> rows. In addition, results of conditioning on inferred latent attribute representations are presented in the <i>"Synthesized &mdash; Latent"</i> row. For all three synthesized methods, the observed attribute representation (which encodes speaker information) is inferred from the noisy audio shown in the leftmost column. Our proposed methods can generate clean speech for those low-quality speakers.
+      </div>
+
+      <div class="text_gst">
+      	Text 1: Kenneth decided that he was ill at ease and in a state of dogged self-repression.<br>
+	      Text 2: The hotel is situated at an elevation of thirty-five hundred feet above the sea, and was at that time forty miles from the railroad.<br>
+      </div>
+
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center">Original</td>
+        	<td align="center">Synthesized &mdash; Latent</td>
+        	<td align="center">Synthesized &mdash; Denoised Latent</td>
+        	<td align="center">Synthesized &mdash; Component 5 Mean</td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1447, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 1447, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk0_text1_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 426, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 426, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk1_text1_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 7178, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 7178, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk2_text1_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 1578, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 1578, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk3_text1_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 78, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 78, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk6_text1_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 669, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text0_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text0_mean5.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 669, Text 2</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text1_latent.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text1_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/high_qual/wav/spk7_text1_mean5.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <a name="crowdsourced_audiobook.clone"><h3>Inferring Speaker Representations of Unseen Speakers</h3></a>
+      <div>
+        These samples refer to Section 4.4 and Appendix G.2 in our paper. We demonstrate that our model can generate utterances that resemble the voice of a reference utterance by conditioning the generation on the inferred observed attribute representations from it. We present examples of ten unseen speakers. Each row corresponds to one speaker, where we show the reference utterance and two synthesized utterances from left to right.
+      </div>
+
+      <div class="text_gst">
+      	Text 1: Kenneth decided that he was ill at ease and in a state of dogged self-repression.<br>
+	      Text 2: The hotel is situated at an elevation of thirty-five hundred feet above the sea, and was at that time forty miles from the railroad.<br>
+      </div>
+
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center">Original</td>
+        	<td align="center">Synthesized, Text 1</td>
+        	<td align="center">Synthesized, Text 2</td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3570, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk0_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk0_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk0_text1_dnlat.wav"></audio></td>	
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 3575, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk1_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk1_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk1_text1_dnlat.wav"></audio></td>	
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 4970, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk2_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk2_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk2_text1_dnlat.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 4992, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk3_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk3_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk3_text1_dnlat.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 1320, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk5_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk5_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk5_text1_dnlat.wav"></audio></td>	
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 7021, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk7_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk7_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk7_text1_dnlat.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 7729, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk8_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk8_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk8_text1_dnlat.wav"></audio></td>
+        </tr>
+      	<tr>
+          <td nowrap>Speaker 8230, Text 1</td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk9_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk9_text0_dnlat.wav"></audio></td>
+          <td><audio controls=""><source src="demos/crowdsource_audiobook/voice_clone/wav/spk9_text1_dnlat.wav"></audio></td>
+        </tr>
+      	</tbody>
+      </table>
+
+    </div>
+
+
+</body></html>
