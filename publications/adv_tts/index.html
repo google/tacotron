@@ -1,0 +1,365 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Disentangling Correlated Speaker and Noise for Speech Synthesis via Data Augmentation and Adversarial Factorization"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Disentangling Correlated Speaker and Noise for Speech Synthesis via Data Augmentation and Adversarial Factorization"</h1>
+      </header>
+    </article>
+
+    <p><b>Paper:</b> <a href="https://openreview.net/pdf?id=Bkg9ZeBB37">OpenReview</a></p>
+    <p><b>Authors:</b> Wei-Ning Hsu, Yu Zhang, Ron J. Weiss, Yu-An Chung, Yuxuan Wang, Yonghui Wu, James Glass</p>
+
+    <div><b>Abstract:</b>
+      To leverage crowd-sourced data to train multi-speaker text-to-speech (TTS) models that can synthesize clean speech for all speakers, it is essential to learn disentangled representations which can independently control the speaker identity and background noise in generated signals. However, learning such representations can be challenging, due to the lack of labels describing the recording conditions of each training example, and the fact that speakers and recording conditions are often correlated, e.g. since users often make many recordings using the same equipment. This paper proposes three components to address this problem by: (1) formulating a conditional generative model with factorized latent variables, (2) using data augmentation to add noise that is not correlated with speaker identity and whose label is known during training, and (3) using adversarial factorization to improve disentanglement. Experimental results demonstrate that the proposed method can disentangle speaker and noise attributes even if they are correlated in the training data, and can be used to consistently synthesize clean speech for all speakers. Ablation studies verify the importance of each proposed component.
+    </div>
+
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    &nbsp;
+
+    <div>
+      <b>Note:</b>
+      <span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#ref">Reference Audio for Inferring Latents</a></li>
+        <ol>
+          <li><a href="#ref.zs">Speaker Latent Variable</a></li>
+          <li><a href="#ref.zr">Residual Latent Variable</a></li>
+        </ol>
+      <li><a href="#syn">Synthesized Audio (Griffin-Lim)</a></li>
+        <ol>
+          <li><a href="#syn.1">p225 (clean)</a></li>
+          <li><a href="#syn.2">p272 (clean)</a></li>
+          <li><a href="#syn.3">p244 (noisy)</a></li>
+          <li><a href="#syn.4">p252 (noisy)</a></li>
+        </ol>
+      <li><a href="#gl_wavernn">Comparing Griffin-Lim and WaveRNN Spectrogram Inversion</a></li>
+    </ul>
+    </div>
+
+    &nbsp;
+
+    <div>
+      <a name="ref"><h2>Reference Audio for Inferring Latents</h2></a>
+      <div>
+        In this section, we present reference audio used to infer latent speaker variables z<sub>s</sub> and latent residual variables z<sub>r</sub>. These latent variables are used to control the speaker identity and noise condition, respectively.
+      </div>
+      
+      <a name="ref.zs"><h3>Speaker Latent Variable</h3></a>
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center">z<sub>s</sub><sup>(1)</sup>: p225_253 (clean)</td>
+          <td align="center">z<sub>s</sub><sup>(2)</sup>: p272_016 (clean)</td>
+          <td align="center">z<sub>s</sub><sup>(3)</sup>: p244_011 (noisy)</td>
+          <td align="center">z<sub>s</sub><sup>(4)</sup>: p252_005 (noisy)</td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="demos/ref/00000_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00003_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00007_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00009_ref.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <a name="ref.zr"><h3>Residual Latent Variable</h3></a>
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center">z<sub>r</sub><sup>(1)</sup>: p265_163 (clean)</td>
+          <td align="center">z<sub>r</sub><sup>(2)</sup>: p251_004 (clean)</td>
+          <td align="center">z<sub>r</sub><sup>(3)</sup>: p230_017 (noisy)</td>
+          <td align="center">z<sub>r</sub><sup>(4)</sup>: p246_112 (noisy)</td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="demos/ref/00002_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00001_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00005_ref.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ref/00008_ref.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    &nbsp;
+
+    <div>
+      <a name="syn"><h2>Synthesized Audio (Griffin-Lim)</h2></a>
+      <div>
+        This section contains synthesized audio from the baseline model and the proposed model using Griffin-Lim algorithm. The baseline model utilizes a speaker embedding table to control speaker identity. The proposed model uses z<sub>s</sub> to control speaker identity and z<sub>r</sub> to control the acoustic condition. These examples demonstrate model's ability to synthesize clean speech for all speakers, regardless of the training data quality of the speaker. In contrast, the baseline model always generates noisy speech for speakers whose training data are noisy.
+      </div>
+      <div class="text_gst">
+        Text 1: Try these pages.</br>
+        Text 2: In 2009 these reports were collected in the book Chambermaids and Soldiers.</br>
+        Text 3: In later years in films she switched to playing character parts.</br>
+        Text 4: The other bodies are juxtaposed in various unlit areas behind them.</br>
+      </div>
+
+      <a name="syn.1"><h3>p225 (clean)</h3></a>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">Baseline</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(2)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(3)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(4)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>text 1</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p225__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p225_253__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p225_253__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p225_253__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p225_253__000.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 2</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p225__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p225_253__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p225_253__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p225_253__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p225_253__050.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 3</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p225__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p225_253__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p225_253__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p225_253__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p225_253__070.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 4</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p225__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p225_253__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p225_253__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p225_253__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p225_253__090.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a name="syn.2"><h3>p272 (clean)</h3></a>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">Baseline</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(2)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(3)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(4)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>text 1</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p272__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p272_016__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p272_016__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p272_016__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p272_016__000.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 2</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p272__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p272_016__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p272_016__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p272_016__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p272_016__050.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 3</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p272__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p272_016__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p272_016__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p272_016__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p272_016__070.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 4</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p272__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p272_016__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p272_016__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p272_016__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p272_016__090.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a name="syn.3"><h3>p244 (noisy)</h3></a>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">Baseline</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(2)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(3)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(4)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>text 1</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p244__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p244_011_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p244_011_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p244_011_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p244_011_aug__000.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 2</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p244__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p244_011_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p244_011_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p244_011_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p244_011_aug__050.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 3</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p244__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p244_011_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p244_011_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p244_011_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p244_011_aug__070.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 4</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p244__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p244_011_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p244_011_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p244_011_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p244_011_aug__090.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a name="syn.4"><h3>p252 (noisy)</h3></a>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">Baseline</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(2)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(3)</sup>)</td>
+          <td align="center">Proposed: (z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(4)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>text 1</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p252__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p252_005_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p252_005_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p252_005_aug__000.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p252_005_aug__000.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 2</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p252__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p252_005_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p252_005_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p252_005_aug__050.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p252_005_aug__050.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 3</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p252__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p252_005_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p252_005_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p252_005_aug__070.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p252_005_aug__070.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>text 4</td>
+          <td><audio controls=""><source src="demos/syn/baseline/p252__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p265_163__p252_005_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p251_004__p252_005_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p230_017_aug__p252_005_aug__090.wav"></audio></td>
+          <td><audio controls=""><source src="demos/syn/proposed/p246_112_aug__p252_005_aug__090.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    &nbsp;
+
+    <div>
+      <a name="gl_wavernn"><h2>Comparing Griffin-Lim and WaveRNN Spectrogram Inversion</h2></a>
+      <div>
+        In this section, we compare using Griffin-Lim and WaveRNN to synthesize waveforms using spectrograms generated by the proposed model. The results demonstrate that using WaveRNN can improve the audio fidelity.
+      </div>
+      <div class="text_gst">
+        Text: The Godfather Release date is March 15, 1972
+      </div>
+
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">(z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>Griffin-Lim</td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p225_253__025.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p272_016__025.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p244_011_aug__025.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p252_005_aug__025.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>WaveRNN</td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02025.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02325.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02725.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02925.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="text_gst">
+        Text: The Palladium-Item is the daily morning newspaper for Richmond, Indiana and surrounding areas.
+      </div>
+
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"></td>
+          <td align="center">(z<sub>s</sub><sup>(1)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(2)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(3)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+          <td align="center">(z<sub>s</sub><sup>(4)</sup>, z<sub>r</sub><sup>(1)</sup>)</td>
+        </tr>
+        <tr>
+          <td nowrap>Griffin-Lim</td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p225_253__066.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p272_016__066.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p244_011_aug__066.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_gl/p265_163__p252_005_aug__066.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>WaveRNN</td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02066.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02366.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02766.wav"></audio></td>
+          <td><audio controls=""><source src="demos/gl_wrnn/proposed_wrnn/02966.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+</body></html>
