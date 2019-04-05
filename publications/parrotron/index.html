@@ -1,0 +1,344 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Parrotron: An End-to-End Speech-to-Speech Conversion Model and its Applications to Hearing-Impaired Speech and Speech Separation"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Parrotron: An End-to-End Speech-to-Speech Conversion Model and its Applications to Hearing-Impaired Speech and Speech Separation"</h1>
+      </header>
+    </article>
+
+    <!--<p><b>Paper:</b> <a href="https://arxiv.org/abs/">arXiv</a></p>-->
+
+    <p><b>Authors:</b> Fadi Biadsy, Ron J. Weiss, Pedro J. Moreno, Dimitri Kanvesky, Ye Jia </p>
+
+    <div><b>Abstract:</b>
+      We describe Parrotron, an end-to-end-trained speech-to-speech
+      conversion model that maps an input spectrogram directly to
+      another spectrogram, without utilizing any intermediate discrete
+      representation. The network is composed of an encoder, a spectrogram and phoneme decoders,
+      followed by a vocoder to synthesize a time-domain waveform. We demonstrate that this model
+      can be trained to normalize speech from any speaker regardless
+      of accent, prosody, and background noise, into the voice of a
+      single canonical target speaker with a fixed accent and consistent
+      articulation and prosody. We further show that this normalization
+      model can be adapted to normalize highly atypical speech from
+      a deaf speaker, resulting in significant improvements in intelligibility and naturalness, measured via a speech recognizer and
+      listening tests. Finally, demonstrating the utility of this model
+      on other speech tasks, we show that the same model architecture
+      can be trained to perform a speech separation task.
+    </div>
+
+    <p> <a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    <div>
+      <b>Note:</b>
+      <span style="background-color: #EEE">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+      <ul>
+	<li><a href="#normalization">Section 3.1: Voice normalization</a></li>
+	<li><a href="#normalization-impaired">Section 3.2: Normalization of hearing-impaired speech</a></li>
+	<li><a href="#separation">Section 3.3: Speech separation</a></li>
+	<li><a href="#acknowledgements">Acknowledgements</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <a name="normalization"><h2>Section 3.1: Voice normalization</h2></a>
+      <div>
+        In this section, we present examples of running Parrotron to directly normalize speech to a TTS voice.
+	Examples are from the <a href="https://datashare.is.ed.ac.uk/handle/10283/2651">VCTK corpus</a> licensed under the <a href="https://opendatacommons.org/licenses/by/1.0/">Open Data Commons Attribution License (ODC-By) v1.0</a>.
+	(Griffin-Lim Vocoder).
+      </div>
+      
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Output </td>
+        </tr>
+        
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/01_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/01_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/02_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/02_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/03_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/03_norm_output.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/04_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/04_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/05_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/05_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/06_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/06_norm_output.wav"></audio></td>
+        </tr>
+        
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/07_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/07_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/08_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/08_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/09_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/09_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/10_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/10_norm_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/norm_vctk/11_norm_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/norm_vctk/11_norm_output.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <br/>
+    <h3>Extra</h3>
+    <div>
+      Examples of running the normalization model, which is trained on American English speech, on non-English inputs.
+      <!--TODO(biadsy): add more.-->
+    </div>
+    
+      </br>
+      <table>
+        <tbody>
+          <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Output </td>
+          </tr>
+          <tr>
+            <td><audio controls=""><source src="audio/extra/arabic_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/extra/arabic_parrotron.wav"></audio></td>
+          </tr>
+          <tr>
+            <td><audio controls=""><source src="audio/extra/do_rai_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/extra/do_rai_parrotron.wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+    <p/>
+    <br/>
+    <div>
+      <a name="normalization_impaired"><h2>Section 3.2: Normalization of hearing-impaired speech</h2></a>
+     
+      <div>
+        In this section, we present examples of running Parrotron to convert atypical speech from a deaf speaker to fluent speech. The model is same as the normalization model above, but trained on a male target speaker voice. We include examples before and after adapting the model on 13.5 hours of speech from a deaf speaker.
+      </div>
+      &nbsp;
+      
+      <h3>After adaptation</h3>
+      </br>
+      <table>
+        <tbody>
+          <tr>
+            <td align="center"> Input </td>
+            <td align="center"> Output </td>
+            <td align="center"> &nbsp;&nbsp; </td>
+            <td align="center"> Reference Transcript </td>
+          </tr>
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/00_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/00_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Here is some information about Oklahoma</i></td>
+          </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/01_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/01_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>When do the girls get to the party?</i></td>
+          </tr>
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/02_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/02_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>You can use your regular name outside the game.</i></td>
+          </tr>
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/03_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/03_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Here are listings for Clarks Village near Ann Arbor.</i></td>
+          </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/04_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/04_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Maybe something happened to them.</i></td>
+          </tr>
+          
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/05_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/05_parrotron_adapted.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Amber India restaurant is open until two A M tomorrow.</i></td>
+          </tr>
+          
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/08_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/08_output.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Here are your directions. </i></td>
+          </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/09_input.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/09_output.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>OK, three hours 45 minutes.</i></td>
+          </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/01_input_testset2.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/01_output_testset2.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>What is the weather tomorrow in Mountain View?</i></td>
+          </tr>
+                     
+           <tr>
+            <td><audio controls=""><source src="audio/deaf/04_input_testset2.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/04_output_testset2.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>I want to see if Parrotron would work for other languages.</i></td>
+           </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/05_input_testset2.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/05_output_testset2.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>Salam [Arabic for Peace]</i></td>
+           </tr>
+
+          <tr>
+            <td><audio controls=""><source src="audio/deaf/09_input_testset2.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/09_output_testset2.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>I like Fadi.</i></td>
+          </tr>
+
+           <tr>
+            <td><audio controls=""><source src="audio/deaf/06_input_testset2.wav"></audio></td>
+            <td><audio controls=""><source src="audio/deaf/06_output_testset2.wav"></audio></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><i>I'm hungry.</i></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    <br/>
+
+    <h3>Before adaptation</h3>
+    
+    <table>
+      <tbody>
+        <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Output </td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/deaf/00_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/deaf/00_parrotron_unadapted.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/deaf/01_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/deaf/01_parrotron_unadapted.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/deaf/02_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/deaf/02_parrotron_unadapted.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/deaf/03_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/deaf/03_parrotron_unadapted.wav"></audio></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p/>
+    <br/>
+    <div>
+      <a name="separation"><h2>Section 3.3: Speech separation</h2></a>
+      <div>
+        In this section, we present examples of training Parrotron to perform a speech separation task. We train it to identify and extract the loudest speaker in a mix of overlapping 8 speakers.
+	Examples are from the <a href="https://datashare.is.ed.ac.uk/handle/10283/2651">VCTK corpus</a> licensed under the <a href="https://opendatacommons.org/licenses/by/1.0/">Open Data Commons Attribution License (ODC-By) v1.0</a>.
+        (Griffin-Lim Vocoder).
+      </div>
+      
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Output </td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/00_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/00_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/01_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/01_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/02_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/02_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/03_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/03_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/04_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/04_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/05_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/05_separate_output.wav"></audio></td>
+        </tr>
+        <tr>
+          <td><audio controls=""><source src="audio/separation_vctk/06_separate_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/separation_vctk/06_separate_output.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p/>
+    </br>
+    <a name="acknowledgements"><h2>Acknowledgments</h2></a>
+    <div>
+      We thank Françoise Beaufays, Michael Brenner, Diamantino Caseiro, Zhifeng Chen, Mohamed Elfeky, Patrick Nguyen, Bhuvana Ramabhadran, Andrew Rosenberg, Jason Pelecanos, Johan Schalkwyk, Yonghui Wu, and Zelin Wu for useful feedback.
+    </div>
+
+      
+</body></html>
