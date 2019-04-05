@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Learning to speak fluently in a foreign language: Multilingual speech synthesis and cross-language voice cloning"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Learning to speak fluently in a foreign language: Multilingual speech synthesis and cross-language voice cloning"</h1>
+      </header>
+    </article>
+
+    <p><b>Authors</b>: Yu Zhang, Ron J. Weiss, Heiga Zen, Yonghui Wu,  Zhifeng Chen, RJ Skerry-Ryan, Ye Jia, Andrew Rosenberg, Bhuvana Ramabhadran </p>
+
+    <div><b>Abstract:</b>
+        </br> We present a multispeaker, multilingual text-to-speech (TTS) synthesis model based on Tacotron that is able to produce high quality speech in multiple languages.
+Moreover, the model is  able to transfer voices across languages, i.e. synthesize fluent Spanish speech using an English speaker's voice, without training on any bilingual or parallel examples.
+Such transfer works across distantly related languages, e.g. English and Mandarin.</br></br>
+
+Critical to achieving this result are: 1. using a phonemic input representation to encourage sharing of model capacity across languages, and 2. incorporating an adversarial loss term to encourage the model to disentangle its representation of speaker identity (which is perfectly correlated with language in the training data) from the speech content.
+Further scaling up the model by training on multiple speakers of each language, and incorporating an autoencoding input to help stabilize attention during training, results in a model which can be used to consistently synthesize intelligible speech for training speakers in all languages seen during training, and in native or foreign accents
+    </div>
+
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    &nbsp;
+
+    <div>
+    	<b>Note:</b>
+    	<span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#multi_tts">Multilingual speech synthesis</a></li>
+      <li><a href="#cross_tts">Cross-language voice cloning</a></li>
+      <li><a href="#accent_tts">Accent Control</a></li>
+       <li><a href="#code_switch">Code-Switching</a></li>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+      <div>
+        We used a proprietary dataset consisting ofspeech from 3 different
+languages: (1) 385 hours of high-quality English speech
+from 84 professional voice talents with accents from
+	the United States, Great Britain, Australia, and Singapore; (2) 97 hours of Spanish speech from 3 female speakers include Castilian Spanish and American Spanish; (3) 68 hours of Mandarin speech from 5 speakers.
+	<br/><br/>
+	All of the phrases below are unseen during training.
+      </div>
+ 
+		<!-- Section 4.1 -->
+		<div>
+      <a name="multi_tts"><h2>Multilingual speech synthesis</h2></a>
+     
+      <a name="multi_tts.sample"><h3>English</h3></a>
+      <div class="text_gst">Text: The first commercial flights took place between the United States and Canada in 1919.</div>
+      <!--Text: The plenty around me, the ease and independence, gave me a delightful sense of comfort.</h4>-->
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Speaker 1</td>
+          <td><audio controls=""><source src="demos/multi_tts/EN/enspk1_0.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/multi_tts/EN/enspk3_0.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3</td>
+          <td><audio controls=""><source src="demos/multi_tts/EN/enspk2_0.wav"></audio></td>
+        </tr>
+       </tbody>
+      </table>
+      <a name="multi_tts.sample"><h3>Spanish</h3></a>
+      <div class="text_gst">Text: Una rival que había tenido una historia amorosa con Christopher.</div>
+      <!--Text: The plenty around me, the ease and independence, gave me a delightful sense of comfort.</h4>-->
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Speaker 1</td>
+          <td><audio controls=""><source src="demos/multi_tts/ES/esspk1_0.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/multi_tts/ES/esspk2_0.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3</td>
+          <td><audio controls=""><source src="demos/multi_tts/ES/esspk3_0.wav"></audio></td>
+        </tr>
+       </tbody>
+      </table>
+      <a name="multi_tts.sample"><h3>Mandarin</h3></a>
+      <div class="text_gst">Text: 第一班商业航班在一九一九年来往于美国和加拿大.</div>
+      <!--Text: The plenty around me, the ease and independence, gave me a delightful sense of comfort.</h4>-->
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Speaker 1</td>
+          <td><audio controls=""><source src="demos/multi_tts/CN/cnspk1_0.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/multi_tts/CN/cnspk2_0.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3</td>
+          <td><audio controls=""><source src="demos/multi_tts/CN/cnspk3_0.wav"></audio></td>
+        </tr>
+       </tbody>
+      </table>
+
+      <a name="cross_tts"><h2>Cross-language voice cloning</h2></a>
+      <a name="multi_tts.sample"><h3>English speakers speaking fluent Spanish and Mandarin</h3></a>
+      <!--Text: The plenty around me, the ease and independence, gave me a delightful sense of comfort.</h4>-->
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center">Reference </td>
+            <td align="center"><div class="text_gst">Text: Una rival que había tenido una historia amorosa con Christopher.</div></td>
+            <td align="center"><div class="text_gst">Text: No somos seres aislados, formamos parte de la cadena universal de la vida.</div></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 1</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/ref_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk1_1.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/ref_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk3_1.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/ref_enspk2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_es/copy_enspk2_1.wav"></audio></td>
+        </tr>
+
+
+       </tbody>
+      </table>
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center">Reference </td>
+            <td align="center"><div class="text_gst">Text: 第一班商业航班在一九一九年来往于美国和加拿大.</div></td>
+            <td align="center"><div class="text_gst">Text: 他的动机更加务实和政治化.</div></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 1</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/ref_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk1_1.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 2</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/ref_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk3_1.wav"></audio></td>
+        </tr>
+       <tr>
+          <td nowrap>Speaker 3</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/ref_enspk2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk2_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/copy_enspk2_1.wav"></audio></td>
+        </tr>
+
+
+       </tbody>
+      </table>
+
+      <a name="accent_tts"><h2>Accent Control</h2></a>
+      <!--Text: The plenty around me, the ease and independence, gave me a delightful sense of comfort.</h4>-->
+      <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+            <td align="center"><div class="text_gst">Text: No somos seres aislados, formamos parte de la cadena universal de la vida.</div></td>
+        	<td align="center"><div class="text_gst">Text: Esta demostración es presentada por el equipo de Google.</div></td>
+        </tr>
+        <tr>
+          <td nowrap>Reference Speaker</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/ref_enspk1_0.wav"></audio></td>
+        </tr>
+ 
+        <tr>
+          <td nowrap>Language id=Mandarin, adv weight=0.02</td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_0_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Language id=English, adv weight=0.02</td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_1_1.wav"></audio></td>
+        </tr>
+        <tr>
+        <td nowrap>Language id=English, adv weight=0.05</td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_2_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Language id=English, adv weight=0.1</td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_es_acc_3_1.wav"></audio></td>
+        </tr>
+       </tbody>
+ 
+        <tbody>
+        <tr>
+        	<td nowrap>Accent level (light to strong)</td>
+        	<td align="left"><div class="text_gst">Text: 美国人学习中文, 很难区分不同音调.</div></td>
+            <td align="left"><div class="text_gst">Text: 第一班商业航班在一九一九年来往于美国和加拿大.</div></td>
+        </tr>
+        <tr>
+          <td nowrap>Reference Speaker</td>
+          <td><audio controls=""><source src="demos/cross_lang/en_cn/ref_enspk1_0.wav"></audio></td>
+        </tr>
+ 
+        <tr>
+          <td nowrap>Language id=Mandarin, adv weight=0.02</td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_0_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Language id=English, adv weight=0.02</td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_1_1.wav"></audio></td>
+        </tr>
+        <tr>
+        <td nowrap>Language id=English, adv weight=0.05</td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_2_1.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Language id=English, adv weight=0.1</td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/accents/en_cn_acc_3_1.wav"></audio></td>
+        </tr>
+       </tbody>
+
+      </table>
+      <a name="code_switch"><h2>Code-Switching</h2></a>
+       <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center"><div class="text_gst">Text: Use the left 2 lanes to take the exit toward Puerto Lápice.</div></td>
+            <td align="center"><div class="text_gst">Text: Exit the roundabout onto Carretera Eivissa-Sant Antoni.</div></td>
+            <td align="center"><div class="text_gst">Text: En ochocientos metros, Toma la salida 3B hacia Illinois 3 North en dirección a Kansas City.</div></td>
+            <td align="center"><div class="text_gst">Text: En doscientos metros, Toma la salida Interstate 40 West hacia 八达岭长城.</div></td>
+            <td align="center"><div class="text_gst">Text: In 300 meters, Continue onto Avenida Almadén.</div></td>
+        </tr>
+        <tr>
+          <td nowrap>EN Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk1_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>EN Speaker 2</td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk3_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk3_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk3_4.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_enspk3_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>ES Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_esspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_esspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_esspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_esspk1_4.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_esspk1_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>CN Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_cnspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_cnspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_cnspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_cnspk1_4.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_es_cnspk1_3.wav"></audio></td>
+        </tr>
+      </table>
+ 
+       <table>
+        <tbody>
+        <tr>
+        	<td nowrap></td>
+        	<td align="center"><div class="text_gst">Text: 今天真的是很high.</div></td>
+            <td align="center"><div class="text_gst">Text: Use the left 2 lanes to take the exit toward 八达岭长城.</div></td>
+            <td align="center"><div class="text_gst">Text: 使用左侧车道向 San Jose 方向行驶.</div></td>
+            <td align="center"><div class="text_gst">Text: By the way, 请给我十颗球.</div></td>
+            <td align="center"><div class="text_gst">Text: Happy Birthday, 我的宝贝.</div></td>
+        </tr>
+        <tr>
+          <td nowrap>EN Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk1_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>EN Speaker 2</td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk3_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk3_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk3_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk3_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_enspk3_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>ES Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_esspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_esspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_esspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_esspk1_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_esspk1_4.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>CN Speaker 1</td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_cnspk1_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_cnspk1_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_cnspk1_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_cnspk1_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/code-switching/en_cn_cnspk1_4.wav"></audio></td>
+        </tr>
+      </table>
+ 
+      <p>&nbsp;</p>
+    </div>
+</body></html>
