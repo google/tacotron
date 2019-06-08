@@ -1,0 +1,1057 @@
+
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Effective Use of Variational Embedding Capacity in Expressive End-to-End Speech Synthesis"</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css"/>
+    
+<script>
+      function play(path) {{
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }}
+    </script>
+
+    
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<style>
+.audio-cell {
+  /* Center audio widgets in the table cell. */
+  text-align: center;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+.audio-cell-padded { 
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.audio-header {
+  /* Don't wrap header text. */
+  white-space: nowrap;
+  /* Some breaking space between headers for readability. */   
+  padding-right: 5px; 
+  padding-left: 5px; 
+}
+.reference-cell {
+  /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+  width: 25%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.sample audio {
+  vertical-align: middle;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.round-button {
+	box-sizing: border-box;
+	display:block;
+	width:30px;
+	height:30px;
+	padding-top: 8px;
+	padding-left: 3px;
+	line-height: 6px;
+	border: 1.2px solid #000;
+	border-radius: 50%;
+	color: #000;
+	text-align:center;
+	background-color: rgba(0,0,0,0.00);
+	font-size:6px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,1);
+	transition: all 0.2s ease;
+}
+.round-button:hover {
+	background-color: rgba(0,0,0,0.0);
+	box-shadow: 0px 0px 4px rgba(0,0,0,1);
+}
+.round-button:active {
+	background-color: rgba(0,0,0,0.01);
+	box-shadow: 0px 0px 1px rgba(0,0,0,1);
+}
+</style>
+
+  </head>
+  <body>
+    <audio controls="" id="player"></audio>
+    <article>
+      <header>
+        <h1>Audio samples from "Effective Use of Variational Embedding Capacity in Expressive End-to-End Speech Synthesis"</h1>
+      </header>
+    </article>
+    <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
+    <div><p><b>Authors:</b> Eric Battenberg, Soroosh Mariooryad, Daisy Stanton, RJ Skerry-Ryan, Matt Shannon, David Kao, and Tom Bagby</p></div>
+    <div><p><b>Abstract:</b> Recent work has explored sequence-to-sequence latent variable models for expressive speech synthesis (supporting control and transfer of prosody and style), but has not presented a coherent framework for understanding the trade-offs between the competing methods. In this paper, we propose embedding capacity as a unified method of analyzing the behavior of latent variable models of speech, comparing existing heuristic (non-variational) methods to variational methods that are able to explicitly constrain capacity using an upper bound on representational mutual information. In our proposed model, we show that by adding conditional dependencies to the variational posterior such that it matches the form of the true posterior, the same model can be used for high-precision prosody transfer, text-agnostic style transfer, and generation of natural-sounding prior samples. For multi-speaker models, the proposed model is able to preserve target speaker identity during inter-speaker prosody transfer and when drawing samples from the latent prior. Lastly, we introduce a method for decomposing embedding capacity hierarchically across two sets of latents, allowing a portion of the latent variability to be specified and the remaining variability sampled from a learned prior. </p></div>
+    <p>This page contains a set of audio samples in support of the paper: it is suggested that the reader listen to the samples in conjunction with reading the paper. 
+    <b>All reference and target utterances were unseen during training.</b></p>
+    
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#single-speaker-same-text-prosody-transfer"> 1. Single-speaker Same-text Prosody Transfer
+<li><a href="#single-speaker-inter-text-style-transfer"> 2. Single-speaker Inter-text Style Transfer
+<li><a href="#single-speaker-prior-samples"> 3. Single-speaker Prior Samples
+<li><a href="#multi-speaker-same-text-prosody-transfer"> 4. Multi-speaker Same-text Prosody Transfer
+<li><a href="#multi-speaker-prior-samples"> 5. Multi-speaker Prior Samples
+<li><a href="#single-speaker-hierarchical-style-transfer"> 6. Single-speaker Hierarchical Style Transfer
+<li><a href="#single-speaker-hierarchial-prosody-transfer"> 7. Single-speaker Hierarchial Prosody Transfer
+    </ul>
+    </div>
+  <a name="single-speaker-same-text-prosody-transfer"><h2>1. Single-speaker Same-text Prosody Transfer</h2></a>
+<p>
+Here we show that models with and without text dependencies in the variational posterior (V+T and V, respectively) 
+exhibit increasing similarity to the reference as embedding capacity, C, is increased.
+The baseline model does not use a reference embedding.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Not in that way.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00000.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00001.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00002.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00003.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00004.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00005.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00006.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00007.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00008.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00009.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">That's right! shouted the Queen.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00010.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00011.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00012.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00013.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00014.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00015.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00016.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00017.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00018.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00019.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Never again shall Eleanor Lavish be a friend of mine."</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00020.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00021.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00022.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00023.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00024.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00025.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00026.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00027.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00028.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00029.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">'Try her again, then.'</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00030.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00031.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00032.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00033.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00034.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00035.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00036.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00037.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00038.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00039.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">How dare you!"</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00040.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00041.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00042.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00043.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00044.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00045.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00046.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00047.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00048.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00049.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">'Speak, won't you!' cried the King. 'How are they getting on with the fight?'</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00050.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00051.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00052.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00053.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00054.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00055.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00056.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00057.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00058.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00059.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Oh, Gabriel, how could you serve me so unkindly!"</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00060.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00061.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00062.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00063.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00064.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00065.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00066.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00067.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00068.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00069.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">And how the parson would pray!</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00070.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00071.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00072.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00073.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00074.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00075.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00076.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00077.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00078.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00079.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"I've swallowed a pollywog.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00080.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00081.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00082.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00083.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00084.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00085.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00086.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00087.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00088.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00089.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="single-speaker-inter-text-style-transfer"><h2>2. Single-speaker Inter-text Style Transfer</h2></a>
+<p>
+In this section, we compare models with and without text dependencies in the variational posterior (V+T and V, respectively) 
+when transferring between utterances with different text. 
+The examples show how the quality of the samples from V deteriorate as the capacity, C, is increased. 
+This is especially noticeable when there is a significant mismatch in the length of the two utterances.
+</p><table>
+      <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Not in that way.</span><br>
+            Reference</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00090.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+            Target text:</br><span class="text_e2e">And the distinction is not quite so much against the candour and common sense of the world as appears at first; for a very narrow income has a tendency to contract the mind, and sour the temper.</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00091.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00092.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00093.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00094.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00095.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00096.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00097.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00098.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00099.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+      </tr>
+    
+      <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">Quick, now!</span><br>
+            Reference</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00100.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+            Target text:</br><span class="text_e2e">Yet he might not have been so perfectly humane, so thoughtful in his generosity, so full of kindness and tenderness amidst his passion for adventurous exploit, had she not unfolded to him the real loveliness of beneficence and made the doing good the end and aim of his soaring ambition.</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00101.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00102.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00103.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00104.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00105.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00106.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00107.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00108.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00109.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+      </tr>
+    
+      <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">That's right! shouted the Queen.</span><br>
+            Reference</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00110.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+            Target text:</br><span class="text_e2e">CHAPTER 1</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00111.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00112.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00113.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00114.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00115.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00116.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00117.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00118.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00119.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+      </tr>
+    
+      <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Never again shall Eleanor Lavish be a friend of mine."</span><br>
+            Reference</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00120.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+            Target text:</br><span class="text_e2e">He left them, carefully closing the front door; and when they looked through the hall window, they saw him go up the drive and begin to climb the slopes of withered fern behind the house.</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00121.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00122.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00123.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00124.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00125.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00126.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00127.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00128.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00129.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+      </tr>
+    
+      <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Oh, Gabriel, how could you serve me so unkindly!"</span><br>
+            Reference</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00130.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+            Target text:</br><span class="text_e2e">Was it that the far clear voice had meant?</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00131.mp3')"><i class="fa fa-play fa-2x"></i></div></br>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00132.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00133.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00134.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00135.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00136.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00137.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00138.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00139.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+      </tr>
+    </table>
+<a name="single-speaker-prior-samples"><h2>3. Single-speaker Prior Samples</h2></a>
+<p>
+Here we sample the latent embedding from the prior distribution for models with different capacities. 
+The quality of the samples from the V model deteriorates as capacity, C, is increased, while V+T remains stable.
+This is especially noticeable for very short and very long utterances.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">CHAPTER 1</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00140.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00141.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00142.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00143.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00144.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00145.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00146.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00147.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00148.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">With my sharp and long sight, as I look up, I have seen it distinctly; now if it happens to hurt the young lady, and I think it must, here am I, here are my file, my punch, my nippers; I will make it round and blunt, if her ladyship pleases; no longer the tooth of a fish, but of a beautiful young lady as she is.</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00149.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00150.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00151.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00152.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00153.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00154.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00155.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00156.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00157.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">I charge you by all that is sacred, not to attempt concealment.</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00158.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00159.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00160.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00161.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00162.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00163.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00164.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00165.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00166.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">"Never again shall Eleanor Lavish be a friend of mine."</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00167.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00168.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00169.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00170.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00171.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00172.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00173.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00174.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00175.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">How dare you!"</span><br>
+            Baseline</br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00176.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header">V</th>
+<th class="audio-header">V+T</th></thead>
+      <tbody><tr><th class="audio-header">C=10</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00177.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00178.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=50</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00179.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00180.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=100</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00181.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00182.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">C=300</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00183.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00184.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="multi-speaker-same-text-prosody-transfer"><h2>4. Multi-speaker Same-text Prosody Transfer</h2></a>
+<p>
+In this experiment, we demonstrate prosody transfer between speakers.
+When conditioned on the reference speaker (V+T+S), the output preserves the pitch range of the target speaker,
+whereas without speaker conditioning (V+T), the output tends to match the pitch of the reference speaker.
+As the capacity, C, is increased, the difference becomes more apparent.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">I ventured onto the platform.</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00185.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00186.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00187.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00188.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00189.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00190.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00191.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00192.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00193.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00194.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00195.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00196.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00197.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00198.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00199.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00200.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00201.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00202.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00203.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00204.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00205.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00206.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00207.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00208.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00209.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00210.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00211.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00212.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00213.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">Quick, now!</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00214.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00215.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00216.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00217.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00218.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00219.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00220.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00221.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00222.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00223.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00224.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00225.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00226.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00227.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00228.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00229.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00230.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00231.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00232.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00233.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00234.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00235.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00236.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00237.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00238.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00239.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00240.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00241.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00242.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">Good job! Sounds like Snuffles is stuffed!</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00243.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00244.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00245.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00246.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00247.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00248.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00249.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00250.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00251.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00252.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00253.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00254.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00255.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00256.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00257.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00258.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00259.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00260.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00261.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00262.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00263.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00264.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00265.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00266.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00267.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00268.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00269.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00270.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00271.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">How many licks does it take to get to the center of a Tootsie Pop?</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00272.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00273.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00274.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00275.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00276.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00277.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00278.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00279.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00280.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00281.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00282.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00283.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00284.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00285.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00286.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00287.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00288.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00289.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00290.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00291.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00292.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00293.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00294.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00295.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00296.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00297.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00298.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00299.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00300.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">Moby Dick's House of Kabob is at US two eight one Santo.</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00301.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00302.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00303.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00304.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00305.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00306.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00307.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00308.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00309.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00310.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00311.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00312.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00313.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00314.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00315.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00316.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00317.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00318.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00319.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00320.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00321.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00322.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00323.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00324.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00325.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00326.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00327.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00328.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00329.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Half-past six o'clock.</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00330.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00331.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00332.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00333.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00334.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00335.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00336.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00337.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00338.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00339.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00340.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00341.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00342.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00343.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00344.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00345.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00346.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00347.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00348.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00349.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00350.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00351.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00352.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00353.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00354.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00355.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00356.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00357.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00358.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"I've swallowed a pollywog.</span><br>
+            Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00359.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00360.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00361.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00362.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00363.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00364.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00365.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00366.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00367.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00368.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00369.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00370.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00371.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00372.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00373.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00374.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00375.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00376.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00377.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00378.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00379.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00380.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00381.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00382.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00383.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00384.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00385.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00386.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00387.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="multi-speaker-prior-samples"><h2>5. Multi-speaker Prior Samples</h2></a>
+<p>
+Here we sythesize from multi-speaker models by sampling the latent embeddings from the prior.
+The model that includes speaker dependencies in the posterior (V+T+S) does a better job of preserving target speaker identity and pitch range, 
+compared to the model without posterior speaker dependencies (V+T). 
+Notice also how the samples become more expressive (and erratic) as embedding capacity is increased.
+</p>
+      <table>
+    
+        <tr>
+          <td class="reference-cell">Text:</br><span class="text_e2e">Kanoute, the biggest Malian star at the moment, currently plays for Sevilla F C in Spain's La Liga.</span></td>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00388.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00389.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00390.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00391.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00392.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00393.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00394.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00395.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00396.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00397.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00398.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00399.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00400.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00401.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00402.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00403.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00404.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00405.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00406.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00407.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00408.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00409.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00410.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00411.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00412.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00413.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00414.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00415.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">Text:</br><span class="text_e2e">It was a superb adaptation.</span></td>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00416.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00417.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00418.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00419.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00420.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00421.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00422.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00423.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00424.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00425.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00426.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00427.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00428.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00429.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00430.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00431.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00432.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00433.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00434.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00435.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00436.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00437.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00438.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00439.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00440.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00441.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00442.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00443.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">Text:</br><span class="text_e2e">Does your shirt have holes in it? No? Then how did you put it on?</span></td>
+          <td>
+            
+    <table>
+      <thead><tr><th></th><th class="audio-header">Australian female</th>
+<th class="audio-header">British female</th>
+<th class="audio-header">North American male</th>
+<th class="audio-header">British male</th></tr></thead>
+      <tbody><tr><th class="audio-header">Base</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00444.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00445.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00446.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00447.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00448.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00449.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00450.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00451.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=50)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00452.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00453.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00454.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00455.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00456.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00457.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00458.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00459.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=150)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00460.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00461.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00462.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00463.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00464.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00465.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00466.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00467.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+<tr><th class="audio-header">V+T+S (C=300)</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00468.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00469.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00470.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00471.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr>
+</tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="single-speaker-hierarchical-style-transfer"><h2>6. Single-speaker Hierarchical Style Transfer</h2></a>
+<p>In this experiment, we use models with hierarchical latents (Zs and Zp) 
+and demonstrate the effect of varying Cs and Cp when transferring via Zs.
+When increasing Cs, similarity to the reference increases.
+When increasing Cp, inter-sample variation increases (between samples generated using the same Zs).
+We include groups of 3 samples generated using the same Zs inferred from the reference.
+</p><table>     
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">"I've swallowed a pollywog.</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00472.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00473.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00474.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00475.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00476.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00477.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00478.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00479.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00480.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00481.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00482.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00483.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00484.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00485.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00486.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00487.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00488.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00489.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00490.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00491.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+           
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">"Oh, very well," said the latter resignedly, and the footman proceeded to open the folding tea-table and set out its complicated appointments.</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00492.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00493.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00494.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00495.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00496.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00497.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00498.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00499.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00500.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00501.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00502.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00503.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00504.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00505.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00506.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00507.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00508.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00509.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00510.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00511.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+           
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">"Not in that way.</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00512.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00513.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00514.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00515.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00516.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00517.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00518.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00519.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00520.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00521.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00522.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00523.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00524.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00525.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00526.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00527.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00528.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00529.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00530.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00531.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+           
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">I charge you by all that is sacred, not to attempt concealment.</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00532.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00533.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00534.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00535.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00536.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00537.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00538.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00539.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00540.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00541.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00542.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00543.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00544.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00545.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00546.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00547.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00548.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00549.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00550.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00551.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+           
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">Quick, now!</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00552.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00553.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00554.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00555.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00556.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00557.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00558.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00559.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00560.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00561.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00562.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00563.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00564.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00565.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00566.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00567.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00568.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00569.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00570.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00571.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+           
+        <tr>
+          <td class="reference-cell">Reference text:</br><span class="text_e2e">That's right! shouted the Queen.</span><br>
+              Reference:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00572.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+              Baseline:<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00573.mp3')"><i class="fa fa-play fa-2x"></i></div></td>
+          <td>
+            <table><tr><th></th><th class="audio-header">Cs 20</th><th class="audio-header">Cs 50</th><th class="audio-header">Cs 100</th></tr>
+<tr><th class="audio-header">Cp 50</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00574.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00575.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00576.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00577.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00578.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00579.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00580.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00581.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00582.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+<tr><th class="audio-header">Cp 100</th>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00583.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00584.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00585.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00586.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00587.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00588.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+<td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00589.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00590.mp3')"><i class="fa fa-play fa-2x"></i></div></div><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00591.mp3')"><i class="fa fa-play fa-2x"></i></div></div></td>
+</tr>
+</table>
+          </td>
+        </tr>      
+      </table>
+<a name="single-speaker-hierarchial-prosody-transfer"><h2>7. Single-speaker Hierarchial Prosody Transfer</h2></a>
+<p>In this experiment, we use models with hierarchical latents (Zs and Zp) 
+and demonstrate the effect of varying Cs and Cp when transferring via Zp (instead of Zs).
+We can see that as the sum of Cs and Cp increases, similarity to the reference increases.
+The variation across samples generated using the same reference is low. 
+We include groups of 3 samples generated using different Zp's that are inferred from the same reference.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"I've swallowed a pollywog.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00592.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00593.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00594.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00595.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00596.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00597.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00598.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00599.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00600.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00601.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00602.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00603.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00604.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00605.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00606.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00607.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00608.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00609.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00610.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00611.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Oh, very well," said the latter resignedly, and the footman proceeded to open the folding tea-table and set out its complicated appointments.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00612.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00613.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00614.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00615.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00616.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00617.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00618.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00619.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00620.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00621.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00622.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00623.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00624.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00625.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00626.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00627.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00628.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00629.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00630.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00631.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">"Not in that way.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00632.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00633.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00634.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00635.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00636.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00637.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00638.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00639.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00640.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00641.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00642.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00643.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00644.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00645.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00646.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00647.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00648.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00649.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00650.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00651.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">I charge you by all that is sacred, not to attempt concealment.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00652.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00653.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00654.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00655.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00656.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00657.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00658.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00659.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00660.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00661.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00662.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00663.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00664.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00665.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00666.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00667.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00668.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00669.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00670.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00671.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">Quick, now!</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00672.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00673.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00674.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00675.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00676.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00677.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00678.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00679.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00680.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00681.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00682.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00683.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00684.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00685.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00686.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00687.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00688.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00689.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00690.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00691.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Reference text:</br><span class="text_e2e">That's right! shouted the Queen.</span><br>
+            Reference<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00692.mp3')"><i class="fa fa-play fa-2x"></i></div><br>
+            Baseline<br><div class="round-button" style="display: inline-block;" onclick="play('./audio/00693.mp3')"><i class="fa fa-play fa-2x"></i></div>
+          </td>
+          <td>
+            <table><tr>
+<th class="audio-header">Cs=20, Cp=50 <br/>&#x27a1; C=70</th>
+<th class="audio-header">Cs=50, Cp=50 <br/>&#x27a1; C=100</th>
+<th class="audio-header">Cs=20, Cp=100 <br/>&#x27a1; C=120</th>
+<th class="audio-header">Cs=50, Cp=100 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=50 <br/>&#x27a1; C=150</th>
+<th class="audio-header">Cs=100, Cp=100 <br/>&#x27a1; C=200</th></tr>
+<tr><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00694.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00695.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00696.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00697.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00698.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00699.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00700.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00701.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00702.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00703.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00704.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00705.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00706.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00707.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00708.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td><td class="audio-cell-padded"><div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00709.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00710.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+<div class="sample"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00711.mp3')"><i class="fa fa-play fa-2x"></i></div></div>
+</td>
+</tr>
+</table>
+          </td>
+        </tr>
+      </table>
+  </body>
+</html>
