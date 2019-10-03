@@ -1,0 +1,358 @@
+
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Semi-Supervised Generative Modeling for Controllable Speech Synthesis"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+
+<script>
+      function play(path) {{
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }}
+    </script>
+
+    
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<style>
+.audio-cell {
+  /* Center audio widgets in the table cell. */
+  text-align: center;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+.audio-cell-padded { 
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.audio-header {
+  /* Don't wrap header text. */
+  white-space: nowrap;
+  /* Some breaking space between headers for readability. */   
+  padding-right: 5px; 
+  padding-left: 5px; 
+}
+.reference-cell {
+  /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+  width: 25%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.sample audio {
+  vertical-align: middle;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.round-button {
+	box-sizing: border-box;
+	display:block;
+	width:30px;
+	height:30px;
+	padding-top: 8px;
+	padding-left: 3px;
+	line-height: 6px;
+	border: 1.2px solid #000;
+	border-radius: 50%;
+	color: #000;
+	text-align:center;
+	background-color: rgba(0,0,0,0.00);
+	font-size:6px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,1);
+	transition: all 0.2s ease;
+}
+.round-button:hover {
+	background-color: rgba(0,0,0,0.0);
+	box-shadow: 0px 0px 4px rgba(0,0,0,1);
+}
+.round-button:active {
+	background-color: rgba(0,0,0,0.01);
+	box-shadow: 0px 0px 1px rgba(0,0,0,1);
+}
+</style>
+
+  </head>
+  <body>
+    <audio controls="" id="player"></audio>
+    <article>
+      <header>
+        <h1>Audio samples from "Semi-Supervised Generative Modeling for Controllable Speech Synthesis"</h1>
+      </header>
+    </article>
+    <!--
+      <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
+    -->
+    <div><p><b>Paper:</b> <a href="https://arxiv.org/">arXiv</a></p></div>
+    <div><p><b>Authors:</b> Raza Habib,  Soroosh Mariooryad, Matt Shannon, Eric Battenberg, RJ Skerry-Ryan, Daisy Stanton, David Kao, Tom Bagby</p></div>
+    <div><p><b>Abstract:</b> We present a novel generative model that combines state-of-the-art neural text-to-speech (TTS) with semi-supervised probabilistic latent variable models. By providing partial supervision to some of the latent variables, we are able to force them to take on consistent and interpretable purposes, which previously hasn't been possible with purely unsupervised methods. We demonstrate that our model is able to reliably discover and control important but rarely labeled attributes of speech, such as affect and speaking rate, with as little as 0.1% (3 minutes) supervision. Even at such low supervision levels we do not observe a degradation of synthesis quality compared to a state-of-the-art baseline.</p></div>
+    <p>This page contains a set of audio samples in support of the paper. All the utterances are unseen during training.
+    Sections 1-3 demo controlling speaking rate, pitch variation (continuous labels), and affect (discrete labels), via semi-supervision of these factors, at multiple supervision levels.
+    Sections 4-6 demo the transfer of controllability to unlabeled speakers, for whom we do not observe labels of the factors above (i.e., domain transfer).
+    </p>
+    
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#speaking-rate-control-at-varying-levels-of-supervision"> 1. Speaking Rate Control at Varying Levels of Supervision
+<li><a href="#pitch-variation-control-at-varying-levels-of-supervision"> 2. Pitch Variation Control at Varying Levels of Supervision
+<li><a href="#affect-control-at-varying-levels-of-supervision"> 3. Affect Control at Varying Levels of Supervision
+<li><a href="#speaking-rate-control-generalization-to-unlabeled-speakers"> 4. Speaking Rate Control Generalization to Unlabeled Speakers
+<li><a href="#pitch-variation-control-generalization-to-unlabeled-speakers"> 5. Pitch Variation Control Generalization to Unlabeled Speakers
+<li><a href="#affect-control-generalization-to-unlabeled-speakers"> 6. Affect Control Generalization to Unlabeled Speakers
+    </ul>
+    </div>
+  <a name="speaking-rate-control-at-varying-levels-of-supervision"><h2>1. Speaking Rate Control at Varying Levels of Supervision</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which we are able to control the variation in 
+speaking rate at different levels of supervision.
+Speaking rate is normalized to match the standard
+normal prior (z<sub>s</sub>~N(&mu;=0, &sigma;=1)).
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="3" style="text-align:center">Supervision &#37;</th></thead>
+      <thead><th>z<sub>s</sub>(Speaking Rate)&nbsp&nbsp</th>
+<th>0.1&#37;</th>
+<th>1&#37;</th>
+<th>10&#37;</th></thead>
+      <tbody><tr><tr><td>-5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00000.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00001.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00002.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00003.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00004.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00005.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00006.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00007.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00008.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>0</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00009.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00010.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00011.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00012.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00013.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00014.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00015.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00016.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00017.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00018.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00019.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00020.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+<a name="pitch-variation-control-at-varying-levels-of-supervision"><h2>2. Pitch Variation Control at Varying Levels of Supervision</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which we are able to control the variation in 
+F0 (fundamental frequency, a proxy for arousal 
+or excitement) at different levels of supervision.
+F0 variation is normalized to match the standard
+normal prior (z<sub>s</sub>~N(&mu;=0, &sigma;=1)).
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="3" style="text-align:center">Supervision &#37;</th></thead>
+      <thead><th>z<sub>s</sub>(Pitch variation)&nbsp&nbsp</th>
+<th>0.1&#37;</th>
+<th>1&#37;</th>
+<th>10&#37;</th></thead>
+      <tbody><tr><tr><td>-5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00021.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00022.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00023.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00024.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00025.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00026.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00027.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00028.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00029.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>0</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00030.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00031.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00032.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00033.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00034.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00035.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00036.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00037.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00038.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00039.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00040.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00041.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+<a name="affect-control-at-varying-levels-of-supervision"><h2>3. Affect Control at Varying Levels of Supervision</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which we are able to control the variation in 
+affect at different levels of supervision.
+Higher levels of supervision is required for controlling affect, compared to
+speaking rate and pitch variations. In general the variations are subtle,
+so as the upper bound we have also presented the fully supervised case
+(i.e., 100% supervision).
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="4" style="text-align:center">Supervision &#37;</th></thead>
+      <thead><th>z<sub>s</sub>(Affect)&nbsp&nbsp</th>
+<th>1&#37;</th>
+<th>10&#37;</th>
+<th>20&#37;</th>
+<th>100&#37;</th></thead>
+      <tbody><tr><tr><td>Arousal= -2 (low) Valence=-2 (angry)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00042.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00043.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00044.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00045.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal= -2 (low) Valence=-1 (sad)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00046.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00047.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00048.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00049.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal= -2 (low) Valence=2 (happy)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00050.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00051.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00052.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00053.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=-2 (angry)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00054.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00055.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00056.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00057.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=-1 (sad)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00058.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00059.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00060.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00061.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=2 (happy)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00062.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00063.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00064.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00065.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+<a name="speaking-rate-control-generalization-to-unlabeled-speakers"><h2>4. Speaking Rate Control Generalization to Unlabeled Speakers</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which speaking rate control at 10% supervision is able to generalize to
+speakers without speaking rate labels in training, which are colored blue.
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="5" style="text-align:center">Speaker</th></thead>
+      <thead><th>z<sub>s</sub>(Speaking Rate)&nbsp&nbsp</th>
+<th>female<br>w/ label</th>
+<th>male<br>w/ label</th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">male<br>w/o label</font></th></thead>
+      <tbody><tr><tr><td>-5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00066.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00067.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00068.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00069.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00070.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00071.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00072.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00073.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00074.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00075.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00076.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00077.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00078.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00079.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00080.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>0</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00081.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00082.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00083.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00084.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00085.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00086.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00087.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00088.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00089.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00090.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00091.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00092.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00093.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00094.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00095.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00096.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00097.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00098.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00099.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00100.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+<a name="pitch-variation-control-generalization-to-unlabeled-speakers"><h2>5. Pitch Variation Control Generalization to Unlabeled Speakers</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which pitch variation control at 10% supervision is able to generalize to
+speakers without pitch variation labels in training, which are colored blue.
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="5" style="text-align:center">Speaker</th></thead>
+      <thead><th>z<sub>s</sub>(Pitch Variation)&nbsp&nbsp</th>
+<th>female<br>w/ label</th>
+<th>male<br>w/ label</th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">male<br>w/o label</font></th></thead>
+      <tbody><tr><tr><td>-5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00101.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00102.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00103.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00104.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00105.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00106.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00107.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00108.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00109.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00110.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>-1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00111.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00112.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00113.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00114.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00115.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>0</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00116.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00117.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00118.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00119.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00120.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>1&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00121.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00122.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00123.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00124.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00125.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>3&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00126.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00127.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00128.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00129.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00130.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>5&#963;</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00131.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00132.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00133.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00134.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00135.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+<a name="affect-control-generalization-to-unlabeled-speakers"><h2>6. Affect Control Generalization to Unlabeled Speakers</h2></a>
+<p>
+In this section, we demonstrate the degree to 
+which affect control at 10% supervision is able to generalize to
+speakers without affect labels in training, which are colored blue.
+</p>
+    <table>
+      <thead><th>&nbsp&nbsp</th>
+<th colspan="5" style="text-align:center">Speaker</th></thead>
+      <thead><th>z<sub>s</sub>(Affect)&nbsp&nbsp</th>
+<th>male<br>w/ label</th>
+<th>female<br>w/ label</th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">female<br>w/o label</font></th>
+<th><font color="blue">male<br>w/o label</font></th></thead>
+      <tbody><tr><tr><td>Arousal= -2 (low) Valence=-2 (angry)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00136.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00137.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00138.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00139.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00140.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal= -2 (low) Valence=-1 (sad)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00141.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00142.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00143.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00144.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00145.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal= -2 (low) Valence=2 (happy)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00146.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00147.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00148.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00149.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00150.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=-2 (angry)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00151.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00152.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00153.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00154.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00155.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=-1 (sad)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00156.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00157.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00158.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00159.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00160.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td><tr><td>Arousal=2 (high) Valence=2 (happy)</td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00161.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00162.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00163.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00164.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+<td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00165.wav')"><i class="fa fa-play fa-2x"></i></div>&nbsp</td>
+</tr>
+</tbody>
+    </table>
+    
+  </body>
+</html>
