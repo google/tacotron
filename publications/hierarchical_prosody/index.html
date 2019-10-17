@@ -1,0 +1,1004 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Fully-hierarchical Fine-grained Prosody Modelling for Interpretable Speech Synthesis"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+    <style> red {color: red} </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Fully-hierarchical Fine-grained Prosody Modelling for Interpretable Speech Synthesis"</h1>
+      </header>
+    </article>
+
+    <!--<p><b>Paper:</b> <a href="https://arxiv.org/abs/">arXiv</a></p> -->
+    <p><b>Authors</b>: Guangzhi Sun, Yu Zhang, Ron J. Weiss, Yuan Cao, Heiga Zen, Yonghui Wu</p>
+
+    <div><b>Abstract:</b>
+	This paper proposes a fully-hierarchical fine-grained prosody modelling component under the Tacotron~2 framework which adopts hierarchical latent representations of prosody attributes with interpretation and control at each level. The hierarchical conditioning in this work is not only imposed between different levels, but also introduced across the latent dimensions via an auto-regressive factorization. Reconstruction performance are evaluated with the $F_0$ frame error (FFE) and the mel-cepstral distortion (MCD) which illustrates the new structure does not degrade the model. Moreover, in addition to qualitative interpretation with spectrograms at different level, quantitative evaluations by measuring the nominated attributes are also provided which demonstrates an improved disentanglement. 
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    &nbsp;
+
+    <div>
+    	<b>Note:</b>
+    	<span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#volume">Phone and word-level prosody control</a></li>
+        <ol>
+          <li><a href="#volume">Volume Control</a></li>
+          <li><a href="#duration">Duration Control</a></li>
+	        <li><a href="#pitch">Pitch Control</a></li>
+        </ol>
+      <li><a href="#silence">Silence control</a></li>
+      <li><a href="#sample">Phone and word-level prosody sampling</a></li>
+        <ol>
+          <li><a href="#sample_pitch">Pitch Sampling</a></li>
+          <li><a href="#sample_duration">Duration Sampling</a></li>
+        </ol>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+
+		<!-- volume control -->
+		<div>
+      <a name="volume"><h2>Phone and Word Level Volume Control</h2></a>
+
+      <hr>
+
+      <div class="volume_text">Controled text (phone): The pl<red>e</red>nty around me, the <red>ea</red>se and independence gave me a delightful sense of comfort.</div>
+      <div class="volume_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s1_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s1_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_v3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s2_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s2_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_v3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s3_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s3_v1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_v2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_v3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u1_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_v3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <div class="volume_text">Controled text (phone): Th<red>i</red>s would have ch<red>a</red>nged the grand result of the war.</div>
+      <div class="volume_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_v3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_v3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Volume Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_v3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Volume Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u2_v1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_v2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_v3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- duration control -->
+    <div>
+      <a name="duration"><h2>Phone and Word Level Duration Control</h2></a>
+
+      <hr>
+
+      <div class="duration_text">Controled text (phone): The pl<red>e</red>nty around me, the <red>ea</red>se and independence gave me a delightful sense of comfort.</div>
+      <div class="duration_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s1_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s1_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_d3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s2_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s2_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_d3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s3_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s3_d1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_d2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_d3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u1_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_d3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <div class="duration_text">Controled text (phone): Th<red>i</red>s would have ch<red>a</red>nged the grand result of the war.</div>
+      <div class="duration_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_d3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_d3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, -1, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, +1, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Duration Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_d3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Duration Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u2_d1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_d2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_d3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- pitch control -->
+    <div>
+      <a name="pitch"><h2>Phone and Word Level Pitch Control</h2></a>
+
+      <hr>
+
+      <div class="pitch_text">Controled text (phone): The pl<red>e</red>nty around me, the <red>ea</red>se and independence gave me a delightful sense of comfort.</div>
+      <div class="pitch_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s1_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s1_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_p3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s2_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s2_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_p3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s3_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s3_p1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_p2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_p3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u1_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_p3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <div class="pitch_text">Controled text (phone): Th<red>i</red>s would have ch<red>a</red>nged the grand result of the war.</div>
+      <div class="pitch_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u2_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_p3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u2_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_p3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [0, 0, -1]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, +1]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u2_p3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Pitch Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u2_p1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_p2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_p3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- silence control -->
+    <div>
+      <a name="silence"><h2>Phone and Word Level Silence Control</h2></a>
+
+      <hr>
+
+      <div class="pitch_text">Controled text (phone): The plenty around me, <red>"sil"</red> the ease and independence gave me a delightful sense of comfort.</div>
+      <div class="pitch_text">Controled text (word): The plenty around me, <red>"sil"</red> the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s1_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s1_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Silence Control</td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s1_u1_s3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s1_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s1_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u1_s3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s2_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s2_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Silence Control</td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s2_u1_s3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s2_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s2_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u1_s3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/phone_s3_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/phone_s3_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Silence Control</td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/phone_s3_u1_s3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><img src="demos/image/word_s3_s1.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_s2.png" width="320" height="100"></td>
+          <td><img src="demos/image/word_s3_s3.png" width="320" height="100"></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u1_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u1_s3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      
+      <p>&nbsp;</p>
+
+      <div class="volume_text">Controled text (word): This <red>"sil"</red> would have changed <red>"sil"</red> the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s1_u2_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s1_u2_s3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s2_u2_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s2_u2_s3.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2.wav"></audio></td>
+        </tr>
+        <td></td>
+          <td align="center">
+            <b>z</b> = [-1, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [0, 0, 0]
+          </td>
+          <td align="center">
+            <b>z</b> = [+1, 0, 0]
+          </td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Word Level Silence Control</td>
+          <td><audio controls=""><source src="demos/word_s3_u2_s1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_s2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/word_s3_u2_s3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <p>&nbsp;</p>
+		
+		<!-- Section 4.2 -->
+		<div>
+      <a name="sample"><h2>Phone and Word Level Sampling Comparison</h2></a>
+      
+      <hr>
+
+      <a name="sample_pitch"><h3>Random Samples Pitch at Phone and Word Level</h3></a>
+			<div class="h3_explainer">
+				The value of the <b>last</b> latent dimension is randomly sampled from a standard normal distribution.
+			</div>
+
+      <div class="pitch_sample_text">Text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Speaker 1 (male) Phone Level</td>
+          <td><audio controls=""><source src="demos/compare_phone_pitch_1.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/compare_phone_pitch_2.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/compare_phone_pitch_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male) Word Level</td>
+          <td><audio controls=""><source src="demos/compare_word_pitch_1.wav"></audio></td>
+        	<td><audio controls=""><source src="demos/compare_word_pitch_2.wav"></audio></td>
+      		<td><audio controls=""><source src="demos/compare_word_pitch_3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a name="sample_duration"><h3>Random Samples Duration at Phone and Word Level</h3></a>
+      <div class="h3_explainer">
+        The value of the <b>second</b> latent dimension is randomly sampled from a standard normal distribution.
+      </div>
+
+      <div class="pitch_sample_text">Text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+
+      <table>
+        <tbody>
+        <tr>
+          <td nowrap>Speaker 1 (male) Phone Level</td>
+          <td><audio controls=""><source src="demos/compare_phone_duration_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_phone_duration_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_phone_duration_3.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Speaker 1 (male) Word Level</td>
+          <td><audio controls=""><source src="demos/compare_word_duration_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_word_duration_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_word_duration_3.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+
+</body></html>

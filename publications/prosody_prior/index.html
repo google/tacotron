@@ -1,0 +1,727 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Generating Natural and Diverse Text-to-Speech Samples Using A
+Quantized Fine-grained VAE and Auto-regressive Prosody Prior"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+    <style> red {color: red} </style>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Generating Natural and Diverse Text-to-Speech Samples Using A
+Quantized Fine-grained VAE and Auto-regressive Prosody Prior"</h1>
+      </header>
+    </article>
+
+    <!--<p><b>Paper:</b> <a href="https://arxiv.org/abs/">arXiv</a></p>-->
+    <p><b>Authors</b>: Guangzhi Sun, Yu Zhang, Ron J. Weiss, Yuan Cao, Heiga Zen, Andrew Rosenberg, Bhuvana Ramabhadran, Yonghui Wu</p>
+
+    <div><b>Abstract:</b>
+  This paper proposes a vector-quantization approach to generate natural and diverse audio samples based on the fine-grained VAE structure in end-to-end TTS synthesis systems like tacotron-2. The fine-grained VAE structure extracts latent prosody features at phoneme level, and vector-quantization is applied to those latent features. Besides, the prosody discontinuity across phonemes during generation is mitigated by sampling from an auto-regressive (AR) prior instead of the independent standard Gaussian. The AR prior is trained in either the continuous latent space or the discrete latent space, and is separate from the training of the posterior. This page shows the audio samples generated from representative models covered in the paper.
+    <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    &nbsp;
+
+    <div>
+      <b>Note:</b>
+      <span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#baseline">Baseline Fine-grained VAE System</a></li>
+      <li><a href="#arprior">Baseline with AR Prior in the Continuous Space</a></li>
+      <li><a href="#vqvae">VQVAE Independent Samples</a></li>
+      <li><a href="#vqar">VQVAE with AR Prior in the Continuous Space</a></li>
+      <li><a href="#vqcat">VQVAE with AR Prior in the Discrete Space</a></li>
+    </ul>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <!-- Baseline -->
+    <div>
+      <a name="baseline"><h2>Baseline Fine-grained VAE Independent Sampling</h2></a>
+
+      <hr>
+
+      <div class="baseline_text">Sampled text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 1.0:
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_10_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_10_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_10_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u1_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 1.0:
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_10_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_10_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_10_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u1_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 1.0:
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_10_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_10_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_10_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u1_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <p>&nbsp;</p>
+      <div class="baseline_text">Sampled text: Because, I don't know where it ends, and also because it is full of poachers.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u2_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u2_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u2_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+      <div class="baseline_text">Sampled text: This would have changed the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u3_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s1_u3_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u3_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s2_u3_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u3_base.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.2:
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_2_sample_2.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Scale = 0.0:
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_0_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_0_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/base_s3_u3_scale_0_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- baseline + AR prior cont. -->
+    <div>
+      <a name="arprior"><h2>Baseline Fine-grained VAE Sample from AR Prior</h2></a>
+
+      <hr>
+
+      <div class="baseline_text">Sampled text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s1_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s2_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s3_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u1_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: Because, I don't know where it ends, and also because it is full of poachers.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s1_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s2_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s3_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u2_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: This would have changed the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u3_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s1_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s1_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u3_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s2_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s2_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u3_ar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/ar_s3_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/ar_s3_u3_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- VQVAE independent -->
+    <div>
+      <a name="vqvae"><h2>VQVAE with Independent Samples</h2></a>
+
+      <hr>
+
+      <div class="baseline_text">Sampled text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s1_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s2_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s3_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u1_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: Because, I don't know where it ends, and also because it is full of poachers.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s1_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s2_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s3_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u2_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: This would have changed the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s1_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s1_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s2_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s2_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqvae_s3_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqvae_s3_u3_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- VQVAE AR continuous -->
+    <div>
+      <a name="vqar"><h2>VQVAE with AR Prior in the Continuous Space</h2></a>
+
+      <hr>
+
+      <div class="baseline_text">Sampled text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s1_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s2_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s3_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u1_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: Because, I don't know where it ends, and also because it is full of poachers.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s1_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s2_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s3_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u2_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: This would have changed the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u3_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s1_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s1_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u3_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s2_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s2_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u3_vqar.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqar_s3_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqar_s3_u3_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- VQVAE AR categorical -->
+    <div>
+      <a name="vqcat"><h2>VQVAE with AR Prior in the Discrete Space</h2></a>
+
+      <hr>
+
+      <div class="baseline_text">Sampled text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s1_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s2_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u1_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u1_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s3_u1_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u1_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u1_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: Because, I don't know where it ends, and also because it is full of poachers.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s1_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s2_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u2_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u2_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s3_u2_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u2_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u2_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+      <p>&nbsp;</p>
+
+      <div class="baseline_text">Sampled text: This would have changed the grand result of the war.</div>
+      <table>
+        <tbody>
+        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s1_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s1_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s1_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 2 (male): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s2_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s2_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s2_u3_sample_2.wav"></audio></td>
+        </tr>
+         <tr>
+          <td nowrap>Speaker 3 (female): </br>Copy Synthesis</td>
+          <td><audio controls=""><source src="demos/copy_s3_u3_vqcat.wav"></audio></td>
+        </tr>
+        <tr>
+          <td nowrap>Random Samples:
+          <td><audio controls=""><source src="demos/vqcat_s3_u3_sample_0.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u3_sample_1.wav"></audio></td>
+          <td><audio controls=""><source src="demos/vqcat_s3_u3_sample_2.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    </div>
+
+
+</body></html>
