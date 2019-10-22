@@ -1,12 +1,463 @@
-<html>
+
+  <html>
   <head>
-    <title>Coming soon</title>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Location-Relative Attention Mechanisms For Robust Long-Form Speech Synthesis"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    
+<script>
+      function play(path) {{
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }}
+    </script>
+
+    
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<style>
+.audio-cell {
+  /* Center audio widgets in the table cell. */
+  text-align: center;
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+.audio-cell-padded { 
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.audio-header {
+  /* Don't wrap header text. */
+  white-space: nowrap;
+  /* Some breaking space between headers for readability. */   
+  padding-right: 5px; 
+  padding-left: 5px; 
+}
+.reference-cell {
+  /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+  width: 25%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.sample audio {
+  vertical-align: middle;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.round-button {
+	box-sizing: border-box;
+	display:block;
+	width:30px;
+	height:30px;
+	padding-top: 8px;
+	padding-left: 3px;
+	line-height: 6px;
+	border: 1.2px solid #000;
+	border-radius: 50%;
+	color: #000;
+	text-align:center;
+	background-color: rgba(0,0,0,0.00);
+	font-size:6px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,1);
+	transition: all 0.2s ease;
+}
+.round-button:hover {
+	background-color: rgba(0,0,0,0.0);
+	box-shadow: 0px 0px 4px rgba(0,0,0,1);
+}
+.round-button:active {
+	background-color: rgba(0,0,0,0.01);
+	box-shadow: 0px 0px 1px rgba(0,0,0,1);
+}
+</style>
+
   </head>
   <body>
+    <audio controls="" id="player"></audio>
     <article>
       <header>
-        <h1>Coming soon</h1>
+        <h1>Audio samples from "Location-Relative Attention Mechanisms For Robust Long-Form Speech Synthesis"</h1>
       </header>
     </article>
+    <!--
+      <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
+    -->
+    <div><p><b>Authors:</b> Eric Battenberg, RJ Skerry-Ryan, Soroosh Mariooryad, Daisy Stanton, David Kao, Matt Shannon, and Tom Bagby</p></div>
+    <div><p><b>Abstract:</b> Despite the ability to produce human-level speech for in-domain text, attention-based end-to-end text-to-speech (TTS) systems suffer from text alignment failures that increase in frequency for out-of-domain text. We show that these failures can be addressed using simple location-relative attention mechanisms that do away with content-based query/key comparisons. We compare two families of attention mechanisms: location-relative GMM-based mechanisms and additive energy-based mechanisms. We suggest simple modifications to GMM-based attention that allow it to align quickly and consistently during training, and introduce a new location-relative attention mechanism to the additive energy-based family, called Dynamic Convolution Attention (DCA). We compare the various mechanisms in terms of alignment speed and consistency during training, naturalness, and ability to generalize to long utterances, and conclude that GMM attention and DCA can generalize to very long utterances, while preserving naturalness for shorter, in-domain utterances.</p></div>
+    <p>This page contains a set of audio samples in support of the paper: it is suggested that the reader listen to the samples in conjunction with reading the paper. 
+    <b>All utterances were unseen during training.</b></p>
+    
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#in-domain:-lessac-<-5sec"> 1. In-Domain: Lessac < 5sec
+<li><a href="#in-domain:-lj-<-10sec"> 2. In-Domain: LJ < 10sec
+<li><a href="#generalization-to-long-utterances"> 3. Generalization to Long Utterances
+    </ul>
+    </div>
+  <a name="in-domain:-lessac-<-5sec"><h2>1. In-Domain: Lessac < 5sec</h2></a>
+<p>
+The following examples are from models trained on the Lessac dataset on utterances of up to 5 seconds.
+The test utterances are taken from the Lessac test set, which contains utterances of up to around 25 seconds.
+Utterances with attention failures are marked in <span style="color: red">red</span>.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">They must go by the carrier, she thought; and how funny it'll seem, sending presents to one's own feet!</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00000.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00001.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00002.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00003.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00004.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">That I can't remember, said the Hatter.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00005.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00006.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00007.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00008.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00009.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">They exchanged stray sentences through dinner, and she made up her mind to see him again.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00010.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00011.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00012.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00013.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00014.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">He took that skin, and he shook that skin, and he scrubbed that skin, and he rubbed that skin just as full of old, dry, stale, tickly cake-crumbs and some burned currants as ever it could possibly hold.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00015.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00016.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00017.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00018.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00019.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">She was his own Emma, by hand and word, when they returned into the house; and if he could have thought of Frank Churchill then, he might have deemed him a very good sort of fellow.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00020.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00021.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00022.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00023.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00024.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">With my sharp and long sight, as I look up, I have seen it distinctly; now if it happens to hurt the young lady, and I think it must, here am I, here are my file, my punch, my nippers; I will make it round and blunt, if her ladyship pleases; no longer the tooth of a fish, but of a beautiful young lady as she is.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00025.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00026.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00027.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00028.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00029.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Off camera, he frequently quipped to friends and acquaintances that SCOOP was an acronym for Sensationalism Can Ordinarily Outgun Professionalism. There were reports of a crazy cult leader somewhere out in the California desert who was claiming to be Jesus Christ and had managed to dupe a few prominent personalities, one of whom was Otis Chandler, into assisting Him to promote His scam.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00030.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00031.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00032.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00033.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00034.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">But she had never felt so strongly as now the disadvantages which must attend the children of so unsuitable a marriage, nor ever been so fully aware of the evils arising from so ill-judged a direction of talents; talents, which, rightly used, might at least have preserved the respectability of his daughters, even if incapable of enlarging the mind of his wife.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00035.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00036.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00037.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00038.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00039.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="in-domain:-lj-<-10sec"><h2>2. In-Domain: LJ < 10sec</h2></a>
+<p>
+In this section we synthesize using models trained on the LJ dataset (which contains utterances up to 10 seconds long).
+The utterances are taken from our evaluation subset of the LJ dataset (which also contains utterances up to 10 seconds long).
+Utterances with attention failures are marked in <span style="color: red">red</span>.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">especially as no more time is occupied, or cost incurred, in casting, setting, or printing beautiful letters</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00040.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00041.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00042.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00043.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00044.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Commercialism again compels the use of type too small in size to be comfortable reading:</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00045.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00046.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00047.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00048.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00049.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">5. The master felons' side. 6. The female felons' side. 7. The state side.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00050.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00051.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00052.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00053.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00054.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">His first forgery was the marvelous imitation of the signature of the Hon. Mr. Neville, M.P., who wrote an extremely cramped and curious hand.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00055.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00056.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00057.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00058.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00059.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">It was practically inoperative as regards the penalties for neglect. It was no doubt as irksome and inconvenient to the Secretary of State</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00060.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00061.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00062.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00063.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00064.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">He asserted that Dallas had shed its reputation of the twenties as the, quote, Southwest hate capital of Dixie, end quote</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00065.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00066.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00067.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00068.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00069.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Into a hollow, like a crater in the middle of the flour, empty your sponge-bowl, and work the flour down into it.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00070.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00071.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00072.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00073.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00074.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Under our system, measures must be sought to afford security without impeding the President's performance of his many functions.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00075.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00076.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00077.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00078.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00079.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
+<a name="generalization-to-long-utterances"><h2>3. Generalization to Long Utterances</h2></a>
+<p>
+Here we test the Lessac models (trained on up to 5 second utterances) and the LJ models (trained on up to 10 second utterances)
+on utterances of increasing length. 
+Utterances with attention failures are marked in <span style="color: red">red</span>.
+</p><table>
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Nearly ten years had passed since the Dursleys had woken up to find their nephew on the front step, but Privet Drive had hardly changed at all. The sun rose on the same tidy front gardens and lit up the brass number four on the Dursleys' front door; it crept into their living room, which was almost exactly the same as it had been on the night when Mr. Dursley had seen that fateful news report about the owls.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00080.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00081.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00082.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00083.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00084.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00085.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00086.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00087.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Only the photographs on the mantelpiece really showed how much time had passed. Ten years ago, there had been lots of pictures of what looked like a large pink beach ball wearing different-colored bonnets - but Dudley Dursley was no longer a baby, and now the photographs showed a large blond boy riding his first bicycle, on a carousel at the fair, playing a computer game with his father, being hugged and kissed by his mother.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00088.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00089.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00090.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00091.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00092.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00093.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00094.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00095.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Uncle Vernon entered the kitchen as Harry was turning over the bacon. "Comb your hair!" he barked, by way of a morning greeting. About once a week, Uncle Vernon looked over the top of his newspaper and shouted that Harry needed a haircut. Harry must have had more haircuts than the rest of the boys in his class put together, but it made no difference, his hair simply grew that way - all over the place.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00096.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00097.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00098.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00099.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00100.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00101.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00102.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00103.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Raindrops the size of bullets thundered on the castle windows for days on end; the lake rose, the flower beds turned into muddy streams, and Hagrid's pumpkins swelled to the size of garden sheds. Oliver Wood's enthusiasm for regular training sessions, however, was not dampened, which was why Harry was to be found, late one stormy Saturday afternoon a few days before Halloween, returning to Gryffindor Tower, drenched to the skin and splattered with mud.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00104.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00105.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00106.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00107.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00108.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00109.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00110.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00111.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Harry had the best morning he'd had in a long time. He was careful to walk a little way apart from the Dursleys so that Dudley and Piers, who were starting to get bored with the animals by lunchtime, wouldn't fall back on their favorite hobby of hitting him. They ate in the zoo restaurant, and when Dudley had a tantrum because his knickerbocker glory didn't have enough ice cream on top, Uncle Vernon bought him another one and Harry was allowed to finish the first. Harry felt, afterward, that he should have known it was all too good to last. After lunch they went to the reptile house. It was cool and dark in there, with lit windows all along the walls. Behind the glass, all sorts of lizards and snakes were crawling and slithering over bits of wood and stone. Dudley and Piers wanted to see huge, poisonous cobras and thick, man-crushing pythons. Dudley quickly found the largest snake in the place. It could have wrapped its body twice around Uncle Vernon's car and crushed it into a trash can - but at the moment it didn't look in the mood. In fact, it was fast asleep.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00112.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00113.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00114.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00115.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00116.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00117.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00118.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00119.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Exactly why Dudley wanted a racing bike was a mystery to Harry, as Dudley was very fat and hated exercise - unless of course it involved punching somebody. Dudley's favorite punching bag was Harry, but he couldn't often catch him. Harry didn't look it, but he was very fast. Perhaps it had something to do with living in a dark cupboard, but Harry had always been small and skinny for his age. He looked even smaller and skinnier than he really was because all he had to wear were old clothes of Dudley's, and Dudley was about four times bigger than he was. Harry had a thin face, knobbly knees, black hair, and bright green eyes. He wore round glasses held together with a lot of Scotch tape because of all the times Dudley had punched him on the nose. The only thing Harry liked about his own appearance was a very thin scar on his forehead that was shaped like a bolt of lightning. He had had it as long as he could remember, and the first question he could ever remember asking his Aunt Petunia was how he had gotten it.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00120.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00121.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00122.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00123.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00124.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00125.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00126.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00127.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">Harry lay in his dark cupboard much later, wishing he had a watch. He didn't know what time it was and he couldn't be sure the Dursleys were asleep yet. Until they were, he couldn't risk sneaking to the kitchen for some food. He'd lived with the Dursleys almost ten years, ten miserable years, as long as he could remember, ever since he'd been a baby and his parents had died in that car crash. He couldn't remember being in the car when his parents had died. Sometimes, when he strained his memory during long hours in his cupboard, he came up with a strange vision: a blinding flash of green light and a burning pain on his forehead. This, he supposed, was the crash, though he couldn't imagine where all the green light came from. He couldn't remember his parents at all. His aunt and uncle never spoke about them, and of course he was forbidden to ask questions. There were no photographs of them in the house. When he had been younger, Harry had dreamed and dreamed of some unknown relation coming to take him away, but it had never happened; the Dursleys were his only family. Yet sometimes he thought (or maybe hoped) that strangers in the street seemed to know him. Very strange strangers they were, too.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00128.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00129.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00130.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00131.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00132.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00133.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00134.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00135.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      
+        <tr>
+          <td class="reference-cell">
+            Text:</br><span class="text_e2e">October arrived, spreading a damp chill over the grounds and into the castle. Madam Pomfrey, the nurse, was kept busy by a sudden spate of colds among the staff and students. Her Pepperup potion worked instantly, though it left the drinker smoking at the ears for several hours afterward. Ginny Weasley, who had been looking pale, was bullied into taking some by Percy. The steam pouring from under her vivid hair gave the impression that her whole head was on fire. Raindrops the size of bullets thundered on the castle windows for days on end; the lake rose, the flower beds turned into muddy streams, and Hagrid's pumpkins swelled to the size of garden sheds. Oliver Wood's enthusiasm for regular training sessions, however, was not dampened, which was why Harry was to be found, late one stormy Saturday afternoon a few days before Halloween, returning to Gryffindor Tower, drenched to the skin and splattered with mud. Even aside from the rain and wind it hadn't been a happy practice session. Fred and George, who had been spying on the Slytherin team, had seen for themselves the speed of those new Nimbus Two Thousand and Ones. They reported that the Slytherin team was no more than seven greenish blurs, shooting through the air like missiles.</span>
+          </td>
+          <td>
+            
+    <table>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
+<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00136.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00137.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00138.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00139.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00140.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00141.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00142.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00143.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
+    </table>
+    
+          </td>
+        </tr>
+      </table>
   </body>
 </html>
