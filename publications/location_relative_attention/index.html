@@ -81,9 +81,7 @@
         <h1>Audio samples from "Location-Relative Attention Mechanisms For Robust Long-Form Speech Synthesis"</h1>
       </header>
     </article>
-    <!--
-      <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
-    -->
+    <div><p><b>Paper:</b> <a href="https://arxiv.org/abs/1910.10288">arXiv</a></p></div>
     <div><p><b>Authors:</b> Eric Battenberg, RJ Skerry-Ryan, Soroosh Mariooryad, Daisy Stanton, David Kao, Matt Shannon, and Tom Bagby</p></div>
     <div><p><b>Abstract:</b> Despite the ability to produce human-level speech for in-domain text, attention-based end-to-end text-to-speech (TTS) systems suffer from text alignment failures that increase in frequency for out-of-domain text. We show that these failures can be addressed using simple location-relative attention mechanisms that do away with content-based query/key comparisons. We compare two families of attention mechanisms: location-relative GMM-based mechanisms and additive energy-based mechanisms. We suggest simple modifications to GMM-based attention that allow it to align quickly and consistently during training, and introduce a new location-relative attention mechanism to the additive energy-based family, called Dynamic Convolution Attention (DCA). We compare the various mechanisms in terms of alignment speed and consistency during training, naturalness, and ability to generalize to long utterances, and conclude that GMM attention and DCA can generalize to very long utterances, while preserving naturalness for shorter, in-domain utterances.</p></div>
     <p>This page contains a set of audio samples in support of the paper: it is suggested that the reader listen to the samples in conjunction with reading the paper. 
@@ -92,12 +90,12 @@
     <p class="toc_title">Contents</p>
     <div id="toc_container">
     <ul>
-      <li><a href="#in-domain:-lessac-<-5sec"> 1. In-Domain: Lessac < 5sec
-<li><a href="#in-domain:-lj-<-10sec"> 2. In-Domain: LJ < 10sec
+      <li><a href="#in-domain:-lessac-<-5sec"> 1. In-Domain: Lessac &lt; 5sec
+<li><a href="#in-domain:-lj-<-10sec"> 2. In-Domain: LJ &lt; 10sec
 <li><a href="#generalization-to-long-utterances"> 3. Generalization to Long Utterances
     </ul>
     </div>
-  <a name="in-domain:-lessac-<-5sec"><h2>1. In-Domain: Lessac < 5sec</h2></a>
+  <a name="in-domain:-lessac-<-5sec"><h2>1. In-Domain: Lessac &lt; 5sec</h2></a>
 <p>
 The following examples are from models trained on the Lessac dataset on utterances of up to 5 seconds.
 The test utterances are taken from the Lessac test set, which contains utterances of up to around 25 seconds.
@@ -110,7 +108,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00000.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00001.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00002.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00003.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00004.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -124,7 +122,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00005.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00006.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00007.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00008.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00009.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -138,7 +136,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00010.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00011.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00012.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00013.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00014.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -152,7 +150,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00015.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00016.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00017.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00018.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00019.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -166,7 +164,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00020.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00021.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00022.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00023.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00024.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -180,7 +178,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00025.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00026.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00027.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00028.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00029.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -194,7 +192,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00030.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00031.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00032.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00033.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00034.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -208,14 +206,14 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00035.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00036.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00037.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00038.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00039.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
           </td>
         </tr>
       </table>
-<a name="in-domain:-lj-<-10sec"><h2>2. In-Domain: LJ < 10sec</h2></a>
+<a name="in-domain:-lj-<-10sec"><h2>2. In-Domain: LJ &lt; 10sec</h2></a>
 <p>
 In this section we synthesize using models trained on the LJ dataset (which contains utterances up to 10 seconds long).
 The utterances are taken from our evaluation subset of the LJ dataset (which also contains utterances up to 10 seconds long).
@@ -228,7 +226,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00040.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00041.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00042.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00043.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00044.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -242,7 +240,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00045.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00046.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00047.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00048.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00049.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -256,7 +254,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00050.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00051.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00052.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00053.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00054.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -270,7 +268,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00055.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00056.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00057.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00058.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00059.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -284,7 +282,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00060.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00061.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00062.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00063.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00064.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -298,7 +296,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00065.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00066.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00067.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00068.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00069.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -312,7 +310,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00070.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00071.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00072.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00073.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00074.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -326,7 +324,7 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Ground Truth</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00075.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00076.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00077.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00078.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00079.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -346,8 +344,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00080.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00081.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00082.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00083.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00084.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00085.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00086.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00087.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -361,8 +359,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00088.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00089.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00090.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00091.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00092.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00093.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00094.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00095.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -376,8 +374,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00096.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00097.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00098.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00099.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00100.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00101.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00102.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00103.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -391,8 +389,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00104.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00105.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00106.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00107.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00108.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00109.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00110.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00111.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -406,8 +404,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00112.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00113.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00114.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00115.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00116.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00117.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00118.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00119.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -421,8 +419,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00120.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00121.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00122.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00123.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00124.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00125.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00126.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00127.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -436,8 +434,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00128.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00129.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00130.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00131.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00132.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00133.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00134.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00135.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
@@ -451,8 +449,8 @@ Utterances with attention failures are marked in <span style="color: red">red</s
           <td>
             
     <table>
-      <thead><th></th><th class="audio-header" style="width:100px">Lessac < 5sec</th>
-<th class="audio-header" style="width:100px">LJ < 10sec</th></thead>
+      <thead><th></th><th class="audio-header" style="width:100px">Lessac &lt; 5sec</th>
+<th class="audio-header" style="width:100px">LJ &lt; 10sec</th></thead>
       <tbody><tr><th class="audio-header">Content-Based</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00136.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00137.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">Location-Sensitive</th><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00138.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block; color: red;" onclick="play('./audio/00139.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">GMMv2b</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00140.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00141.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr><tr><th class="audio-header">DCA</th><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00142.mp3')"><i class="fa fa-play fa-2x"></i></div></td><td class="audio-cell"><div class="round-button" style="display: inline-block;" onclick="play('./audio/00143.mp3')"><i class="fa fa-play fa-2x"></i></div></td></tr></tbody>
     </table>
     
