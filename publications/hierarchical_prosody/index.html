@@ -17,14 +17,14 @@
     <p><b>Authors</b>: Guangzhi Sun, Yu Zhang, Ron J. Weiss, Yuan Cao, Heiga Zen, Yonghui Wu</p>
 
     <div><b>Abstract:</b>
-	This paper proposes a fully-hierarchical fine-grained prosody modelling component under the Tacotron~2 framework which adopts hierarchical latent representations of prosody attributes with interpretation and control at each level. The hierarchical conditioning in this work is not only imposed between different levels, but also introduced across the latent dimensions via an auto-regressive factorization. Reconstruction performance are evaluated with the $F_0$ frame error (FFE) and the mel-cepstral distortion (MCD) which illustrates the new structure does not degrade the model. Moreover, in addition to qualitative interpretation with spectrograms at different level, quantitative evaluations by measuring the nominated attributes are also provided which demonstrates an improved disentanglement. 
+  This paper proposes a fully-hierarchical fine-grained prosody modelling component under the Tacotron~2 framework which adopts hierarchical latent representations of prosody attributes with interpretation and control at each level. The hierarchical conditioning in this work is not only imposed between different levels, but also introduced across the latent dimensions via an auto-regressive factorization. Reconstruction performance are evaluated with the $F_0$ frame error (FFE) and the mel-cepstral distortion (MCD) which illustrates the new structure does not degrade the model. Moreover, in addition to qualitative interpretation with spectrograms at different level, quantitative evaluations by measuring the nominated attributes are also provided which demonstrates an improved disentanglement. 
     <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
 
     &nbsp;
 
     <div>
-    	<b>Note:</b>
-    	<span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+      <b>Note:</b>
+      <span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
     </div>
 
     <p class="toc_title">Contents</p>
@@ -32,14 +32,14 @@
     <ul>
       <li><a href="#volume">Phone and word-level prosody control</a></li>
         <ol>
-          <li><a href="#volume">Volume Control</a></li>
+          <li><a href="#volume">Energy Control</a></li>
           <li><a href="#duration">Duration Control</a></li>
-	        <li><a href="#pitch">Pitch Control</a></li>
+          <li><a href="#pitch">F0 Control</a></li>
         </ol>
       <li><a href="#silence">Silence control</a></li>
       <li><a href="#sample">Phone and word-level prosody sampling</a></li>
         <ol>
-          <li><a href="#sample_pitch">Pitch Sampling</a></li>
+          <li><a href="#sample_pitch">F0 Sampling</a></li>
           <li><a href="#sample_duration">Duration Sampling</a></li>
         </ol>
     </ul>
@@ -47,9 +47,9 @@
 
     <p>&nbsp;</p>
 
-		<!-- volume control -->
-		<div>
-      <a name="volume"><h2>Phone and Word Level Volume Control</h2></a>
+    <!-- volume control -->
+    <div>
+      <a name="volume"><h2>Phone and Word Level Energy Control</h2></a>
 
       <hr>
 
@@ -57,7 +57,10 @@
       <div class="volume_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_1.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
@@ -80,7 +83,7 @@
           <td><img src="demos/image/phone_s1_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s1_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u1_v3.wav"></audio></td>
@@ -92,7 +95,7 @@
           <td><img src="demos/image/word_s1_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 1 (male): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s1_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u1_v3.wav"></audio></td>
@@ -121,7 +124,7 @@
           <td><img src="demos/image/phone_s2_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s2_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u1_v3.wav"></audio></td>
@@ -133,7 +136,7 @@
           <td><img src="demos/image/word_s2_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 2 (male): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s2_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u1_v3.wav"></audio></td>
@@ -162,7 +165,7 @@
           <td><img src="demos/image/phone_s3_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s3_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u1_v3.wav"></audio></td>
@@ -174,7 +177,7 @@
           <td><img src="demos/image/word_s3_v3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 3 (female): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s3_u1_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u1_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u1_v3.wav"></audio></td>
@@ -188,7 +191,10 @@
       <div class="volume_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_2.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
@@ -205,13 +211,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 1 (male): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s1_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u2_v3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 1 (male): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s1_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u2_v3.wav"></audio></td>
@@ -233,13 +239,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 2 (male): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s2_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u2_v3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 2 (male): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s2_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u2_v3.wav"></audio></td>
@@ -261,13 +267,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Phone Level Volume Control</td>
+          <td nowrap>Speaker 3 (female): </br>Phone Level Energy Control</td>
           <td><audio controls=""><source src="demos/phone_s3_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u2_v3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Word Level Volume Control</td>
+          <td nowrap>Speaker 3 (female): </br>Word Level Energy Control</td>
           <td><audio controls=""><source src="demos/word_s3_u2_v1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u2_v2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u2_v3.wav"></audio></td>
@@ -286,7 +292,10 @@
       <div class="duration_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_1.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
@@ -417,7 +426,10 @@
       <div class="duration_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_2.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
@@ -507,7 +519,7 @@
 
     <!-- pitch control -->
     <div>
-      <a name="pitch"><h2>Phone and Word Level Pitch Control</h2></a>
+      <a name="pitch"><h2>Phone and Word Level F0 Control</h2></a>
 
       <hr>
 
@@ -515,7 +527,10 @@
       <div class="pitch_text">Controled text (word): The <red>plenty</red> around me, the <red>ease</red> and independence gave me a delightful sense of comfort.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_1.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
@@ -538,7 +553,7 @@
           <td><img src="demos/image/phone_s1_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 1 (male): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s1_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u1_p3.wav"></audio></td>
@@ -550,7 +565,7 @@
           <td><img src="demos/image/word_s1_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 1 (male): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s1_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u1_p3.wav"></audio></td>
@@ -579,7 +594,7 @@
           <td><img src="demos/image/phone_s2_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 2 (male): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s2_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u1_p3.wav"></audio></td>
@@ -591,7 +606,7 @@
           <td><img src="demos/image/word_s2_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 2 (male): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s2_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u1_p3.wav"></audio></td>
@@ -620,7 +635,7 @@
           <td><img src="demos/image/phone_s3_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 3 (female): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s3_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u1_p3.wav"></audio></td>
@@ -632,7 +647,7 @@
           <td><img src="demos/image/word_s3_p3.png" width="320" height="100"></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 3 (female): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s3_u1_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u1_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u1_p3.wav"></audio></td>
@@ -646,7 +661,10 @@
       <div class="pitch_text">Controled text (word): <red>This</red> would have <red>changed</red> the grand result of the war.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_2.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
@@ -663,13 +681,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 1 (male): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s1_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s1_u2_p3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 1 (male): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 1 (male): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s1_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s1_u2_p3.wav"></audio></td>
@@ -691,13 +709,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 2 (male): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s2_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s2_u2_p3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 2 (male): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 2 (male): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s2_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s2_u2_p3.wav"></audio></td>
@@ -719,13 +737,13 @@
           </td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Phone Level Pitch Control</td>
+          <td nowrap>Speaker 3 (female): </br>Phone Level F0 Control</td>
           <td><audio controls=""><source src="demos/phone_s3_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/phone_s3_u2_p3.wav"></audio></td>
         </tr>
         <tr>
-          <td nowrap>Speaker 3 (female): </br>Word Level Pitch Control</td>
+          <td nowrap>Speaker 3 (female): </br>Word Level F0 Control</td>
           <td><audio controls=""><source src="demos/word_s3_u2_p1.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u2_p2.wav"></audio></td>
           <td><audio controls=""><source src="demos/word_s3_u2_p3.wav"></audio></td>
@@ -744,7 +762,10 @@
       <div class="pitch_text">Controled text (word): The plenty around me, <red>"sil"</red> the ease and independence gave me a delightful sense of comfort.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_1.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u1.wav"></audio></td>
@@ -872,7 +893,10 @@
       <div class="volume_text">Controled text (word): This <red>"sil"</red> would have changed <red>"sil"</red> the grand result of the war.</div>
       <table>
         <tbody>
-        <tr><td>&nbsp;
+        <tr>
+          <td nowrap>Ground Truth:
+          <td><audio controls=""><source src="demos/groundtruth_2.wav"></audio></td>
+        </tr>
         <tr>
           <td nowrap>Speaker 1 (male): </br>Copy Synthesis</td>
           <td><audio controls=""><source src="demos/copy_s1_u2.wav"></audio></td>
@@ -943,17 +967,17 @@
     </div>
     
     <p>&nbsp;</p>
-		
-		<!-- Section 4.2 -->
-		<div>
+    
+    <!-- Section 4.2 -->
+    <div>
       <a name="sample"><h2>Phone and Word Level Sampling Comparison</h2></a>
       
       <hr>
 
-      <a name="sample_pitch"><h3>Random Samples Pitch at Phone and Word Level</h3></a>
-			<div class="h3_explainer">
-				The value of the <b>last</b> latent dimension is randomly sampled from a standard normal distribution.
-			</div>
+      <a name="sample_pitch"><h3>Random Samples F0 at Phone and Word Level</h3></a>
+      <div class="h3_explainer">
+        The value of the <b>last</b> latent dimension is randomly sampled from a standard normal distribution.
+      </div>
 
       <div class="pitch_sample_text">Text: The plenty around me, the ease and independence gave me a delightful sense of comfort.</div>
 
@@ -962,14 +986,14 @@
         <tr>
           <td nowrap>Speaker 1 (male) Phone Level</td>
           <td><audio controls=""><source src="demos/compare_phone_pitch_1.wav"></audio></td>
-        	<td><audio controls=""><source src="demos/compare_phone_pitch_2.wav"></audio></td>
-      		<td><audio controls=""><source src="demos/compare_phone_pitch_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_phone_pitch_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_phone_pitch_3.wav"></audio></td>
         </tr>
         <tr>
           <td nowrap>Speaker 1 (male) Word Level</td>
           <td><audio controls=""><source src="demos/compare_word_pitch_1.wav"></audio></td>
-        	<td><audio controls=""><source src="demos/compare_word_pitch_2.wav"></audio></td>
-      		<td><audio controls=""><source src="demos/compare_word_pitch_3.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_word_pitch_2.wav"></audio></td>
+          <td><audio controls=""><source src="demos/compare_word_pitch_3.wav"></audio></td>
         </tr>
         </tbody>
       </table>
