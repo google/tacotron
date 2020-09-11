@@ -1,0 +1,418 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Audio samples from "WaveGrad: Estimating Gradients for Waveform Generation"</title>
+      <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+      <link rel="shortcut icon" href="../../images/taco.png">
+      <script>
+         function play(path) {{
+           var player = document.getElementById('player');
+           player.src = path;
+           player.play();
+         }}
+      </script>
+      <style>
+         .audio-cell {
+         /* Center audio widgets in the table cell. */
+         text-align: center;
+         padding-bottom: 1px;
+         padding-top: 1px;
+         }
+         .audio-cell-padded {
+         text-align: center;
+         padding-bottom: 10px;
+         padding-top: 10px;
+         }
+         .audio-header {
+         /* Don't wrap header text. */
+         white-space: nowrap;
+         /* Some breaking space between headers for readability. */
+         padding-right: 5px;
+         padding-left: 5px;
+         }
+         .reference-cell {
+         /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+         width: 25%;
+         padding-top: 20px;
+         padding-bottom: 20px;
+         }
+         .sample audio {
+         vertical-align: middle;
+         padding-left: 3px;
+         padding-right: 3px;
+         }
+         .round-button {
+         box-sizing: border-box;
+         display:block;
+         width:30px;
+         height:30px;
+         padding-top: 8px;
+         padding-left: 3px;
+         line-height: 6px;
+         border: 1.2px solid #000;
+         border-radius: 50%;
+         color: #000;
+         text-align:center;
+         background-color: rgba(0,0,0,0.00);
+         font-size:6px;
+         box-shadow: 0px 0px 2px rgba(0,0,0,1);
+         transition: all 0.2s ease;
+         }
+         .round-button:hover {
+         background-color: rgba(0,0,0,0.0);
+         box-shadow: 0px 0px 4px rgba(0,0,0,1);
+         }
+         .round-button:active {
+         background-color: rgba(0,0,0,0.01);
+         box-shadow: 0px 0px 1px rgba(0,0,0,1);
+         }
+      </style>
+   </head>
+   <body>
+      <article>
+         <header>
+            <h1>Audio samples from "WaveGrad: Estimating Gradients for Waveform Generation"</h1>
+         </header>
+      </article>
+      <div>
+         <p><b>Paper:</b> <a href="https://arxiv.org/abs/2009.00713">arXiv</a></p>
+      </div>
+      <div>
+         <p><b>Authors:</b> Nanxin Chen, Yu Zhang, Heiga Zen, Ron J. Weiss, Mohammad Norouzi, William Chan</p>
+      </div>
+      <div>
+      <p><b>Abstract:</b> This paper introduces WaveGrad, a conditional model for waveform generation through estimating gradients of the data density.
+        This model is built on the prior work on score matching and diffusion probabilistic models.
+        It starts from Gaussian white noise and iteratively refines the signal via a gradient-based sampler conditioned on the mel-spectrogram.
+        WaveGrad is non-autoregressive, and requires only a constant number of generation steps during inference.
+        It can use as few as 6 iterations to generate high fidelity audio samples.
+        WaveGrad is simple to train, and implicitly optimizes for the weighted variational lower-bound of the log-likelihood.
+        Empirical experiments reveal WaveGrad to generate high fidelity audio samples matching a strong likelihood-based autoregressive baseline with less sequential operations.</a></p>
+      <div>
+            <b>Note:</b>
+            <span style="background-color: #FFFF00">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+      </div>
+      <p class="toc_title">Contents</p>
+      <div id="toc_container">
+         <ul>
+           <li><a href="#visualization"> Visualization
+               </a>
+            </li>
+            <li><a href="#continuous"> WaveGrad conditioned on the noise level
+               </a>
+            </li>
+            <li><a href="#discrete"> WaveGrad conditioned on a discrete iteration index
+              </a>
+           </li>
+         </ul>
+      </div>
+      <hr>
+      <a name="visualization">
+        <p class="toc_title">Visualization</p>
+      </a>
+      Text: <span class="text_e2e">Here are the match lineups for the Colombia Haiti match.</span>
+      <p>
+        6 iterations:
+      </p>
+      <p style="color:red;"><b>Warning: white noise. Reduce the volume for the first three examples.</b></p>
+      <table>
+        <tbody>
+          <tr>
+            <td> <p style="color:red;"><b>n=0</b></p> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav0.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav0_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n0.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> <p style="color:red;"><b>n=1</b></p> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav1.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav1_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n1.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> <p style="color:red;"><b>n=2</b></p> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav2.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav2_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n2.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> n=3 </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav3.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav3_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n3.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> n=4 </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav4.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav4_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n4.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> n=5 </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav5.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav5_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n5.wav">
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td> n=6 </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav6.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td> <img src="imgs/fig1_wav6_seg.png" width="300px"> </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+              <audio controls="">
+                <source src="wavs/n6.wav">
+              </audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        50 iterations:
+      </p>
+      <img src="imgs/animation.gif" width="1100px" class="center">
+      <hr>
+      <a name="continuous">
+         <h2>WaveGrad conditioned on the noise level</h2>
+      </a>
+      <p>
+         In this section, we demonstrate the audio samples from WaveGrad model conditioned on noise levels.<br>
+         During training, only <b>one model</b> is trained.<br>
+         Different rows correspond to different inference schedules.
+      </p>
+<table>
+         <tbody>
+            <tr>
+               <td nowrap> Text </td>
+               <td><span class="text_e2e">Weekends at twenty three fifty.</span></td>
+               <td><span class="text_e2e">Here are the match lineups for the <br> Colombia Haiti match.</span></td>
+               <td><span class="text_e2e">On Friday night in Bridgeport expect a temperature <br> of minus four degrees Fahrenheit.</span></td>
+            </tr>
+            <tr>
+               <td nowrap>Reference</td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Linear 1000)</td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C1000_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C1000_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C1000_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Linear 50):
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C50_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C50_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C50_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Fib 25):
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C25_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C25_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C25_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Manual 6):
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C6_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C6_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/C6_3.wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <hr>
+      <a name="discrete">
+         <h2>WaveGrad conditioned on a discrete iteration index</h2>
+      </a>
+      <p>
+         In this section, we demonstrate the audio samples from models conditioned on discrete indices.<br>
+         Each row corresponds to an individual model.
+      </p>
+<table>
+         <tbody>
+            <tr>
+               <td nowrap> Text </td>
+               <td><span class="text_e2e">Weekends at twenty three fifty.</span></td>
+               <td><span class="text_e2e">Here are the match lineups for the <br> Colombia Haiti match.</span></td>
+               <td><span class="text_e2e">On Friday night in Bridgeport expect a temperature <br> of minus four degrees Fahrenheit.</span></td>
+            </tr>
+            <tr>
+               <td nowrap>Reference</td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/ref_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Linear 1000)</td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D1000_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D1000_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D1000_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Linear 50):
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D50_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D50_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D50_3.wav">
+                  </audio>
+               </td>
+            </tr>
+            <tr>
+               <td nowrap>WaveGrad Base(Fib 25):
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D25_1.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D25_2.wav">
+                  </audio>
+               </td>
+               <td>
+                  <audio controls="">
+                     <source src="wavs/D25_3.wav">
+                  </audio>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>
