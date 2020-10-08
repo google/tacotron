@@ -1,0 +1,235 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Non-Attentive Tacotron: Robust and Controllable Neural TTS Synthesis Including Unsupervised Duration Modeling"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio samples from "Non-Attentive Tacotron: Robust and Controllable Neural TTS Synthesis Including Unsupervised Duration Modeling"</h1>
+        </header>
+      </article>
+
+      <p><b>Paper:</b> <a href="https://arxiv.org/abs/">arXiv</a></p>
+      <p><b>Authors:</b> Jonathan Shen *, Ye Jia *, Mike Chrzanowski, Yu Zhang, Isaac Elias, Heiga Zen, Yonghui Wu.
+      </p>
+
+      <p><b>Abstract:</b>
+        This paper presents <i>Non-Attentive Tacotron (NAT)</i> based on the Tacotron 2 text-to-speech model, replacing the attention mechanism with an explicit duration predictor. This improves robustness significantly as measured by unaligned duration ratio and word deletion rate, two metrics introduced in this paper for large-scale robustness evaluation using a pre-trained speech recognition model. With the use of Gaussian upsampling, Non-Attentive Tacotron achieves a 5-scale mean opinion score for naturalness of 4.41, slightly outperforming Tacotron 2. The duration predictor enables both utterance-wide and per-phoneme control of duration at inference time. When accurate target durations are scarce or unavailable in the training data, we propose a method using a fine-grained variational auto-encoder to train the duration predictor in a semi-supervised or unsupervised manner, with results almost as good as supervised training.
+      </p>
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+      <h2>Comparison among systems</h2>
+
+      <p><i>These examples are randomly sampled from the MOS evaluation set for Table 1 in the paper.</i></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>NAT (Gaussian upsampling)</th><th>NAT (vanilla upsampling)</th><th>NAT (semi-supervised)</th><th>NAT (unsupervised)</th><th>Tacotron 2 (GMMA)</th><th>Tacotron 2 (LSA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1: Take the next left onto 42nd Avenue South.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="comparison/nat_gaussian/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_vanilla/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_semi/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_unsup/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_gmm/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_lsa/101.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2: Not sure how to help with: you be safe baby.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="comparison/nat_gaussian/102.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_vanilla/102.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_semi/102.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_unsup/102.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_gmm/102.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_lsa/102.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3: The Blair Witch Project actresses: Heather Donahue, Patricia DeCou, Jackie Hallex, and Sandra Sánchez.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="comparison/nat_gaussian/863.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_vanilla/863.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_semi/863.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_unsup/863.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_gmm/863.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_lsa/863.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>4: According to wikiHow: Pour or spray white vinegar on the rusted surface in place of lemon juice for tougher stains. Let the vinegar sit for several minutes before scrubbing it with a wire brush. Rinse away the rust with some cold water and repeat for difficult stains. Scrub the surface of the concrete with a brush.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="comparison/nat_gaussian/184.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_vanilla/184.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_semi/184.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_unsup/184.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_gmm/184.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_lsa/184.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>5: Yo mama's so magical, she got invited to Hogwarts.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="comparison/nat_gaussian/105.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_vanilla/105.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_semi/105.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/nat_unsup/105.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_gmm/105.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="comparison/tacotron_lsa/105.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Utterance-wide pace control</h2>
+
+      <p><i>These examples correspond to Table 3 in the paper. The pace is controlled by dividing the predicted phoneme durations by the factor for each column.</i></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>0.67x</th><th>0.8x</th><th>0.9x</th><th>1.0x</th><th>1.11x</th><th>1.25x</th><th>1.5x</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="7"><span>1: The best way to get to Lodi Enterprise by car is via I-80 E, and will take about 1 day and 6 hours in light traffic.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="utterance_pace/067/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/080/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/090/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/100/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/111/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/125/501.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/150/501.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="7"><span>2: Well, that gets a zero on the correctness scale.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="utterance_pace/067/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/080/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/090/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/100/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/111/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/125/532.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/150/532.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="7"><span>3: Sorry, I can't send messages yet.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="utterance_pace/067/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/080/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/090/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/100/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/111/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/125/043.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/150/043.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="7"><span>4: Do you want to do another Mad Lib?</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="utterance_pace/067/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/080/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/090/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/100/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/111/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/125/304.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/150/304.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="7"><span>5: Okay, 3:33 PM. Setting your alarm...</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="utterance_pace/067/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/080/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/090/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/100/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/111/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/125/775.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="utterance_pace/150/775.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Single word pace control</h2>
+
+      <p><i>The audio samples and spectrograms in this section demonstrate single word pace control using NAT with supervised, semi-supervised, and unsupervised duration modeling. <b>Bold words</b> are slowed down by 1.5x. The samples in the first row are references in regular pace without any words slowed down.</i></p>
+
+      <p><i>The samples in the first column correspond to Figure 3 in the paper.</i></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th></th><th>NAT (Supervised)</th><th>NAT (Semi-supervised)</th><th>NAT (Unsupervised)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><img src="word_pace/sup/1.png" width="480px"></img></td>
+            <td><img src="word_pace/semi/1.png" width="480px"></img></td>
+            <td><img src="word_pace/unsup/1.png" width="480px"></img></td>
+          </tr>
+          <tr>
+            <td><span>I'm so saddened about the devastation in Big Basin.</span></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/sup/1.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/semi/1.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/unsup/1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><img src="word_pace/sup/2.png" width="480px"></img></td>
+            <td><img src="word_pace/semi/2.png" width="480px"></img></td>
+            <td><img src="word_pace/unsup/2.png" width="480px"></img></td>
+          </tr>
+          <tr>
+            <td><span>I'm so <b>saddened</b> about the devastation in Big Basin.</span></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/sup/2.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/semi/2.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/unsup/2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><img src="word_pace/sup/3.png" width="480px"></img></td>
+            <td><img src="word_pace/semi/3.png" width="480px"></img></td>
+            <td><img src="word_pace/unsup/3.png" width="480px"></img></td>
+          </tr>
+          <tr>
+            <td><span>I'm so saddened about the <b>devastation</b> in Big Basin.</span></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/sup/3.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/semi/3.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/unsup/3.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><img src="word_pace/sup/4.png" width="480px"></img></td>
+            <td><img src="word_pace/semi/4.png" width="480px"></img></td>
+            <td><img src="word_pace/unsup/4.png" width="480px"></img></td>
+          </tr>
+          <tr>
+            <td><span>I'm so saddened about the devastation in <b>Big Basin</b>.</span></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/sup/4.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/semi/4.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 480px;"><source src="word_pace/unsup/4.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Alignment from the unsupervised duration modeling</h2>
+
+      <p><i>These examples correspond to Figure 4 in the paper.</i></p>
+
+      <table>
+        <tbody>
+          <tr>
+            <td colspan="6"><img src="alignment/alignments4.png" width="1200px"></td>
+          </tr>
+          <tr>
+            <td style="width: 30px;"></td>
+            <td style="width: 280px;"><audio controls style="width: 250px;"><source src="alignment/prior_mode.wav" type="audio/wav"></audio></td>
+            <td style="width: 280px;"><audio controls style="width: 250px;"><source src="alignment/posterior.wav" type="audio/wav"></audio></td>
+            <td style="width: 280px; text-align: center;">N/A</td>
+            <td style="width: 280px;"><audio controls style="width: 250px;"><source src="alignment/target.wav" type="audio/wav"></audio></td>
+            <td style="width: 30px"></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+</html>
