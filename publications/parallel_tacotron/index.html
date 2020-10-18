@@ -32,18 +32,25 @@ Experimental results show that Parallel Tacotron matches a strong autoregressive
       <table>
         <thead>
           <tr>
-            <th>NAT (Gaussian upsampling)</th><th>NAT (vanilla upsampling)</th><th>NAT (semi-supervised)</th><th>NAT (unsupervised)</th><th>Tacotron 2 (GMMA)</th><th>Tacotron 2 (LSA)</th>
+            <th>Tacotron2</th><th>Global VAE</th><th>Global VAE w/o iterative loss</th><th>Fine grained</th><th>Dual Fine Grained</th><th>Xform</th><th>Xform w/o iterative loss</th><th>NoVAE</th><th>No VAE w/o iterative loss</th>
           </tr>
         </thead>
         <tbody>
           <tr><td colspan="6"><span>1: Take the next left onto 42nd Avenue South.</span></td></tr>
           <tr>
-            <td><audio controls=""><source src="comparison/nat_gaussian/101.wav" type="audio/wav"></audio></td>
-            <td><audio controls=""><source src="comparison/nat_vanilla/101.wav" type="audio/wav"></audio></td>
-            <td><audio controls=""><source src="comparison/nat_semi/101.wav" type="audio/wav"></audio></td>
-            <td><audio controls=""><source src="comparison/nat_unsup/101.wav" type="audio/wav"></audio></td>
-            <td><audio controls=""><source src="comparison/tacotron_gmm/101.wav" type="audio/wav"></audio></td>
-            <td><audio controls=""><source src="comparison/tacotron_lsa/101.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/tacotron2/hol_621.wav" type="audio/wav"></audio></td>
+
+            <td><audio controls=""><source src="eval1/gmvae8/hol_621.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/gmvae8_single_loss/hol_621.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/fine_grained/hol_621.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/dual_fine_grained/hol_621.wav" type="audio/wav"></audio></td>
+            
+            <td><audio controls=""><source src="eval1/xform_gmvae8/hol_621.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/xform_gmvae8_single_loss/hol_621.wav" type="audio/wav"></audio></td>
+
+            <td><audio controls=""><source src="eval1/novae/hol_621.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval1/novae_single_loss/hol_621.wav" type="audio/wav"></audio></td>
+            
           </tr>
         </tbody>
       </table>
