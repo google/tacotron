@@ -1,0 +1,386 @@
+
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Wave-Tacotron: Spectrogram-free end-to-end text-to-speech synthesis"</title>
+    <link rel="stylesheet" type="text/css" href="./stylesheet.css"/>
+    
+<script>
+      function play(path) {{
+        var player = document.getElementById('player');
+        player.src = path;
+        player.play();
+      }}
+    </script>
+
+    
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<style>
+.audio-cell {
+  /* Center audio widgets in the table cell. */
+  text-align: center;
+  padding-bottom: 1px;
+  padding-top: 1px;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+.audio-cell-padded { 
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.audio-header {
+  /* Don't wrap header text. */
+  white-space: nowrap;
+  /* Some breaking space between headers for readability. */   
+  padding-right: 4px; 
+  padding-left: 4px; 
+}
+.text-cell {
+  /* For uniformity and to wrap long text, limit the reference cell's width. */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.input-cell {
+  /* For uniformity and to wrap long reference text, limit the reference cell's width. */
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.sample audio {
+  vertical-align: middle;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.round-button {
+	box-sizing: border-box;
+	display:block;
+	width:30px;
+	height:30px;
+	padding-top: 8px;
+	padding-left: 3px;
+	line-height: 6px;
+	border: 1.2px solid #000;
+	border-radius: 50%;
+	color: #000;
+	text-align:center;
+	background-color: rgba(0,0,0,0.00);
+	font-size:6px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,1);
+	transition: all 0.2s ease;
+}
+.round-button:hover {
+	background-color: rgba(0,0,0,0.0);
+	box-shadow: 0px 0px 4px rgba(0,0,0,1);
+}
+.round-button:active {
+	background-color: rgba(0,0,0,0.01);
+	box-shadow: 0px 0px 1px rgba(0,0,0,1);
+}
+</style>
+
+  </head>
+  <body>
+    
+    <article>
+      <header>
+        <h1>Audio samples from "Wave-Tacotron: Spectrogram-free end-to-end text-to-speech synthesis"</h1>
+      </header>
+    </article>
+    <!--
+      <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
+    -->
+    <!--
+    <div><p><b>Paper:</b> <a href="">arXiv</a></p></div>
+    -->
+    <div><p><b>Authors:</b> Ron J. Weiss, RJ Skerry-Ryan, Eric Battenberg, Soroosh Mariooryad, Diederik P. Kingma</p></div>
+    <div><p><b>Abstract:</b> We describe a sequence-to-sequence neural network which can directly generate speech waveforms from text inputs. The architecture extends the Tacotron model by incorporating a normalizing flow into the autoregressive decoder loop. Output waveforms are modeled as a sequence of non-overlapping fixed-length frames, each one containing hundreds of samples. The interdependencies of waveform samples within each frame are modeled using the normalizing flow, enabling parallel training and synthesis. Longer-term dependencies are handled autoregressively by conditioning each flow on preceding frames. This model can be optimized directly with maximum likelihood, without using intermediate, hand-designed features nor additional loss terms. Contemporary state-of-the-art text-to-speech (TTS) systems use a cascade of separately learned models: one (such as Tacotron) which generates intermediate features (such as spectrograms) from text, followed by a vocoder (such as WaveRNN) which generates waveform samples from the intermediate features.The proposed system, in contrast, does not use a fixed intermediate representation, and learns all parameters end-to-end. Experiments show that the proposed model generates speech with quality approaching a state-of-the-art neural TTS system, with significantly improved generation speed.</p></div>
+    
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+    <ul>
+      <li><a href="#architecture-comparison-on-single-speaker-proprietary-dataset"> 1. Architecture comparison on single speaker proprietary dataset
+<li><a href="#architecture-comparison-on-single-speaker-ljspeech-dataset"> 2. Architecture comparison on single speaker LJSpeech dataset
+<li><a href="#ablations:-temperature"> 3. Ablations: temperature
+<li><a href="#ablations:-architecture-tweeks"> 4. Ablations: architecture tweeks
+<li><a href="#ablations:-flow-parameterization"> 5. Ablations: flow parameterization
+<li><a href="#ablations:-waveform-segment-length-per-decoder-step-(k)"> 6. Ablations: waveform segment length per decoder step (K)
+<li><a href="#unconditional-generation"> 7. Unconditional generation
+    </ul>
+    </div>
+  <a name="architecture-comparison-on-single-speaker-proprietary-dataset"><h2>1. Architecture comparison on single speaker proprietary dataset</h2></a>
+<p>
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">Ground Truth</th><th>Input</th>
+<th class="audio-header">Tacotron + Griffin-Lim</th>
+<th class="audio-header">Tacotron + WaveRNN</th>
+<th class="audio-header">Tacotron + FlowCoder</th>
+<th class="audio-header">Wave-Tacotron</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=2 style="vertical-align:center"><span class="text_e2e">Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.</span></td>
+<td class="audio-cell" rowspan=2 style="vertical-align:center"><audio controls preload="none" src="./audio/00018.wav"></audio></td>
+<td class="input-cell"><span class="text_e2e">char</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00019.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00020.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00021.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00022.wav"></audio></td>
+</tr>
+<tr><td class="input-cell"><span class="text_e2e">phone</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00023.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00024.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00025.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00026.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=2 style="vertical-align:center"><span class="text_e2e">Tajima Airport serves Toyooka.</span></td>
+<td class="audio-cell" rowspan=2 style="vertical-align:center"><audio controls preload="none" src="./audio/00027.wav"></audio></td>
+<td class="input-cell"><span class="text_e2e">char</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00028.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00029.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00030.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00031.wav"></audio></td>
+</tr>
+<tr><td class="input-cell"><span class="text_e2e">phone</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00032.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00033.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00034.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00035.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=2 style="vertical-align:center"><span class="text_e2e">If you were going to space, would you be nervous?</span></td>
+<td class="audio-cell" rowspan=2 style="vertical-align:center"><audio controls preload="none" src="./audio/00036.wav"></audio></td>
+<td class="input-cell"><span class="text_e2e">char</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00037.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00038.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00039.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00040.wav"></audio></td>
+</tr>
+<tr><td class="input-cell"><span class="text_e2e">phone</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00041.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00042.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00043.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00044.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="architecture-comparison-on-single-speaker-ljspeech-dataset"><h2>2. Architecture comparison on single speaker LJSpeech dataset</h2></a>
+<p>Input is char in all settings.
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">Ground Truth</th><th class="audio-header">Tacotron + Griffin-Lim</th>
+<th class="audio-header">Tacotron + WaveRNN</th>
+<th class="audio-header">Tacotron + FlowCoder</th>
+<th class="audio-header">Wave-Tacotron</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Even the Caslon type when enlarged shows great shortcomings in this respect:</span></td>
+<td class="audio-cell" rowspan=1 style="vertical-align:center"><audio controls preload="none" src="./audio/00045.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00046.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00047.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00048.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00049.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">while at sea the captain of the ship was responsible for the security of the prisoner.</span></td>
+<td class="audio-cell" rowspan=1 style="vertical-align:center"><audio controls preload="none" src="./audio/00050.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00051.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00052.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00053.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00054.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Marina Oswald appeared before the Commission again on June 11, 1964,</span></td>
+<td class="audio-cell" rowspan=1 style="vertical-align:center"><audio controls preload="none" src="./audio/00055.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00056.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00057.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00058.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00059.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="ablations:-temperature"><h2>3. Ablations: temperature</h2></a>
+<p>Input is phone in all settings.
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">T = 0.6</th>
+<th class="audio-header">T = 0.7</th>
+<th class="audio-header">Base (T = 0.8)</th>
+<th class="audio-header">T = 0.9</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00060.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00061.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00062.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00063.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Tajima Airport serves Toyooka.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00064.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00065.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00066.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00067.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">If you were going to space, would you be nervous?</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00068.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00069.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00070.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00071.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="ablations:-architecture-tweeks"><h2>4. Ablations: architecture tweeks</h2></a>
+<p>Input is phone in all settings.
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">Base (pre-emp + pos-emb + skip con)</th>
+<th class="audio-header">no pre-emphasis</th>
+<th class="audio-header">no position embedding</th>
+<th class="audio-header">no skip connection</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00072.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00073.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00074.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00075.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Tajima Airport serves Toyooka.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00076.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00077.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00078.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00079.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">If you were going to space, would you be nervous?</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00080.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00081.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00082.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00083.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="ablations:-flow-parameterization"><h2>5. Ablations: flow parameterization</h2></a>
+<p>Input is phone in all settings.
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">Base (256 channels, 60 steps, 5 stages)</th>
+<th class="audio-header">128 flow channels</th>
+<th class="audio-header">30 steps, 5 stages</th>
+<th class="audio-header">60 steps, 4 stages</th>
+<th class="audio-header">60 steps, 3 stages</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00084.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00085.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00086.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00087.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00088.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Tajima Airport serves Toyooka.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00089.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00090.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00091.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00092.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00093.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">If you were going to space, would you be nervous?</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00094.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00095.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00096.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00097.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00098.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="ablations:-waveform-segment-length-per-decoder-step-(k)"><h2>6. Ablations: waveform segment length per decoder step (K)</h2></a>
+<p>Input is phone in all settings.
+</p>
+    <table>
+      <thead><th>Text</th><th class="audio-header">K = 320</th>
+<th class="audio-header">K = 640</th>
+<th class="audio-header">Base (K = 960)</th>
+<th class="audio-header">K = 1280</th></thead>
+      <tbody><tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Talib Kweli confirmed to AllHipHop that he will be releasing an album in the next year.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00099.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00100.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00101.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00102.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">Tajima Airport serves Toyooka.</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00103.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00104.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00105.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00106.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="text-cell" rowspan=1 style="vertical-align:center"><span class="text_e2e">If you were going to space, would you be nervous?</span></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00107.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00108.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00109.wav"></audio></td>
+<td class="audio-cell"><audio controls preload="none" src="./audio/00110.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+<a name="unconditional-generation"><h2>7. Unconditional generation</h2></a>
+<p>Samples generated by a uncoditional model, by removing the encoder and attention, which is capable of generating coherent syllables.</p>
+    <table>
+      <thead><th class="audio-header">unconditional</th></thead>
+      <tbody><tr><td class="audio-cell"><audio controls preload="none" src="./audio/00111.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="audio-cell"><audio controls preload="none" src="./audio/00112.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="audio-cell"><audio controls preload="none" src="./audio/00113.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="audio-cell"><audio controls preload="none" src="./audio/00114.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="audio-cell"><audio controls preload="none" src="./audio/00115.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+<tr><td class="audio-cell"><audio controls preload="none" src="./audio/00116.wav"></audio></td>
+</tr>
+<tr>
+</tr>
+</tbody>
+    </table>
+    
+  </body>
+</html>
