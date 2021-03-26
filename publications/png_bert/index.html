@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "PnG BERT: Augmented BERT on Phonemes and Graphemes for Neural TTS"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio samples from "PnG BERT: Augmented BERT on Phonemes and Graphemes for Neural TTS"</h1>
+        </header>
+      </article>
+
+      <p><b>Paper:</b> <a href="https://arxiv.org/abs/">arXiv</a></p>
+      <p><b>Authors:</b> Ye Jia, Heiga Zen, Jonathan Shen, Yu Zhang, Yonghui Wu.
+      </p>
+
+      <p><b>Abstract:</b>
+        This paper introduces <i>PnG BERT</i>, a new encoder model for neural TTS. This model is augmented from the original BERT model, by taking both phoneme and grapheme representations of text as input, as well as the word-level alignment between them. It can be pre-trained on a large text corpus in a self-supervised manner, and fine-tuned in a TTS task. Experimental results show that a neural TTS model using a pre-trained PnG BERT as its encoder yields more natural prosody and more accurate pronunciation than a baseline model using only phoneme input with no pre-training. Subjective side-by-side preference evaluations show that raters have no statistically significant preference between the speech synthesized using a PnG BERT and ground truth recordings from professional speakers.
+      </p>
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+      <h2>NAT w/ PnG BERT vs. NAT baseline </h2>
+
+      <p><i>These examples correspond to Section 1 and Table 2 in the paper. They are cherry-picked to be representative.</i></p>
+      <p><i>The baseline <a href="../nat/index.html">NAT</a> is a state-of-the-art duration-based neural TTS model.</i></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>NAT w/ PnG BERT</th><th>NAT (baseline)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="2"><span><b>The example in Section 1</b></span></td></tr>
+          <tr><td colspan="2"><span>0: To cancel the payment, press one; or to continue, two.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="two_vs_too/h_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="two_vs_too/h_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span><b>Positive examples in SxS</b></span></td></tr>
+          <tr><td colspan="2"><span>1: Here's a birthday present.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_pos/b_112_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_pos/b_112_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>2: That soccer mom is also a piano teacher.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_pos/a_51_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_pos/a_51_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>3: Did you put it in a salad bowl?</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_pos/h_39_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_pos/h_39_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>4: Take your Vitamin B complex when you wake up.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_pos/c_166_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_pos/c_166_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>5: Window shopping can be such a tease.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_pos/s_77_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_pos/s_77_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+
+          <tr><td colspan="2"><span><b>Negative examples in SxS</b></span></td></tr>
+          <tr><td colspan="2"><span>1: Meet Mr. Potato Head.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_neg/f_126_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_neg/f_126_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>2: You need to take the long view, career-wise.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_neg/b_183_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_neg/b_183_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>3: How about a back rub?</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_neg/b_264_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_neg/b_264_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>4: Performance reviews are stressful, time-consuming, and often meaningless.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_neg/f_14_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_neg/f_14_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>5: Hand me the movie reviews.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_nat_neg/j_2_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_nat_neg/j_2_nat.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h2>NAT w/ PnG BERT vs. human recordings</h2>
+
+      <p><i>These examples correspond to Table 3 in the paper. They are cherry-picked to be representative.</i></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>NAT w/ PnG BERT</th><th>Human recording</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="2"><span><b>Positive examples</b></span></td></tr>
+          <tr><td colspan="2"><span>1: Dirty bomb. A nuclear weapon improvised from radioactive nuclear waste material and conventional explosives.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_pos/a_64_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_pos/a_64_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>2: The Omnibus Cartel Repeal Act Law Number Six will be on the bar exam.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_pos/e_6_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_pos/e_6_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>3: My food is in the oven, since I'm working from home today.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_pos/c_58_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_pos/c_58_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>4: Is Canada assuming him to be guilty?</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_pos/s_81_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_pos/s_81_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>5: Tina Fey's children are Alice Zenobia Richmond and Penelope Athena Richmond.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_pos/b_8_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_pos/b_8_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+
+          <tr><td colspan="2"><span><b>Negative examples</b></span></td></tr>
+          <tr><td colspan="2"><span>1: Finn. A native or inhabitant of Finland or a person of Finnish descent.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_neg/e_48_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_neg/e_48_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>2: Ok, pictures of teal nail polish with white polka dots.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_neg/e_45_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_neg/e_45_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>3: According to English Grammar Revolution, there is an adverb describing the verb eat.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_neg/c_3_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_neg/c_3_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>4: Bubble, bubble, toil, and... this thing.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_neg/j_28_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_neg/j_28_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="2"><span>5: I wish I had arms so I could give you a hug. But for now maybe a joke or some music might help.</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="png_vs_gt_neg/h_27_png.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="png_vs_gt_neg/h_27_gt.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+</html>
