@@ -23,10 +23,10 @@
 
       <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
 
-      <h2>NAT w/ PnG BERT vs. NAT baseline </h2>
+      <h2>The example from Section 1</h2>
 
-      <p><i>These examples correspond to Section 1 and Table 2 in the paper. They are cherry-picked to be representative.</i></p>
-      <p><i>The baseline <a href="../nat/index.html">NAT</a> is a state-of-the-art duration-based neural TTS model.</i></p>
+      <p><i>In Section 1 in the paper, we described an example input "To cancel the payment, press one; or to continue, two.", which is a pattern that used frequently by conversational AI agents for call centers. In the phoneme representation of this sentence, the trailing "..., two." can be easily confused with "..., too.", which is used more frequently in English. However, in natural speech, different prosody is expected at the comma positions in these two patterns.</i></p>
+      <p><i>The baseline <a href="../nat/index.html">NAT</a> is a state-of-the-art duration-based neural TTS model that takes phoneme as input. Clearly, it suffers from such ambiguity of the phoneme representation on the homophones and thus produces speech that sounds confusing. In contrast, using PnG BERT as the encoder for NAT produces natural speech without confusion.</i></p>
 
       <table>
         <thead>
@@ -35,13 +35,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td colspan="2"><span><b>The example in Section 1</b></span></td></tr>
-          <tr><td colspan="2"><span>0: To cancel the payment, press one; or to continue, two.</span></td></tr>
           <tr>
             <td><audio controls=""><source src="two_vs_too/h_png.wav" type="audio/wav"></audio></td>
             <td><audio controls=""><source src="two_vs_too/h_nat.wav" type="audio/wav"></audio></td>
           </tr>
-          <tr><td colspan="2"><span><b>Positive examples in SxS</b></span></td></tr>
+        </tbody>
+      </table>
+
+      <h2>NAT w/ PnG BERT vs. NAT baseline </h2>
+
+      <p><i>These examples correspond to the side-by-side preferece test in Table 2 in the paper. They are cherry-picked to be representative.</i></p>
+
+      <table>
+        <tbody>
+          <tr><td colspan="2"><span><b>Positive examples</b></span></td></tr>
+          <tr>
+            <th><b>NAT w/ PnG BERT</b></th>
+            <th><b>NAT (baseline)</b></th>
+          </tr>
           <tr><td colspan="2"><span>1: Here's a birthday present.</span></td></tr>
           <tr>
             <td><audio controls=""><source src="png_vs_nat_pos/b_112_png.wav" type="audio/wav"></audio></td>
@@ -68,7 +79,12 @@
             <td><audio controls=""><source src="png_vs_nat_pos/s_77_nat.wav" type="audio/wav"></audio></td>
           </tr>
 
-          <tr><td colspan="2"><span><b>Negative examples in SxS</b></span></td></tr>
+          <tr><td colspan="2"><span>&nbsp;</span></td></tr>
+          <tr><td colspan="2"><span><b>Negative examples</b></span></td></tr>
+          <tr>
+            <th><b>NAT w/ PnG BERT</b></th>
+            <th><b>NAT (baseline)</b></th>
+          </tr>
           <tr><td colspan="2"><span>1: Meet Mr. Potato Head.</span></td></tr>
           <tr>
             <td><audio controls=""><source src="png_vs_nat_neg/f_126_png.wav" type="audio/wav"></audio></td>
@@ -100,16 +116,15 @@
 
       <h2>NAT w/ PnG BERT vs. human recordings</h2>
 
-      <p><i>These examples correspond to Table 3 in the paper. They are cherry-picked to be representative.</i></p>
+      <p><i>These examples correspond to the side-by-side preferece test in Table 3 in the paper. They are cherry-picked to be representative.</i></p>
 
       <table>
-        <thead>
-          <tr>
-            <th>NAT w/ PnG BERT</th><th>Human recording</th>
-          </tr>
-        </thead>
         <tbody>
           <tr><td colspan="2"><span><b>Positive examples</b></span></td></tr>
+          <tr>
+            <th><b>NAT w/ PnG BERT</b></th>
+            <th><b>Human recording</b></th>
+          </tr>
           <tr><td colspan="2"><span>1: Dirty bomb. A nuclear weapon improvised from radioactive nuclear waste material and conventional explosives.</span></td></tr>
           <tr>
             <td><audio controls=""><source src="png_vs_gt_pos/a_64_png.wav" type="audio/wav"></audio></td>
@@ -136,7 +151,12 @@
             <td><audio controls=""><source src="png_vs_gt_pos/b_8_gt.wav" type="audio/wav"></audio></td>
           </tr>
 
+          <tr><td colspan="2"><span>&nbsp;</span></td></tr>
           <tr><td colspan="2"><span><b>Negative examples</b></span></td></tr>
+          <tr>
+            <th><b>NAT w/ PnG BERT</b></th>
+            <th><b>Human recording</b></th>
+          </tr>
           <tr><td colspan="2"><span>1: Finn. A native or inhabitant of Finland or a person of Finnish descent.</span></td></tr>
           <tr>
             <td><audio controls=""><source src="png_vs_gt_neg/e_48_png.wav" type="audio/wav"></audio></td>
