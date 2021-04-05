@@ -28,10 +28,19 @@ multi speaker evaluations.  Its duration control capability is also
 demonstrated.
 
  </p>	
-      <h2>YOU WILL NEED TO WAIT FOR THE AUDIO FILES TO LOAD BEFORE PRESSING PLAY!<h2>
-          
       <p><a href="https://google.github.io/tacotron/index.html">Click here for more from the Tacotron team.</a></p>	
-      <h2>Comparison among systems: Main Evaluation Set</h2>	
+
+      <h2>YOU WILL NEED TO WAIT FOR THE AUDIO FILES TO LOAD BEFORE PRESSING PLAY!</h2>
+      <p><a href='#main_eval'>Main evaluation set</a></p>
+      <p><a href='#hold_out'>Hold-out evaluation set</a></p>
+      <p><a href='#hard'>Hard lines evaluation set</a></p>
+      <p><a href='#rapid'>Rapid Reprompts evaluation set</a></p>
+      <p><a href='#questions'>Questions evaluation set</a></p>
+      <p><a href='#global_dur'>Global Duration/Pace Control</a></p>
+      <p><a href='#last_word_dur'>Last word Duration Control</a></p>
+      <p><a href='#per_word_dur'>Individual Word Duration Control</a></p>
+          
+      <h2><a id="main_eval">Comparison among systems: Main Evaluation Set</a></h2>	
       <p><i>Random sample from Main Evaluation Set in the paper.</i></p>	
       <table>	
         <thead>	
@@ -99,7 +108,7 @@ demonstrated.
         </tbody>	
       </table>	
 
-      <h2>Comparison among systems: Hold-out</h2>	
+      <h2><a id="hold_out">Comparison among systems: Hold-out</a></h2>	
       <p><i>Random sample from Hold-out set in the paper.</i></p>	
       <table>	
         <thead>	
@@ -176,7 +185,7 @@ demonstrated.
       </table>
     </div>	
   	
-      <h2>Comparison among systems: Hard Lines</h2>	
+      <h2><a id="hard">Comparison among systems: Hard Lines</a></h2>	
       <p><i>Random sample from Hard Lines in the paper.</i></p>	
       <table>	
         <thead>	
@@ -251,7 +260,7 @@ demonstrated.
         </tbody>	
       </table>	
           
-      <h2>Comparison among systems: Rapid Reprompts</h2>	
+      <h2><a id="rapid">Comparison among systems: Rapid Reprompts</a></h2>	
       <p><i>Random sample from Rapid Reprompts in the paper.</i></p>	
       <table>	
         <thead>	
@@ -319,7 +328,7 @@ demonstrated.
         </tbody>	
       </table>	
 
-      <h2>Comparison among systems: Questions</h2>	
+      <h2><a id="questions">Comparison among systems: Questions</a></h2>	
       <p><i>Random sample from Questions in the paper.</i></p>	
       <table>	
         <thead>	
@@ -388,8 +397,83 @@ demonstrated.
       </table>	
 
 
+      <h2><a id='global_dur'>Duration Controllability: Global pace control</a></h2>	
+      <p><i>Global pace control with duration factors [0.75, 1.0, 1.25]</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Duration factor</th><th>Parallel Tacotron 2</th>	
+          </tr>	
+        </thead>
+        <tbody>	
+          <tr>	
+            <td>0.75</td>	
+            <td><audio controls=""><source src="durcontrol/global_075.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>1.0</td>	
+            <td><audio controls=""><source src="durcontrol/global_10.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>1.25</td>	
+            <td><audio controls=""><source src="durcontrol/global_125.wav" type="audio/wav"></audio></td>	
+          </tr>	
+        </tbody>	
+      </table>	
+
+      <h2><a id="last_word_dur">Duration Controllability: Last word speed up and slow down</a></h2>	
+      <p><i>Last word "Big Basin" is with duration factors [0.5, 1.0, 1.5]</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Duration factor</th><th>Parallel Tacotron 2</th>	
+          </tr>	
+        </thead>
+        <tbody>	
+          <tr>	
+            <td>0.5</td>	
+            <td><audio controls=""><source src="durcontrol/word_last_05.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>1.0</td>	
+            <td><audio controls=""><source src="durcontrol/per_word_10.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>1.5</td>	
+            <td><audio controls=""><source src="durcontrol/word_last_15.wav" type="audio/wav"></audio></td>	
+          </tr>	
+        </tbody>	
+      </table>	
  
 
+      <h2><a id="per_word_dur">Duration Controllability: Per word slow down</a></h2>	
+      <p><i>Different word in the sequence is slowed down by a factor of 1.5</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Duration factor</th><th>Parallel Tacotron 2</th>	
+          </tr>	
+        </thead>
+        <tbody>	
+          <tr>	
+            <td>saddened</td>	
+            <td><audio controls=""><source src="durcontrol/saddened_15.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>hear about</td>	
+            <td><audio controls=""><source src="durcontrol/hear_about_15.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>devestation</td>	
+            <td><audio controls=""><source src="durcontrol/devestation_15.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr>	
+            <td>Big Basin</td>	
+            <td><audio controls=""><source src="durcontrol/big_basin_15.wav" type="audio/wav"></audio></td>	
+          </tr>	
+
+        </tbody>	
+      </table>	
 
 
 
