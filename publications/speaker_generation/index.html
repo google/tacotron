@@ -1,0 +1,357 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Audio samples from "Speaker Generation"</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+  <!-- TODO(daisy): finalize stylesheets -->
+  <!-- https://google.github.io/tacotron/stylesheet.css -->
+  <link rel="stylesheet" type="text/css" href="localstyle.css"/>
+  <link rel="shortcut icon" href="../../images/taco.png"/>
+
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="playerTitle"></div>
+    <audio controls="" id="player"></audio>
+    <div id="debug"></div>
+  </div>
+  <article>
+    <header>
+      <h1>Audio samples from "Speaker Generation"</h1>
+    </header>
+  </article>
+  <!-- TODO(daisy): replace with arxiv link -->
+  <div><p><b>Paper:</b> <a href="https://arxiv.org/">arXiv</a></p></div>
+  <div><p><b>Authors:</b>Daisy Stanton, Matt Shannon, Soroosh Mariooryad, RJ Skerry-Ryan, Eric Battenberg, Tom Bagby, and David Kao</p></div>
+  <div><p><b>Abstract:</b> This work explores the task of synthesizing speech in non-existent human-sounding voices. We call this task "speaker generation", and present TacoSpawn, a system that performs competitively at this task. TacoSpawn is a recurrent attention-based text-to-speech model that learns a distribution over a speaker embedding space, which enables sampling of novel and diverse speakers. Our method is easy to implement, and does not require transfer learning from speaker ID systems. We present objective and subjective metrics for evaluating performance on this task, and demonstrate that our proposed objective metrics correlate with human perception of speaker similarity.</p></div>
+
+  <p>This page contains a set of audio samples in support of the paper: we suggest that readers listen to the samples in conjunction with reading the paper.</p>
+
+  <p>Note that the TacoSpawn systems described in the paper extend a baseline Tacotron -- that is, they do not use any additional acoustic or prosody embeddings to improve the naturalness of synthesized speech.</p>
+
+  <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+
+  <p class="toc_title">Contents</p>
+  <div id="toc_container">
+  <ul>
+    <li><a href="#generated-speakers"> 1. Novel speakers</a></li>
+    <li><a href="#speaker-distance"> 2. Speaker distance</a></li>
+    <li><a href="#tsne-demo"> 3. Interactive t-SNE plot</a></li>
+  </ul>
+  </div>
+
+
+<div class="section-break"></div>
+
+<div id="content_body">
+<hr>
+
+<a name="generated-speakers"><h2>Novel speakers</h2></a>
+
+<p>The audio clips below show examples of generated speakers.  These were synthesized by a TacoSpawn system trained on the 1468-speaker English dataset described in our paper.<p>
+
+<table>
+<tbody>
+  <tr>
+    <td>
+    <table id="enxx_gen_tacospawn">
+      <thead>
+        <th></th>
+        <th class="audio-header-row">1</th>
+        <th class="audio-header-row">2</th>
+        <th class="audio-header-row">3</th>
+        <th class="audio-header-row">4</th>
+        <th class="audio-header-row">5</th>
+        <th class="audio-header-row">6</th>
+        <th class="audio-header-row">7</th>
+      </thead>
+      <tbody>
+        <tr id="gb_male">
+          <th class="audio-header-col">British Male</th>
+          <!-- <th class="audio-header-col"></th> -->
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="gb_female">
+          <th class="audio-header-col">British Female</th>
+          <!-- <th class="audio-header-col">Female</th>           -->
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_male">
+          <!-- <th class="audio-header-col"></th> -->
+          <th class="audio-header-col">American Male</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">American Female</th>
+          <!-- <th class="audio-header-col">Female</th>           -->
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="au_male">
+          <th class="audio-header-col">Australian Male</th>
+          <!-- <th class="audio-header-col"></th> -->
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="au_female">
+          <th class="audio-header-col">Australian Female</th>
+          <!-- <th class="audio-header-col">Female</th> -->
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(genpath(6, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+<div class="section-break"></div>
+
+<a name="speaker-distance"><h2>Speaker Distance</h2></a>
+
+<p>Here we provide examples to accompany the "Speaker Distance" section of our paper. Speaker distance is measured using using cosine similarity in d-vector space, and the audio clips below show "closest" and "furthest away" speakers from a given generated or training set speaker.  Samples are from a TacoSpawn model trained on the 1100-speaker US English dataset described in our paper.</p>
+
+<a name="speaker-distance"><h3>Starting from generated speakers</h3></a>
+
+<p>The table below shows a generated TacoSpawn speaker in the left-hand column, followed by "closest" and "furthest away" speaker samples of the same gender.</p>
+<p>From left to right, the columns mean:</p>
+
+<ul>
+  <!-- span style="color: 'blue'; font-weight: 'bold';" -->
+  <li><b>gen</b>: utterance from a generated TacoSpawn speaker.</li>
+  <li><b>nearest synth</b>: the synthesized training speaker nearest to <b>gen</b>.</li>
+  <li><b>furthest synth</b>: the synthesized same-gender training speaker furthest from <b>gen</b>.</li>
+  <li><b>nearest gen</b>: the generated speaker nearest to <b>gen</b>.</li>
+  <li><b>furthest gen</b>: the generated same-gender speaker furthest from <b>gen</b>.</li>
+</ul>
+
+<table>
+<tbody>
+  <tr>
+    <td>
+    <table id="enus1100_gen_closest_quickbrown">
+     <thead>
+        <th></th>
+        <th><div class="audio-header-row">gen</div></th>
+        <th><div class="audio-header-row">nearest synth</div></th>
+        <th><div class="audio-header-row">furthest synth</div></th>
+        <th><div class="audio-header-row">nearest gen</div></th>
+        <th><div class="audio-header-row">furthest gen</div></th>
+      </thead>
+      <tbody>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 1</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_01', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_01', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_01', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_01', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_01', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 2</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_07', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_07', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_07', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_07', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_07', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 3</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_189', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_189', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_189', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_189', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_189', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 1</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_903', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_903', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_903', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_903', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_903', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 2</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_688', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_688', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_688', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_688', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_688', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 3</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_738', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_738', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_738', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_738', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('gen_738', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+</table>
+
+<div class="section-break"></div>
+
+<a name="speaker-distance"><h3>Starting from training speakers</h3></a>
+
+<p>The table below shows a ground-truth utterance from a training set speaker in the left-hand column, followed by "closest" and "furthest away" speaker samples of the same gender.</p>
+<p>From left to right, the columns mean:</p>
+
+<ul>
+  <li><b>ground-truth</b>: ground-truth speaker in the training set.</li>
+  <li><b>synth</b>: same training speaker as synthesized by TacoSpawn.</li>
+  <li><b>nearest synth</b>: synthesized training speaker nearest to <b>synth</b>.</li>
+  <li><b>furthest synth</b>: synthesized same-gender training speaker furthest from <b>synth</b>.</li>
+  <li><b>nearest gen</b>: generated speaker nearest to <b>synth</b>.</li>
+  <li><b>furthest gen</b>: generated same-gender speaker furthest from <b>synth</b>.</li>
+</ul>
+
+<table>
+<tbody>
+  <tr>
+    <td>
+    <table id="enus1100_sclosest_quickbrown">
+      <thead>
+        <th></th>
+        <th><div class="audio-header-row">ground-truth</div></th>
+        <th><div class="audio-header-row">synth</div></th>
+        <th><div class="audio-header-row">nearest synth</div></th>
+        <th><div class="audio-header-row">furthest synth</div></th>
+        <th><div class="audio-header-row">nearest gen</div></th>
+        <th><div class="audio-header-row">furthest gen</div></th>
+      </thead>
+      <tbody>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 1</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0262', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 2</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0357', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_male">
+          <th class="audio-header-col">Male 3</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0697', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 1</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0468', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 2</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok0755', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+        <tr id="us_female">
+          <th class="audio-header-col">Female 3</th>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 2, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 5, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 3, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 4, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 0, this))"><i class="fa fa-play fa-2x"></i></div></td>
+          <td class="audio-cell"><div class="round-button" onclick="play(wavpath('lok1069', 1, this))"><i class="fa fa-play fa-2x"></i></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
+</table>
+</p>
+
+
+<div class="section-break"></div>
+
+
+<a name="tsne-demo"><h2>Interactive t-SNE plot</h2></a>
+
+<p>The interactive t-SNE plot below shows speakers represented in d-vector space, colored by region. Each audio sample is from either a generated ("gen") or training set speaker ("synth"), synthesized by a TacoSpawn system trained on the 1468-speaker English dataset described in our paper.  The two t-SNE clusters show natural separation of speakers by gender. <p>
+
+  <div id="plotlyDiv" style="width: 100%; height: 90%"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <audio id='audioDiv' controls>
+  </audio>
+  <div id="scriptDiv"><!-- Script ID will be written in this DIV --></div>
+  <!--   TODO(daisy): can't submit plotly.min.js outside of third_party, so
+  fileutil cp third_party/javascript/plotly/plotly.min.js
+    tacotron_github/publications/samples_page/plotly.min.js -->
+  <script src="./plotly.min.js"></script>
+  <script src="./tsne_en1468.js"></script>
+
+
+</body>
+</html>
