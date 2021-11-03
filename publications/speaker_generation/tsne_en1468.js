@@ -8,7 +8,6 @@ speakers:['000195_train_en_au_female', '000178_train_en_au_male', '000197_train_
 type:'scatter',
 name:'en/au (synth)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.08235294117647059, 0.6901960784313725, 0.10196078431372549, 1.0)', symbol:'cross' },
 }
 , {
@@ -19,7 +18,6 @@ speakers:['000406_gen_en_au_female', '000394_gen_en_au_male', '000403_gen_en_au_
 type:'scatter',
 name:'en/au (gen)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.5882352941176471, 0.9764705882352941, 0.4823529411764706, 0.4)', symbol:'circle' },
 }
 , {
@@ -30,7 +28,6 @@ speakers:['000004_train_en_gb_male', '000021_train_en_gb_female', '000016_train_
 type:'scatter',
 name:'en/gb (synth)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.011764705882352941, 0.2627450980392157, 0.8745098039215686, 1.0)', symbol:'cross' },
 }
 , {
@@ -41,7 +38,6 @@ speakers:['000222_gen_en_gb_male', '000226_gen_en_gb_female', '000213_gen_en_gb_
 type:'scatter',
 name:'en/gb (gen)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.5843137254901961, 0.8156862745098039, 0.9882352941176471, 0.4)', symbol:'circle' },
 }
 , {
@@ -52,7 +48,6 @@ speakers:['000208_train_en_in_female', '000206_train_en_in_female', '000203_trai
 type:'scatter',
 name:'en/in (synth)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.9764705882352941, 0.45098039215686275, 0.023529411764705882, 1.0)', symbol:'cross' },
 }
 , {
@@ -63,7 +58,6 @@ speakers:['000417_gen_en_in_female', '000415_gen_en_in_female', '000414_gen_en_i
 type:'scatter',
 name:'en/in (gen)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.9921568627450981, 0.6666666666666666, 0.2823529411764706, 0.4)', symbol:'circle' },
 }
 , {
@@ -74,7 +68,6 @@ speakers:['000148_train_en_us_female', '000081_train_en_us_male', '000079_train_
 type:'scatter',
 name:'en/us (synth)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(0.8117647058823529, 0.3843137254901961, 0.4588235294117647, 1.0)', symbol:'cross' },
 }
 , {
@@ -85,7 +78,6 @@ speakers:['000371_gen_en_us_female', '000260_gen_en_us_male', '000331_gen_en_us_
 type:'scatter',
 name:'en/us (gen)',
 mode:'markers',
-hovertemplate:'%{speakers}',
 marker:{ size:'10', color:'rgba(1.0, 0.7725490196078432, 0.796078431372549, 0.4)', symbol:'circle' },
 }
 ],
@@ -117,8 +109,8 @@ Plotly.newPlot('plotlyDiv', data, layout);
 
 myPlot.on('plotly_click', function(data){
    let point = data.points[0];
-   // let xaxis = point.xaxis;
-   // let yaxis = point.yaxis;
+   let xaxis = point.xaxis;
+   let yaxis = point.yaxis;
    let index = point.pointIndex;
    let speaker = point.fullData._input.speakers[index];
    let wav_file_name = point.fullData._input.wav_file_names[index];
