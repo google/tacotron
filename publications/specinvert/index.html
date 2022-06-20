@@ -1,0 +1,442 @@
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Real Time Spectrogram Inversion on Mobile Phone"</title>
+    <link rel="stylesheet" href="../../stylesheet.css">
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Audio samples from "Real Time Spectrogram Inversion on Mobile Phone"</h1>
+      </header>
+    </article>
+
+    <p><b>Paper:</b> <a href="https://arxiv.org/abs/2203.00756">arXiv</a></p>
+
+    <p><b>Authors:</b> Oleg Rybakov, Marco Tagliasacchi, Yunpeng Li, Liyang Jiang, Xia Zhang, Fadi Biadsy </p>
+
+    <div><b>Abstract:</b>
+      With the growth of computing power on mobile phones and privacy concerns over user’s data, on-device real time speech pro-cessing has become an important research topic. In this paper, we focus on methods for real time spectrogram inversion, where an algorithm receives a portion of the input signal (e.g., one frame) and processes it incrementally, i.e., operating in streaming mode. We present a real time Griffin Lim(GL) algorithm using a sliding window approach in STFT domain.   The proposed algorithm is 2.4x faster than real time on the ARM CPU of a Pixel4. In addition we explore a neural vocoder operating in streaming mode and demonstrate the impact of looking ahead on perceptual quality. As little as one hop size (12.5ms) of lookahead is able to significantly improve perceptual quality in comparison to a causal model. We compare GL with the neural vocoder and show different trade-offs in terms of perceptual quality, on-device latency, algorithmic delay, memory footprint and noise sensitivity. For fair quality assessment of the GL approach, we use input log magnitude spectrogram without mel transformation. We evaluate presented real time spectrogram inversion approaches on clean, noisy and atypical speech.
+    </div>
+
+    <p> <a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+    <div>
+      <b>Note:</b>
+      <span style="background-color: #EEE">To obtain the best quality, we strongly recommend readers to listen to the audio samples with headphones.</span>
+    </div>
+
+    <p class="toc_title">Contents</p>
+    <div id="toc_container">
+      <ul>
+	<li><a href="#vctk">Section 1: Vocoder evaluation on VCTK data</a></li>
+	<li><a href="#parrotron">Section 2: Parrotron evaluation on atypical speech (Deaf) with different vocoders</a></li>
+	<li><a href="#acknowledgements">Acknowledgements</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <a name="vctk"><h2>Section 1: Vocoder evaluation on VCTK data</h2></a>
+      <div>
+        In this section, we compare the ground truth audio file, together with non-streaming GL with 70 iterations (non stream gl I70), nonstreaming GL with 3 iterations (non stream gl I3), streaming GL (stream gl S4I4C2), streaming neural vocoders with one hop lookahead (lookahead 1), with 12 hops lookahead (lookahead 12), and the causal vocoder.
+      </div>
+      &nbsp;
+      <div>
+	     Examples are from the <a href="https://datashare.is.ed.ac.uk/handle/10283/2651">VCTK corpus</a> licensed under the <a href="https://opendatacommons.org/licenses/by/1.0/">Open Data Commons Attribution License (ODC-By) v1.0</a>.
+
+      </div>
+      
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Non_stream_gl_I3 </td>
+          <td align="center"> Non_stream_gl_I70 </td>
+          <td align="center"> Stream_gl_S4I4C2 </td>
+          <td align="center"> Lookahead_1 </td>
+          <td align="center"> Lookahead_12 </td>
+          <td align="center"> Causal </td>
+        </tr>
+
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_014.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_014.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_014_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_014_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_041.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_041.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_041_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_041_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_118.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_118.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_118_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_118_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_163.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_163.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_163_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_163_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_330.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_330.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_330_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_330_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_405.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_405.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p232_405_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p232_405_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_143.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_143.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_143_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_143_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_222.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_222.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_222_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_222_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_368.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_368.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_368_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_368_noisy.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_426.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_426.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/vctk/input/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I3/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/non_stream_gl_I70/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/stream_gl_S4I4C2/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_1/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/lookahead_12/p257_426_noisy.wav"></audio></td>
+          <td><audio controls=""><source src="audio/vctk/causal/p257_426_noisy.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <p/>
+    <br/>
+    <div>
+      <a name="parrotron"><h2>Section 2: Parrotron evaluation on atypical speech (Deaf) with different vocoders</h2></a>
+     
+      <div>
+        <a href="../parrotron/index.html">Parrotron</a>  is an end-to-end speech conversion model that is trained to convert atypical speech to fluent speech of a canonical synthesized voice. This model takes a log-mel spectrogram as an input and directly produces linear spectrogram. It requires a vocoder to synthesize a time-domain waveform in real time, thus a lightweight streaming vocoder is a crucial requirement for such an application.
+      </div>
+      &nbsp;
+      <div>
+        In this section, we present examples of running Parrotron with different vocoders to convert atypical speech from a deaf speaker to fluent speech. We compare the ground truth audio file, together with non-streaming GL with 70 iterations (non stream gl I70), streaming GL (stream gl S4I4C2) and streaming neural vocoders with one hop lookahead (lookahead 1).
+      </div>
+      
+      </br>
+      <table>
+        <tbody>
+        <tr>
+          <td align="center"> Input </td>
+          <td align="center"> Non_stream_gl_I70 </td>
+          <td align="center"> Stream_gl_S4I4C2 </td>
+          <td align="center"> Lookahead_1 </td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/0_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/0_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/0_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/0_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/1_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/1_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/1_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/1_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/2_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/2_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/2_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/2_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/3_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/3_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/3_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/3_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/4_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/4_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/4_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/4_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/5_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/5_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/5_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/5_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/6_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/6_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/6_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/6_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/7_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/7_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/7_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/7_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/8_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/8_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/8_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/8_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/9_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/9_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/9_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/9_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/10_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/10_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/10_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/10_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/11_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/11_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/11_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/11_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/12_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/12_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/12_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/12_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/13_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/13_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/13_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/13_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/14_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/14_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/14_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/14_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/15_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/15_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/15_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/15_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/16_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/16_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/16_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/16_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/17_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/17_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/17_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/17_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/18_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/18_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/18_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/18_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+
+        <tr>
+          <td><audio controls=""><source src="audio/atypical_speech/input/19_input.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/non_stream_gl_I70/19_nonstreaming_standard.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/stream_gl_S4I4C2/19_streaming_with_gl.wav"></audio></td>
+          <td><audio controls=""><source src="audio/atypical_speech/lookahead_1/19_streaming_with_neural_vocoder.wav"></audio></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p/>
+    </br>
+    <a name="acknowledgements"><h2>Acknowledgments</h2></a>
+    <div>
+      The authors would like to thank Parrotron and Catalyst teams for valuable discussions and suggestions.
+    </div>
+
+      
+</body></html>
