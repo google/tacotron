@@ -31,20 +31,20 @@
     <p class="toc_title">Contents</p>
     <div id="toc_container">
       <ul>
-	<li><a href="#vctk">Section 1: Vocoder evaluation on VCTK data</a></li>
-	<li><a href="#parrotron">Section 2: Parrotron evaluation on atypical speech (Deaf) with different vocoders</a></li>
-	<li><a href="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#vctk">Section 1: Vocoder evaluation on VCTK data</a></li>
+  <li><a href="#parrotron">Section 2: Parrotron evaluation on atypical speech (Deaf) with different vocoders</a></li>
+  <li><a href="#acknowledgements">Acknowledgements</a></li>
       </ul>
     </div>
 
     <div>
       <a name="vctk"><h2>Section 1: Vocoder evaluation on VCTK data</h2></a>
       <div>
-        In this section, we compare the ground truth audio file, together with non-streaming GL with 70 iterations (non stream gl I70), nonstreaming GL with 3 iterations (non stream gl I3), streaming GL (stream gl S4I4C2), streaming neural vocoders with one hop lookahead (lookahead 1), with 12 hops lookahead (lookahead 12), and the causal vocoder.
+        In this section, we compare the ground truth audio file, together with non-streaming GL with 70 iterations (NonStreamGLi70), nonstreaming GL with 3 iterations (NonStreamGLi3), streaming GL (StreamGLs4i4c2), streaming neural vocoder with one hop lookahead (StreamMelGANlookahead1), non-streaming neural vocoder (NonStreamMelGANlookahead), and the causal vocoder (StreamMelGANcausal0).
       </div>
       &nbsp;
       <div>
-	     Examples are from the <a href="https://datashare.is.ed.ac.uk/handle/10283/2651">VCTK corpus</a> licensed under the <a href="https://opendatacommons.org/licenses/by/1.0/">Open Data Commons Attribution License (ODC-By) v1.0</a>.
+       Examples are from the <a href="https://datashare.is.ed.ac.uk/handle/10283/2651">VCTK corpus</a> licensed under the <a href="https://opendatacommons.org/licenses/by/1.0/">Open Data Commons Attribution License (ODC-By) v1.0</a>.
 
       </div>
       
@@ -53,12 +53,12 @@
         <tbody>
         <tr>
           <td align="center"> Input </td>
-          <td align="center"> Non_stream_gl_I3 </td>
-          <td align="center"> Non_stream_gl_I70 </td>
-          <td align="center"> Stream_gl_S4I4C2 </td>
-          <td align="center"> Lookahead_1 </td>
-          <td align="center"> Lookahead_12 </td>
-          <td align="center"> Causal </td>
+          <td align="center"> NonStreamGLi3 </td>
+          <td align="center"> NonStreamGLi70 </td>
+          <td align="center"> StreamGLs4i4c2 </td>
+          <td align="center"> StreamMelGANlookahead1 </td>
+          <td align="center"> NonStreamMelGANlookahead </td>
+          <td align="center"> StreamMelGANcausal0 </td>
         </tr>
 
 
@@ -275,7 +275,7 @@
       </div>
       &nbsp;
       <div>
-        In this section, we present examples of running Parrotron with different vocoders to convert atypical speech from a deaf speaker to fluent speech. We compare the ground truth audio file, together with non-streaming GL with 70 iterations (non stream gl I70), streaming GL (stream gl S4I4C2) and streaming neural vocoders with one hop lookahead (lookahead 1).
+        In this section, we present examples of running Parrotron with different vocoders to convert atypical speech from a deaf speaker to fluent speech. We compare the ground truth audio file, together with non-streaming GL with 70 iterations (NonStreamGLi70), streaming GL (StreamGLs4i4c2), and streaming neural vocoder with one hop lookahead (StreamMelGANlookahead1).
       </div>
       
       </br>
@@ -283,9 +283,9 @@
         <tbody>
         <tr>
           <td align="center"> Input </td>
-          <td align="center"> Non_stream_gl_I70 </td>
-          <td align="center"> Stream_gl_S4I4C2 </td>
-          <td align="center"> Lookahead_1 </td>
+          <td align="center"> NonStreamGLi70 </td>
+          <td align="center"> StreamGLs4i4c2 </td>
+          <td align="center"> StreamMelGANlookahead1 </td>
         </tr>
 
         <tr>
