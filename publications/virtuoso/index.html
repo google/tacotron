@@ -1,0 +1,605 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Virtuoso: Massive Multilingual Speech-Text Joint Semi-Supervised Learning for Text-To-Speech"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio samples from "Virtuoso: Massive Multilingual Speech-Text Joint Semi-Supervised Learning for Text-To-Speech"</h1>
+        </header>
+      </article>
+
+      <p><b>Paper:</b> Comming soon</p>
+      <p><b>Authors:</b> Takaaki Saeki, Heiga Zen, Zhehuai Chen, Nobuyuki Morioka, Gary Wang, Yu Zhang, Ankur Bapna, Andrew Rosenberg, Bhuvana Ramabhadran.
+      </p>
+
+      <p><b>Abstract:</b>
+        This paper proposes Virtuoso, a massively multilingual speech-text joint semi-supervised learning framework for text-to-speech synthesis (TTS) models. Existing multilingual TTS typically supports tens of languages, which are a small fraction of the thousands of languages in the world. One difficulty to scale multilingual TTS to hundreds of languages is collecting high-quality speech-text paired data in low-resource languages. This study extends Maestro, a speech-text joint pretraining framework for automatic speech recognition (ASR), to speech generation tasks. To train a TTS model from various types of speech and text data, different training schemes are designed to handle supervised (paired TTS and ASR data) and unsupervised (untranscribed speech and unspoken text) datasets. Experimental evaluation shows that 1) multilingual TTS models trained on Virtuoso can achieve significantly better naturalness and intelligibility than baseline ones in seen languages, and 2) they can synthesize reasonably intelligible and naturally sounding speech for unseen languages where no high-quality paired TTS data is available.
+      </p>
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+      <p><i>All the samples are in 16 kHz sampling. The synthetic speech samples are generated from predicted speech features using a WaveGrad [1] vocoder.</i></p>
+
+      <h2>Comparison of Virtuoso and Baseline methods</h2>
+
+      <p><i>Comparing different Virtuoso TTS models with baseline models: Tacotron2 [2] and Fine-tuning of Maestro [3]. The Tacotron2 is only trained on the paired TTS data. Maestro-Finetuning uses all the paired and unpaired data for the pretraining and then is finetuned only on the paired TTS data. The following Virtuoso model uses paired ASR and unpaired data for the joint pretraining. Refer to Table 1 of the paper.</i>
+
+      <p><b>Spanish</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/es/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/es/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/es/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/es/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Tamil</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/ta/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/ta/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/ta/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/ta/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Slovenian</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/sl/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/sl/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/sl/natural-3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Tacotron2-G-3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Maestro-Finetune-G-3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-Paired-3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-G-All-3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/sl/Virtuoso-B-LID-All-3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Bulgarian</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/bg/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/bg/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/bg/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/bg/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>English</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/en/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/en/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/en/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/en/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Turkish</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/tr/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/tr/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/tr/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/tr/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Thai</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/th/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Tacotron2-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Maestro-Finetune-G-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/th/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Tacotron2-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Maestro-Finetune-G-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/th/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/th/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Afrikaans</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Tacotron2 (Grapheme)</th><th>Maestro-Finetuning (Grapheme)</th><th>Virtuoso (Grapheme, Paired data)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/af/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Tacotron2-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Maestro-Finetune-G-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/af/natural-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Tacotron2-G-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Maestro-Finetune-G-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-Paired-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-All-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-B-LID-All-4.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/comparison/af/natural-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Tacotron2-G-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Maestro-Finetune-G-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-Paired-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-G-All-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/comparison/af/Virtuoso-B-LID-All-6.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Comparison of speaker ids for unseen languages</h2>
+
+      <p><i>This demonstration compares generated speech of an unseen language using a speaker from the similar language or an English speaker. While the left-hand side languages can be more similar in writing systems and phonetics, and thus can produce more intelligible speech. While the training data for English typically has a large amount of higher-hidelity training data, the synthetic speech tend to keep the prosody of the original language.</i></p>
+
+      <p><b>Tamil</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Hindi speaker</th><th>English speaker</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="3"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/ta/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hie/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hol/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/ta/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hie/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hol/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/ta/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hie/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/ta/hol/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Bulgarian</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Russian speaker</th><th>English speaker</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="3"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/bg/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/dfc/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/hol/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/bg/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/dfc/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/hol/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/bg/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/dfc/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/bg/hol/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Turkish</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>French speaker</th><th>English speaker</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="3"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/tr/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/cfe/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/hol/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/tr/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/cfe/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/hol/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/tr/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/cfe/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/tr/hol/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Afrikaans</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Dutch speaker</th><th>English speaker</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="3"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/af/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/dma/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/hol/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/af/natural-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/dma/Virtuoso-G-All-4.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/hol/Virtuoso-G-All-4.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="3"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/speaker/af/natural-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/dma/Virtuoso-G-All-6.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/speaker/af/hol/Virtuoso-G-All-6.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Ablation study on Virtuoso</h2>
+
+      <p><i>This demonstration compares all the Virtuoso methods. See Table 1 and 3 in the paper for the results.</i></p>
+
+      <p><b>Spanish</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Virtuoso (Grapheme, Paired TTS)</th><th>Virtuoso (Grapheme, Paired ASR+TTS)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Grapheme+LID, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/es/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-TTS-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-LID-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/es/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-TTS-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-LID-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/es/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-TTS-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-G-LID-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/es/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Tamil</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Virtuoso (Grapheme, Paired TTS)</th><th>Virtuoso (Grapheme, Paired ASR+TTS)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Grapheme+LID, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/ta/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-TTS-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-LID-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/ta/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-TTS-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-LID-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/ta/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-TTS-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-G-LID-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/ta/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Slovenian</b> (<u>Seen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Virtuoso (Grapheme, Paired TTS)</th><th>Virtuoso (Grapheme, Paired ASR+TTS)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Grapheme+LID, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/sl/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-TTS-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-LID-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/sl/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-TTS-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-LID-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/sl/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-TTS-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-G-LID-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/sl/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Bulgarian</b> (<u>Unseen</u>)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Natural</th><th>Virtuoso (Grapheme, Paired TTS)</th><th>Virtuoso (Grapheme, Paired ASR+TTS)</th><th>Virtuoso (Grapheme, All data)</th><th>Virtuoso (Grapheme+LID, All data)</th><th>Virtuoso (Byte+LID, All data)</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="6"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/bg/natural-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-TTS-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-Paired-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-LID-All-0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-B-LID-All-0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/bg/natural-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-TTS-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-Paired-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-LID-All-1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-B-LID-All-1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="6"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ablation/bg/natural-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-TTS-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-Paired-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-G-LID-All-2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/ablation/bg/Virtuoso-B-LID-All-2.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <h2>Reference</h2>
+    <ul style="list-style:none">
+      <li>[1] N. Chen, et al., "WaveGrad: Estimating Gradients for Waveform Generation," <i>Proc. ICLR</i>, 2021.</li>
+      <li>[2] J. Shen, et al., "Natural TTS Synthesis by Conditioning WaveNet on Mel Spectrogram Predictions," <i>Proc. ICASSP</i>, 2018.</li>
+      <li>[3] Z. Chen, et al., "MAESTRO: Matched Speech Text Representations through Modality Matching," <i>Proc. INTERSPEECH</i>, 2022.</li>
+      </ul>
+  </body>
+</html>
+<br>
