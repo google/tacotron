@@ -1,0 +1,338 @@
+<html>	
+  <head>	
+    <meta charset="UTF-8">	
+    <title>Audio samples from "Residual Adapters for Few-Shot Text-to-Speech Speaker Adaptation"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>	
+    <link rel="shortcut icon" href="../../images/taco.png">	
+  </head>	
+  <body>	
+    <div>	
+      <article>	
+        <header>	
+          <h1>Audio samples from "Residual Adapters for Few-Shot Text-to-Speech Speaker Adaptation"</h1>	
+        </header>	
+      </article>	
+
+      <p><b>Paper: </b><a href="https://arxiv.org/abs/2210.15868">arXiv</a></p>	
+      <p><b>Authors: </b>Nobuyuki Morioka, Heiga Zen, Nanxin Chen, Yu Zhang, Yifan Ding</p>	
+
+      <p><b>Abstract:</b>	
+        Adapting a neural text-to-speech (TTS) model to a target speaker typically involves fine-tuning most if not all of the parameters of a pretrained multi-speaker backbone model. However, serving hundreds of fine-tuned neural TTS models is expensive as each of them requires significant footprint and separate computational resources (e.g., accelerators, memory). To scale speaker adapted neural TTS voices to hundreds of speakers while preserving the naturalness and speaker similarity, this paper proposes a parameter-efficient few-shot speaker adaptation, where the backbone model is augmented with trainable lightweight modules called residual adapters. This architecture allows the backbone model to be shared across different target speakers. Experimental results show that the proposed approach can achieve competitive naturalness and speaker similarity compared to the full fine-tuning approaches, while requiring only ~0.1% of the backbone model parameters for each speaker.
+ </p>	
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>	
+
+      <h2>Evaluation 1: Residual adapters trained w/ and w/o backbone training data</h2>
+      <p><i>Random samples from the models listed in Table 1 in the paper.</i></p>	
+      <table>	
+        <thead>
+          <tr>
+            <th>Natural Speech</th><th>w/o backbone data</th><th>w/ backbone data</th>
+          </tr>	
+        </thead>	
+        <tbody>	
+          <tr><td colspan="2"><span>1: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval1/natural_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_f1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="2"><span>2: </span></td></tr>	
+          <tr>	
+          	<td><audio controls=""><source src="eval1/natural_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_f2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="2"><span>3: </span></td></tr>	
+          <tr>	
+          	<td><audio controls=""><source src="eval1/natural_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_f3.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="2"><span>4: </span></td></tr>	
+          <tr>	
+          	<td><audio controls=""><source src="eval1/natural_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_m1.wav" type="audio/wav"></audio></td>		
+          </tr>	
+          <tr><td colspan="2"><span>5: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval1/natural_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_m2.wav" type="audio/wav"></audio></td>		
+          </tr>	
+          <tr><td colspan="2"><span>6: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval1/natural_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b0_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval1/resadpt_b1_m3.wav" type="audio/wav"></audio></td>			
+          </tr>	
+        </tbody>	
+      </table>	
+
+
+      <h2>Evaluation 2: Effect of inserting different size residual adapters into the decoder and the variance adapters</h2>	
+      <p><i>Random samples from the models listed in Table 2 in the paper. 'rd' and 'rv' denote the bottleneck dimension of residual adapters in the decoder and the variance adapters respectively.</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Natural Speech</th><th>rd=16</th><th>rd=128</th><th>rd=16, rv=8</th><th>rd=128, rv=64</th>	
+          </tr>	
+        </thead>	
+        <tbody>	
+          <tr><td colspan="6"><span>1: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval2/natural_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_f1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_f1.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>2: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval2/natural_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_f2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_f2.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>3: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval2/natural_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_f3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_f3.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>4: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval2/natural_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_m1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_m1.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>5: </span></td></tr>	
+          <tr>
+            <td><audio controls=""><source src="eval2/natural_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_m2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_m2.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>6: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval2/natural_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd16_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_m3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval2/resadpt_rd16_rv8_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval2/resadpt_rd128_rv64_m3.wav" type="audio/wav"></audio></td>
+          </tr>	
+
+        </tbody>	
+      </table>
+      
+   		<h2>Evaluation 3: Effect of varying the amount of target speaker data</h2>	
+      <p><i>Random samples from the models listed in Table 3 in the paper.</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Natural Speech</th><th>30 min</th><th>5 min</th><th>1 min</th>
+          </tr>	
+        </thead>	
+        <tbody>	
+        	<tr><td colspan="6"><span>1: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval3/natural_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_f1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_f1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>2: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval3/natural_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_f2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_f2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>3: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval3/natural_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_f3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_f3.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>4: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval3/natural_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_m1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_m1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>5: </span></td></tr>	
+          <tr>
+            <td><audio controls=""><source src="eval3/natural_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_m2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_m2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>6: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval3/natural_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_30min_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval3/resadpt_5min_m3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval3/resadpt_1min_m3.wav" type="audio/wav"></audio></td>	
+          </tr>
+
+        </tbody>	
+      </table>	
+      
+   		<h2>Evaluation 4: Comparison against fine-tuning</h2>	
+      <p><i>Random samples from the models listed in Table 4 in the paper.</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Natural Speech</th><th>Residual Adapters</th><th>Fine-tuning (30 min + backbone data)</th><th>Fine-tuning (30 min)</th><th>Fine-tuning (5 min)</th><th>Fine-tuning (1 min)</th>
+          </tr>	
+        </thead>	
+        <tbody>	
+        	<tr><td colspan="6"><span>1: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval4/natural_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_f1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_f1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>2: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval4/natural_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_f2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_f2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>3: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval4/natural_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_f3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_f3.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>4: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval4/natural_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_m1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_m1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>5: </span></td></tr>	
+          <tr>
+            <td><audio controls=""><source src="eval4/natural_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_m2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_m2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>6: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval4/natural_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/resadpt_30min_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_bb_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_30min_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval4/ft_5min_m3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval4/ft_1min_m3.wav" type="audio/wav"></audio></td>	
+          </tr>
+
+        </tbody>	
+      </table>
+      
+      <h2>Evaluation 5: Comparison against zero-shot d-vector and few-shot fine-tuning baselines</h2>	
+      <p><i>Random samples from the models listed in Table 5 in the paper.</i></p>	
+      <table>	
+        <thead>	
+          <tr>	
+            <th>Natural Speech</th>
+            <th>Residual Adapters (1 min)</th>
+            <th>Residual Adapters (1 utterance)</th>
+            <th>Zero-shot d-vector (1 min)</th>
+            <th>Zero-shot d-vector (1 utterance)</th>
+            <th>Fine-tuning speaker embedding only<div>(1 min)</th>
+            <th>Fine-tuning speaker embedding only<div>(1 utterance)</th>
+          </tr>	
+        </thead>	
+        <tbody>	
+        	<tr><td colspan="6"><span>1: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval5/natural_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_f1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_f1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_f1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_f1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>2: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval5/natural_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_f2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_f2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_f2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_f2.wav" type="audio/wav"></audio></td>
+          </tr>	
+          <tr><td colspan="6"><span>3: </span></td></tr>	
+          <tr>	
+						<td><audio controls=""><source src="eval5/natural_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_f3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_f3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_f3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_f3.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>4: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval5/natural_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_m1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_m1.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_m1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_m1.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>5: </span></td></tr>	
+          <tr>
+            <td><audio controls=""><source src="eval5/natural_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_m2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_m2.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_m2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_m2.wav" type="audio/wav"></audio></td>	
+          </tr>	
+          <tr><td colspan="6"><span>6: </span></td></tr>	
+          <tr>	
+            <td><audio controls=""><source src="eval5/natural_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1min_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/resadpt_1utt_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/zeroshot_1min_m3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/zeroshot_1utt_m3.wav" type="audio/wav"></audio></td>	
+            <td><audio controls=""><source src="eval5/ft_1min_m3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="eval5/ft_1utt_m3.wav" type="audio/wav"></audio></td>	
+          </tr>
+
+        </tbody>	
+      </table>
+
+    </div>	
+  </body>	
+</html>	
