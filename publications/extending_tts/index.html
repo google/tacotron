@@ -1,0 +1,337 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Audio samples from "Extending Multilingual Speech Synthesis to 100+ Languages without Transcribed Data"</title>
+    <link rel="stylesheet" type="text/css" href="../../stylesheet.css"/>
+    <link rel="shortcut icon" href="../../images/taco.png">
+  </head>
+  <body>
+    <div>
+      <article>
+        <header>
+          <h1>Audio samples from "Extending Multilingual Speech Synthesis to 100+ Languages without Transcribed Data"</h1>
+        </header>
+      </article>
+
+      <p><b>Paper: </b>Coming soon</p>
+      <p><b>Authors:</b> Takaaki Saeki, Gary Wang, Nobuyuki Morioka, Isaac Elias, Kyle Kastner, Andrew Rosenberg, Bhuvana Ramabhadran, Heiga Zen, Françoise Beaufays, Hadar Shemtov.
+      </p>
+
+      <p><b>Abstract:</b>
+        Collecting high-quality studio recordings of audio is challenging, which limits the language coverage of text-to-speech (TTS) systems.This paper proposes a framework for scaling a multilingual TTS model to 100+ languages using found data without supervision. The proposed framework combines speech-text encoder pretraining, un-supervised training using untranscribed speech and unspoken text data sources, thereby leveraging massively multilingual joint speechand text representation learning. Without any transcribed speech in anew language, this TTS model can generate intelligible speech in >30 unseen languages (CER difference of &lt 10% to ground truth). With just 15 minutes of transcribed, found data, we can reduce the intelligibility difference to 1% or less from the ground-truth, and achievenaturalness scores that match the ground-truth in several languages.
+      </p>
+
+      <p><a href="../../index.html">Click here for more from the Tacotron team.</a></p>
+
+      <p><i>All the samples are in 16 kHz sampling.</i></p>
+
+      <h2>Selected <a href="https://huggingface.co/datasets/google/fleurs">FLEURS</a> Group B Languages</h2>
+
+      <p>Below are audio samples from Group B languages, where we compare across a few different settings.</p>
+
+      <p><ul>
+        <li><b>Ground truth</b>: Ground-truth audio for reference.</li>
+        <li><b>Baseline</b>: Baseline byte config including <b>all supervised</b> data in FLEURS Group B.</li>
+        <li><b>Zero-Shot</b>: Proposed model including <b>zero supervised</b> data in FLEURS Group B.</li>
+        <li><b>15-Min</b>: Proposed model including <b>15 minutes of supervised</b> data in FLEURS Group B.</li>
+        <li><b>Supervised</b>: Proposed model including <b>all supervised</b> data in FLEURS Group B.</li>
+      </ul></p>
+
+      <p><b>Spanish</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/es/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/es/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/es/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/es/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/es/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/es/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/es/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/es/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/es/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Zulu</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/zu/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/zu/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/zu/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/zu/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/zu/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/zu/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/zu/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/zu/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/zu/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Arabics</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ar/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ar/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ar/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ar/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ar/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ar/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ar/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ar/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ar/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Tamil</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ta/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ta/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ta/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ta/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ta/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ta/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/ta/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/ta/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/ta/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Uzbek</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/uz/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/uz/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/uz/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/uz/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/uz/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/uz/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/uz/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/uz/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/uz/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Icelandic</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/is/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/is/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/is/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/is/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/is/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/is/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/is/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/is/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/is/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><b>Javanese</b></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Ground Truth</th><th>Baseline</th><th>Zero-Shot</th><th>15-Min</th><th>Supervised</th>
+        </thead>
+        <tbody>
+          <tr><td colspan="5"><span>1:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/jv/gt_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/jv/oracle_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/zero_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/few_shot_0.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/oracle_0.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>2:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/jv/gt_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/jv/oracle_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/zero_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/few_shot_1.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/oracle_1.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>3:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/jv/gt_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/jv/oracle_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/zero_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/few_shot_2.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/oracle_2.wav" type="audio/wav"></audio></td>
+          </tr>
+          <tr><td colspan="5"><span>4:</span></td></tr>
+          <tr>
+            <td><audio controls=""><source src="wav/ground_truth/jv/gt_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_baseline/jv/oracle_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/zero_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/few_shot_3.wav" type="audio/wav"></audio></td>
+            <td><audio controls=""><source src="wav/byte_plabel/jv/oracle_3.wav" type="audio/wav"></audio></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </body>
+</html>
+<br>
