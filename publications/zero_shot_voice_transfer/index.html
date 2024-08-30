@@ -12,11 +12,13 @@
       </header>
     </article>
     <div>We present a zero-shot voice transfer (VT) module that can be easily plugged into a state-of-the-art TTS system to restore the voices of input speakers.
-        We include the following audio samples for our research blogpost.</div>
+        We include the following audio samples for our <a href="http://research.google/blog/restoring-speaker-voices-with-zero-shot-cross-lingual-voice-transfer-for-tts" target="_blank">research blogpost</a>.</div>
 
+    <br />
     <div>
       <h3>Zero-shot Examples using Typical Reference Speech</h3>
       <div>Below are zero-shot examples using typical reference speech, to simulate the scenario when the speaker's voice was recorded before any voice degradation occurred. we demonstrate the concept of zero-shot capability using samples from the VCTK corpus:</div>
+      <br />
       <table>
         <thead>
             <tr>
@@ -83,9 +85,11 @@
       </table>
     </div>
 
+    <br />
     <div>
         <h3>Cross-lingual Zero-shot Examples using Typical Reference Speech</h3>
         <div>We also evaluate the cross-lingual capability of our TTS zero-shot model on typical reference speech across six different languages, using English reference speakers from the VCTK corpus. The transcripts and their translations were automatically generated using Gemini:</div>
+        <br />
         <table>
           <thead>
               <tr>
@@ -183,28 +187,110 @@
               </tr>
               <tr>
                 <td>Speaker Similarity</td>
-                <td>85% ± 6.3%</td>
-                <td>76% ± 3.6%</td>
-                <td>62% ± 12.0%</td>
-                <td>75% ± 6.9%</td>
-                <td>70% ± 5.5%</td>
-                <td>74% ± 11.1%</td>
-                <td>70% ± 14.4%</td>
-                <td>70% ± 5.5%</td>
+                <td style="text-align: center;">85% ± 6.3%</td>
+                <td style="text-align: center;">76% ± 3.6%</td>
+                <td style="text-align: center;">62% ± 12.0%</td>
+                <td style="text-align: center;">75% ± 6.9%</td>
+                <td style="text-align: center;">70% ± 5.5%</td>
+                <td style="text-align: center;">74% ± 11.1%</td>
+                <td style="text-align: center;">70% ± 14.4%</td>
+                <td style="text-align: center;">70% ± 5.5%</td>
               </tr>
               <tr>
                 <td>MOS Naturalness</td>
-                <td>3.300 ± .29</td>
-                <td>3.621 ± .05</td>
-                <td>3.606 ± .06</td>
-                <td>4.058 ± .04</td>
-                <td>3.985 ± .04</td>
-                <td>4.242 ± .03</td>
-                <td>3.921 ± .05</td>
-                <td>3.616 ± .05</td>
+                <td style="text-align: center;">3.300 ± .29</td>
+                <td style="text-align: center;">3.621 ± .05</td>
+                <td style="text-align: center;">3.606 ± .06</td>
+                <td style="text-align: center;">4.058 ± .04</td>
+                <td style="text-align: center;">3.985 ± .04</td>
+                <td style="text-align: center;">4.242 ± .03</td>
+                <td style="text-align: center;">3.921 ± .05</td>
+                <td style="text-align: center;">3.616 ± .05</td>
               </tr>
             <tbody>
         </table>
+      </div>
+
+      <br />
+      <div>
+        <h3>Case study: Atypical Speech as a Reference</h3>
+      <div>We work with two Googlers Dimitri Kanevsky and Aubrie Lee to synthesize the videos below using only 12 seconds of Dimitri's atypical voice and 14 seconds of Aubrie's atypical voice as reference, respectively.</div>
+      <br />
+      <table>
+        <thead>
+            <tr>
+              <th>Participants</th><th>Original Videos</th><th>Videos with VT Outputs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dimitri Kanevsky</td>
+              <td><iframe src="https://www.youtube.com/embed/uxuzsopeF_4"></iframe></td>
+              <td><iframe src="https://www.youtube.com/embed/CzEIBIOoZRQ"></iframe></td>
+            </tr>
+            <tr>
+              <td>Aubrie Lee</td>
+              <td><iframe src="https://www.youtube.com/embed/tWe91OtUZls"></iframe></td>
+              <td><iframe src="https://www.youtube.com/embed/GREpePeEO2M"></iframe></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <br />
+        <div>We also test whether our model that makes use of the same atypical English reference speech from Dimitri and Aubrie can generalize and transfer their voice to other languages, given non-English text. </div>
+        <div>Below are VT outputs in six different languages for Dimitri (French, Spanish, Italian, Arabic, German, Russian):</div>
+        <br />
+        <table>
+            <tbody>
+              <tr>
+                <td><iframe src="https://www.youtube.com/embed/PWvon-uW8p4"></iframe></td>
+                <td><iframe src="https://www.youtube.com/embed/mndwMaMmIQk"></iframe></td> 
+                <td><iframe src="https://www.youtube.com/embed/JJEhA4EfS3s"></iframe></td> 
+              </tr>
+              <tr>
+                <td style="text-align: center;">French</td>
+                <td style="text-align: center;">Spanish</td>
+                <td style="text-align: center;">Italian</td>
+            </tr>
+              <tr>
+                <td><iframe src="https://www.youtube.com/embed/NW5YRz-pWxk"></iframe></td>
+                <td><iframe src="https://www.youtube.com/embed/0Af-NgVa0RI"></iframe></td> 
+                <td><iframe src="https://www.youtube.com/embed/lYn1MClif_U"></iframe></td>
+            </tr>
+            <tr>
+              <td style="text-align: center;">Arabic</td>
+              <td style="text-align: center;">German</td>
+              <td style="text-align: center;">Russian</td>
+          </tr>
+            </tbody>
+          </table>
+          <br />
+          <div>Below are VT outputs in six different languages for Aubrie (French, Spanish, Italian, Arabic, Hindi, Norwegian):</div>
+          <br />
+          <table>
+              <tbody>
+                <tr>
+                  <td><iframe src="https://www.youtube.com/embed/I7N9JXRVbmE"></iframe></td>
+                  <td><iframe src="https://www.youtube.com/embed/wmVP-Y7QAsM"></iframe></td> 
+                  <td><iframe src="https://www.youtube.com/embed/mVl2YUDRtfg"></iframe></td>
+                </tr>
+                <tr>
+                  <td style="text-align: center;">French</td>
+                  <td style="text-align: center;">Spanish</td>
+                  <td style="text-align: center;">Italian</td>
+              </tr>
+                <tr>
+                  <td><iframe src="https://www.youtube.com/embed/Vn5fzhViUvI"></iframe></td>
+                  <td><iframe src="https://www.youtube.com/embed/kSj4NTayEeY"></iframe></td> 
+                  <td><iframe src="https://www.youtube.com/embed/Al2poahZnb8"></iframe></td>
+              </tr>
+              <tr>
+                <td style="text-align: center;">Arabic</td>
+                <td style="text-align: center;">Hindi</td>
+                <td style="text-align: center;">Norwegian</td>
+            </tr>
+              </tbody>
+            </table>
       </div>
   </body>
 </html>
