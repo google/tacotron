@@ -12,7 +12,7 @@
       </header>
     </article>
     <div>We present a zero-shot voice transfer (VT) module that can be easily plugged into a state-of-the-art TTS system to restore the voices of input speakers.
-        We include the following audio samples for our <a href="http://research.google/blog/restoring-speaker-voices-with-zero-shot-cross-lingual-voice-transfer-for-tts" target="_blank">research blogpost</a>.</div>
+        We include the following audio samples for our <a href="http://research.google/blog/restoring-speaker-voices-with-zero-shot-cross-lingual-voice-transfer-for-tts" target="_blank">research blogpost</a>. Our paper will soon be available in Arxiv.</div>
 
     <br />
     <div>
@@ -22,64 +22,97 @@
       <table>
         <thead>
             <tr>
-              <th></th><th>Reference</th><th>TTS with Zero-shot VT</th>
+              <th></th><th>Reference</th><th>TTS with Zero-shot VT (VAE)</th><th>TTS with Zero-shot VT (SharedGST)</th><th>TTS with Zero-shot VT (MultiGST)</th><th>TTS with Zero-shot VT (SegmentGST)</th>
             </tr>
           </thead>
           <tbody>
             <tr>
                 <td>Female (P257)</td>
                 <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p257_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
                 <td>Male (P256)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/02_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/02_vctk_male_p256_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p256_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p256_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p256_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p256_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
                 <td>Female (P244)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/03_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/03_vctk_female_p244_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p244_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p244_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p244_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p244_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
                 <td>Male (P243)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/04_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/04_vctk_male_p243_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p243_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p243_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p243_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p243_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
                 <td>Female (P253)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/05_vctk_female_p253_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/05_vctk_female_p253_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p253_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p253_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p253_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p253_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p253_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
                 <td>Male (P285)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/06_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/06_vctk_male_p285_out.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p285_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p285_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p285_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p285_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
-                <td>Female (P228)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/07_vctk_female_p228_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/07_vctk_female_p228_out.mp3" type="audio/mpeg"></audio></td>
+                <td>Female (P231)</td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p231_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p231_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p231_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p231_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
-                <td>Male (P241)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/08_vctk_male_p241_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/08_vctk_male_p241_out.mp3" type="audio/mpeg"></audio></td>
+                <td>Male (P246)</td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p246_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p246_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p246_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p246_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p246_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
-                <td>Female (P236)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/09_vctk_female_p236_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/09_vctk_female_p236_out.mp3" type="audio/mpeg"></audio></td>
+                <td>Female (P282)</td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p282_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p282_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p282_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p282_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
-                <td>Male (P360)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/10_vctk_male_p360_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/10_vctk_male_p360_out.mp3" type="audio/mpeg"></audio></td>
+                <td>Male (P271)</td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p271_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p271_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p271_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p271_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_male_p271_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
             <tr>
-                <td>Female (P248)</td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/11_vctk_female_p248_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_zero_shot/11_vctk_female_p248_out.mp3" type="audio/mpeg"></audio></td>
+                <td>Female (P303)</td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p303_out_vae.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p303_out_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p303_out_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                <td><audio controls=""><source src="demos/vctk_zero_shot/01_vctk_female_p303_out_segment_gst.mp3" type="audio/mpeg"></audio></td>
             </tr>
           <tbody>
       </table>
@@ -89,6 +122,8 @@
     <div>
         <h3>Cross-lingual Zero-shot Examples using Typical Reference Speech</h3>
         <div>We also evaluate the cross-lingual capability of our TTS zero-shot model on typical reference speech across six different languages, using English reference speakers from the VCTK corpus. The transcripts and their translations were automatically generated using Gemini:</div>
+        <br />
+        <h3>Cross-lingual Zero-shot Examples on VAE</h3>
         <br />
         <table>
           <thead>
@@ -100,112 +135,559 @@
               <tr>
                   <td>Male (P246)</td>
                   <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ref.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_en.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_es.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_fr.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_de.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ar.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_cmn.mp3" type="audio/mpeg"></audio></td>
-                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Female (P303)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Female (P303)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Male (P256)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Male (P256)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Female (P244)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Female (P244)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Male (P243)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Male (P243)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Female (P231)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Female (P231)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Male (P285)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Male (P285)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
-                <td>Female (P282)</td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_en.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_es.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_fr.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_de.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ar.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_cmn.mp3" type="audio/mpeg"></audio></td>
-                <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ja.mp3" type="audio/mpeg"></audio></td>
+                  <td>Female (P282)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_en_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_cmn_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_es_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ar_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_fr_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ja_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_de_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_it_vae.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_hi_vae.mp3" type="audio/mpeg"></audio></td>
               </tr>
               <tr>
                 <td>Speaker Similarity</td>
-                <td style="text-align: center;">85% ± 6.3%</td>
-                <td style="text-align: center;">76% ± 3.6%</td>
-                <td style="text-align: center;">62% ± 12.0%</td>
-                <td style="text-align: center;">75% ± 6.9%</td>
-                <td style="text-align: center;">70% ± 5.5%</td>
-                <td style="text-align: center;">74% ± 11.1%</td>
-                <td style="text-align: center;">70% ± 14.4%</td>
-                <td style="text-align: center;">70% ± 5.5%</td>
+                <td style="text-align: center;">85% ± 6%</td>
+                <td style="text-align: center;">68% ± 4%</td>
+                <td style="text-align: center;">67% ± 14%</td>
+                <td style="text-align: center;">72% ± 7%</td>
+                <td style="text-align: center;">90% ± 7%</td>
+                <td style="text-align: center;">88% ± 5%</td>
+                <td style="text-align: center;">77% ± 5%</td>
+                <td style="text-align: center;">85% ± 6%</td>
+                <td style="text-align: center;">78% ± 6%</td>
+                <td style="text-align: center;">57% ± 6%</td>
               </tr>
               <tr>
                 <td>MOS Naturalness</td>
-                <td style="text-align: center;">3.300 ± .29</td>
-                <td style="text-align: center;">3.621 ± .05</td>
-                <td style="text-align: center;">3.606 ± .06</td>
-                <td style="text-align: center;">4.058 ± .04</td>
-                <td style="text-align: center;">3.985 ± .04</td>
-                <td style="text-align: center;">4.242 ± .03</td>
-                <td style="text-align: center;">3.921 ± .05</td>
-                <td style="text-align: center;">3.616 ± .05</td>
+                <td style="text-align: center;">3.3 ± .29</td>
+                <td style="text-align: center;">3.7 ± .04</td>
+                <td style="text-align: center;">3.7 ± .08</td>
+                <td style="text-align: center;">3.5 ± .05</td>
+                <td style="text-align: center;">4.2 ± .03</td>
+                <td style="text-align: center;">4.0 ± .03</td>
+                <td style="text-align: center;">3.8 ± .05</td>
+                <td style="text-align: center;">4.1 ± .04</td>
+                <td style="text-align: center;">3.6 ± .05</td>
+                <td style="text-align: center;">3.9 ± .04</td>
+              </tr>
+            <tbody>
+        </table>
+        <br />
+        <h3>Cross-lingual Zero-shot Examples on SharedGST</h3>
+        <br />
+        <table>
+          <thead>
+              <tr>
+                <th></th><th>Reference</th><th>English</th><th>Spanish</th><th>French</th><th>German</th><th>Arabic</th><th>Chinese Mandarin</th><th>Japanese</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Male (P246)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P303)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P256)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P244)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P243)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P231)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P285)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P282)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_en_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_cmn_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_es_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ar_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_fr_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ja_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_de_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_it_shared_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_hi_shared_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+              <tr>
+                <td>Speaker Similarity</td>
+                <td style="text-align: center;">85% ± 6%</td>
+                <td style="text-align: center;">48% ± 4%</td>
+                <td style="text-align: center;">70% ± 14%</td>
+                <td style="text-align: center;">65% ± 12%</td>
+                <td style="text-align: center;">90% ± 7%</td>
+                <td style="text-align: center;">86% ± 7%</td>
+                <td style="text-align: center;">68% ± 6%</td>
+                <td style="text-align: center;">69% ± 8%</td>
+                <td style="text-align: center;">72% ± 7%</td>
+                <td style="text-align: center;">38% ± 5%</td>
+              </tr>
+              <tr>
+                <td>MOS Naturalness</td>
+                <td style="text-align: center;">3.3 ± .29</td>
+                <td style="text-align: center;">3.6 ± .05</td>
+                <td style="text-align: center;">3.7 ± .06</td>
+                <td style="text-align: center;">3.8 ± .05</td>
+                <td style="text-align: center;">4.2 ± .03</td>
+                <td style="text-align: center;">4.3 ± .03</td>
+                <td style="text-align: center;">3.4 ± .06</td>
+                <td style="text-align: center;">4.1 ± .04</td>
+                <td style="text-align: center;">3.7 ± .05</td>
+                <td style="text-align: center;">4.1 ± .03</td>
+              </tr>
+            <tbody>
+        </table>
+        <br />
+        <h3>Cross-lingual Zero-shot Examples on MultiGST</h3>
+        <br />
+        <table>
+          <thead>
+              <tr>
+                <th></th><th>Reference</th><th>English</th><th>Spanish</th><th>French</th><th>German</th><th>Arabic</th><th>Chinese Mandarin</th><th>Japanese</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Male (P246)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P303)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P256)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P244)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P243)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P231)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P285)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P282)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_en_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_cmn_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_es_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ar_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_fr_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ja_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_de_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_it_multi_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_hi_multi_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                <td>Speaker Similarity</td>
+                <td style="text-align: center;">85% ± 6%</td>
+                <td style="text-align: center;">58% ± 4%</td>
+                <td style="text-align: center;">70% ± 14%</td>
+                <td style="text-align: center;">62% ± 12%</td>
+                <td style="text-align: center;">74% ± 11%</td>
+                <td style="text-align: center;">75% ± 7%</td>
+                <td style="text-align: center;">70% ± 6%</td>
+                <td style="text-align: center;">70% ± 6%</td>
+                <td style="text-align: center;">70% ± 6%</td>
+                <td style="text-align: center;">42% ± 6%</td>
+              </tr>
+              <tr>
+                <td>MOS Naturalness</td>
+                <td style="text-align: center;">3.3 ± .29</td>
+                <td style="text-align: center;">3.5 ± .05</td>
+                <td style="text-align: center;">3.9 ± .05</td>
+                <td style="text-align: center;">3.6 ± .06</td>
+                <td style="text-align: center;">4.2 ± .03</td>
+                <td style="text-align: center;">4.1 ± .04</td>
+                <td style="text-align: center;">3.6 ± .05</td>
+                <td style="text-align: center;">4.0 ± .04</td>
+                <td style="text-align: center;">3.6 ± .05</td>
+                <td style="text-align: center;">4.1 ± .04</td>
+              </tr>
+            <tbody>
+        </table>
+        <br />
+        <h3>Cross-lingual Zero-shot Examples on SegmentGST</h3>
+        <br />
+        <table>
+          <thead>
+              <tr>
+                <th></th><th>Reference</th><th>English</th><th>Spanish</th><th>French</th><th>German</th><th>Arabic</th><th>Chinese Mandarin</th><th>Japanese</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td>Male (P246)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/01_vctk_male_p246_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P303)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/02_vctk_female_p303_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P256)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/03_vctk_male_p256_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P244)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/04_vctk_female_p244_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P243)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/05_vctk_male_p243_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P231)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/06_vctk_female_p231_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Male (P285)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/07_vctk_male_p285_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                  <td>Female (P282)</td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ref.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_en_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_cmn_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_es_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ar_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_fr_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_ja_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_de_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_it_segment_gst.mp3" type="audio/mpeg"></audio></td>
+                  <td><audio controls=""><source src="demos/vctk_cross_lingual/08_vctk_female_p282_hi_segment_gst.mp3" type="audio/mpeg"></audio></td>
+              </tr>
+              <tr>
+                <td>Speaker Similarity</td>
+                <td style="text-align: center;">85% ± 6%</td>
+                <td style="text-align: center;">64% ± 4%</td>
+                <td style="text-align: center;">68% ± 15%</td>
+                <td style="text-align: center;">68% ± 14%</td>
+                <td style="text-align: center;">90% ± 6%</td>
+                <td style="text-align: center;">87% ± 5%</td>
+                <td style="text-align: center;">73% ± 5%</td>
+                <td style="text-align: center;">82% ± 6%</td>
+                <td style="text-align: center;">76% ± 6%</td>
+                <td style="text-align: center;">47% ± 6%</td>
+              </tr>
+              <tr>
+                <td>MOS Naturalness</td>
+                <td style="text-align: center;">3.3 ± .29</td>
+                <td style="text-align: center;">3.7 ± .05</td>
+                <td style="text-align: center;">3.9 ± .05</td>
+                <td style="text-align: center;">3.6 ± .04</td>
+                <td style="text-align: center;">4.2 ± .03</td>
+                <td style="text-align: center;">4.0 ± .03</td>
+                <td style="text-align: center;">3.7 ± .05</td>
+                <td style="text-align: center;">4.1 ± .04</td>
+                <td style="text-align: center;">3.7 ± .04</td>
+                <td style="text-align: center;">4.1 ± .04</td>
               </tr>
             <tbody>
         </table>
