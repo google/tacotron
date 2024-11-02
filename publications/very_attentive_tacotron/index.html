@@ -82,7 +82,7 @@
       </header>
     </article>
     <div align="center">
-      <video width="540" controls>
+      <video width="540" controls="">
         <source src="https://github.com/google/tacotron/raw/refs/heads/master/publications/very_attentive_tacotron/video/vat_demos.mp4">
       </video>
     </div>
@@ -91,8 +91,7 @@
     <div><p><b>Abstract:</b> Autoregressive (AR) Transformer-based sequence models are known to have difficulty generalizing to sequences longer than those seen during training. When applied to text-to-speech (TTS), these models tend to drop or repeat words or produce erratic output, especially for longer utterances. In this paper, we introduce enhancements aimed at AR Transformer-based encoder-decoder TTS systems that address these robustness and length generalization issues. Our approach uses an alignment mechanism to provide cross-attention operations with relative location information. The associated alignment position is learned as a latent property of the model via backprop and requires no external alignment information during training. While the approach is tailored to the monotonic nature of TTS input-output alignment, it is still able to benefit from the flexible modeling power of interleaved multi-head self and cross-attention operations. A system incorporating these improvements, which we call <i>Very Attentive Tacotron</i>, matches the naturalness and expressiveness of a baseline T5-based TTS system, while eliminating problems with repeated or dropped words and enabling generalization to any practical utterance length.</p></div>
     <p>This page contains a set of audio samples in support of the paper: it is suggested that the reader listen to the samples in conjunction with reading the paper.
     <b>All utterances were unseen during training.</b></p>
-    <p>
-    The systems being compared are:
+    <p>The systems being compared are:</p>
     <ul>
       <li><b>Ground Truth</b>: Human-produced audio</li>
       <li><b>Tacotron-GMMA</b>: Tacotron with GMM-based attention.
@@ -118,7 +117,6 @@
         </ul>
       </li>
     </ul>
-    </p>
 
     <p class="toc_title">Contents</p>
     <div id="toc_container">
@@ -132,18 +130,19 @@
     </ul>
     </div>
   <a name="test-set-samples:-lessac-voice"><h2>1. Test Set Samples: Lessac Voice</h2></a>
+
 <p>
 Examples of synthesized speech for models trained on an internal multi-speaker dataset,
 with the exception of Tacotron-GMMA which was trained only on the Lessac data.
 The utterances are taken from the collection of 885 utterances used in naturalness evaluations.
 Samples which deviate from the transcript are marked in <span style="color: red">red</span>.
 Note that:
+</p>
 <ul>
 <li>T5-TTS and VAT both produce produce expressive speech of high quality on short utterances without repeated words.</li>
 <li>Tacotron-GMMA lacks expressivity and sometimes produces low-quality speech.</li>
 </ul>
-<p/>
-</p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">Ground Truth</th>
 <th class="audio-header" style="width:100px">Tacotron-GMMA</th>
@@ -199,17 +198,18 @@ Note that:
       </tbody>
       </table>
 <a name="test-set-samples:-libritts"><h2>2. Test Set Samples: LibriTTS</h2></a>
+
 <p>
 Examples of synthesized speech for models trained on the clean-460 subset of LibriTTS.
 The utterances are taken from the collection of 900 utterances used in naturalness evaluations.
 Samples which deviate from the transcript are marked in <span style="color: red">red</span>.
 Note that:
+</p>
 <ul>
 <li>T5-TTS and VAT are similarly expressive on short utterances without repeated words.</li>
 <li>NAT lacks expressivity and often has highly robotic pacing.</li>
 </ul>
-<p/>
-</p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">Ground Truth</th>
 <th class="audio-header" style="width:100px">NAT</th>
@@ -257,19 +257,20 @@ Note that:
       </tbody>
       </table>
 <a name="generalization-to-long-utterances:-lessac-voice"><h2>3. Generalization to Long Utterances: Lessac Voice</h2></a>
+
 <p>
 Examples of synthesis of long utterances for models trained on the internal
 multi-speaker dataset.
 The maximum training lengths were 9.6 seconds and 192 phonemes.
 Samples which deviate from the transcript are marked in <span style="color: red">red</span>.
 Note that:
+</p>
 <ul>
 <li>T5-TTS deviates from the transcript for utterances longer than those on which it was trained.</li>
 <li>VAT adheres to the transcript, even for extremely long utterances.</li>
 <li>Tacotron-GMMA adheres to the transcript but lacks expressivity.</li>
 </ul>
-<p/>
-</p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">Tacotron-GMMA</th>
 <th class="audio-header" style="width:100px">T5-TTS</th>
@@ -308,18 +309,19 @@ Note that:
       </tbody>
       </table>
 <a name="generalization-to-long-utterances:-libritts"><h2>4. Generalization to Long Utterances: LibriTTS</h2></a>
+
 <p>
 Examples of synthesis of long utterances for models trained on LibriTTS.
 The maximum training lengths were 9.6 seconds and 192 phonemes.
 Samples which deviate from the transcript are marked in <span style="color: red">red</span>.
 Note that:
+</p>
 <ul>
 <li>T5-TTS deviates from the transcript for utterances longer than those on which it was trained.</li>
 <li>VAT adheres to the transcript, even for extremely long utterances.</li>
 <li>NAT adheres to the transcript but lacks expressivity and often has robotic pacing.</li>
 </ul>
-<p/>
-</p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">NAT</th>
 <th class="audio-header" style="width:100px">T5-TTS</th>
@@ -358,6 +360,7 @@ Note that:
       </tbody>
       </table>
 <a name="repeated-words"><h2>5. Repeated Words</h2></a>
+
 <p>
 Examples of synthesis of utterances containing repeated words for models trained on the
 internal multi-speaker dataset.
@@ -365,12 +368,12 @@ Samples which deviate from the transcript are marked in <span style="color: red"
 The number of occurrences of the repeated word in the synthesized audio is indicated
 next to the play button.
 Note that:
+</p>
 <ul>
 <li>T5-TTS deviates from the transcript for utterances with repeated words.</li>
 <li>VAT adheres to the transcript, even for utterances with many repeated words.</li>
 </ul>
-<p/>
-</p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">T5-TTS</th>
 <th class="audio-header" style="width:100px">VAT (proposed)</th></tr></thead>
@@ -448,11 +451,12 @@ Note that:
       </tbody>
       </table>
 <a name="additional-speakers:-internal-multi-speaker-dataset"><h2>6. Additional Speakers: Internal Multi-speaker Dataset</h2></a>
+
 <p>
 Examples of synthesized speech from additional speakers for the T5-TTS and VAT models in section 1.
 The utterances are taken from a held-out subset of the internal multi-speaker dataset.
-<p/>
 </p>
+
       <table>
         <thead><tr><th style="text-align:left">Text</th><th class="audio-header" style="width:100px">Ground Truth</th>
 <th class="audio-header" style="width:100px">T5-TTS</th>
