@@ -1,1 +1,826 @@
-Placeholder.
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Long-Form Speech Generation with Spoken Language Models</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="helper.js" defer></script>
+    <style>
+      td {
+        vertical-align: middle;
+        text-align: center;
+      }
+      audio {
+        width: 15vw; /* Reduced width to fit multiple columns */
+        min-width: 80px;
+        max-width: 150px;
+      }
+      .transcription {
+        font-size: 0.75rem; /* Smaller transcription font */
+        font-style: italic;
+        text-align: left; 
+      }
+      table {
+        table-layout: fixed; /* Ensures columns are of fixed width */
+        width: 100%;
+      }
+      th, td {
+        text-align: center;
+        <!-- overflow: hidden; -->
+        white-space: normal; /* Allow line breaks in cells */
+      }
+      .noise {
+          font-style: italic;
+          font-weight: bold;
+          color: #333333;
+      }
+      .more-speech {
+          font-style: italic;
+          font-weight: bold;
+          color: #333333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+      <div class="text-center">
+        <h1>Long-Form Speech Generation with Spoken Language Models</h1>
+        <br/>
+        <p class="fw-bold mb-0" style="font-size: 14pt">
+          Se Jin Park<sup>2,*,&dagger;</sup>&nbsp;&nbsp;&nbsp;&nbsp;Julian Salazar<sup>1,*</sup><br/>Aren Jansen<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;Keisuke Kinoshita<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;Yong Man Ro<sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;RJ Skerry-Ryan<sup>1</sup>
+        </p>
+        <p class="fst-italic">1: Google DeepMind (GDM)&nbsp;&nbsp;&nbsp;&nbsp;2: IVLLab, KAIST&nbsp;&nbsp;&nbsp;&nbsp;*: primary contributors&nbsp;&nbsp;&nbsp;&nbsp;&dagger;: work done as an intern at GDM</p>
+        <p class="lead fw-bold">
+          <a
+            href=""
+            class="border-white bg-white fw-bold" style="font-size: 14pt"
+            >arXiv (paper)</a
+          >
+          &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            href="https://github.com/google-deepmind/librispeech-long"
+            class="border-white bg-white fw-bold" style="font-size: 14pt"
+            >LibriSpeech-Long (dataset)</a
+          >
+          &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            href="mailto:jinny960812@kaist.ac.kr,julsal@google.com"
+            class="border-white bg-white fw-bold" style="font-size: 14pt"
+            >contact us</a
+          >
+        </p>
+      </div>
+
+      <p>Our work makes initial progress on naturalistic, audio-native, long-form speech generation:
+        <ul>
+          <li>We introduce <strong>SpeechSSM</strong>, the <strong>first spoken language model for long-form speech</strong>. Our 2B model:</li>
+          <ul>
+            <li>produces speech <strong>textlessly and in constant memory</strong>, for <strong>unbounded real-time generation</strong>;</li>
+            <li>demonstrates <strong>generative length extrapolation</strong>, e.g. 4 min. in training to 16 min;</li>
+            <li>can be trained for either read speech or <strong>extemporaneous speech (SpeechSSM-X)</strong>.</li>
+          </ul>
+          <li>We define <strong>evaluations for long-form speech continuation</strong>, from time-stratified evaluations to modern NLG metrics like LLM-as-judge.</li>
+          <li>We release <strong>LibriSpeech-Long</strong>, a 3-4min reformat of <a href="https://www.openslr.org/12">LibriSpeech dev+test sets</a> for future long-form speech processing research.</li>
+        </ul>
+      </p>
+      <p><em>The associated preprint is a work in progress; results below may be subject to change.</em></p>
+      <div class="text-center">
+        <img width="500px" src="figures/supported-lengths.png" alt="Supported lengths of spoken LMs in previous works versus ours." class="img-fluid" width="800" >
+      </div>
+      <br>
+      <p><strong>No text is used during finetuning, prompting, or generation.</strong> <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Model</th>
+            <th style="width: 25%;">Prompt</th>
+            <th style="width: 40%;">Resynthesized Prompt + Speech Continuation</th>
+            <th style="width: 10%;">Transcript</th>
+          </tr>
+        </thead>
+          <!-- Repeat for additional samples -->
+          <tr>
+            <td>
+              <strong>SpeechSSM, 4min ver. (2B)</strong><br>
+              trained on LibriLight (60k hours)<br>
+              read speech (audio-only)<br>
+              <u>max training length: 4min</u>
+            </td>
+            <td>
+              <audio controls  style="width: 250px; max-width: 250px;" src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"></audio>
+              <div class="transcription">From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their</div>
+            </td>
+            <td>
+              <div>
+                <audio controls style="width: 400px; max-width: 400px;">
+                  <source src="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_16min.mp3" type="audio/wav">
+                </audio>
+                <div class="transcription">
+                  From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their subsequent life, memory of poverty kindling the anger of the judge. Hairy, staining clothes of brothers, rum slaving sisterly and dear children in a pitiless passion. The white spots and sober face and rough, hard-mannered features, but wealth of evidence to decide. This distress would not be terrible. <span class="more-speech">(more speech…)</span>
+              </div>
+            </td>
+            <td>
+              <a target="_blank" rel="noopener noreferrer" href="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_16min.txt">.txt file</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>SpeechSSM-X (2B)</strong><br>
+              trained on 200k hours<br>
+              extemporaneous speech (audio-only)
+            </td>
+            <td>
+              <audio controls style="width: 250px; max-width: 250px;" src="audio_samples/extemporaneous/example1_prompt.mp3"></audio>
+              <div class="transcription">and his, uh, younger half-sister, but she, so she just turned, well, not just, but she's 11 and a half</div>
+            </td>
+            <td>
+              <div>
+                <audio controls style="width: 400px; max-width: 400px;" src="audio_samples/extemporaneous/example1.mp3"></audio>
+                <div class="transcription">and his, uh, younger half-sister,
+                  but she, so she just turned, well, not just, but she's 11 and a half, and then she's, the pants are too much for him.
+                  She said he minds her about stepping back, so she's going to try to turn them back and get it.
+                  Um, but definitely, he's not alone.
+                  And yet, this thing goes through someone's only job as a nervous <span class="more-speech">(more speech…)</span>
+              </div>
+            </td>
+            <td>
+              <a target="_blank" rel="noopener noreferrer" href="audio_samples/extemporaneous/example1.gemini-1.5-pro-002.txt">.txt file</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>SpeechSSM-X (2B)</strong><br>
+              trained on 200k hours<br>
+              extemporaneous speech (audio-only)
+            </td>
+            <td>
+              <audio controls style="width: 250px; max-width: 250px;" src="audio_samples/extemporaneous/example2_prompt.mp3"></audio>
+              <div class="transcription">Um, but when you're so when you're playing against something like that, you know,</div>
+            </td>
+            <td>
+              <div>
+                <audio controls style="width: 400px; max-width: 400px;" src="audio_samples/extemporaneous/example2.mp3"></audio>
+                <div class="transcription">Um, but when you're so when you're playing against something like that, you know,
+                  you know, you know, that you, you know, you'll be able to play on something like this.
+                  Um, the representation of the Senate, or a social dispute, or a committee, uh, you know, or the DOJ, or or whatever. They, they, they were lazy.
+                  You know, lazier than some of the the other players, uh, just because you want something like that. <span class="more-speech">(more speech…)</span>
+              </div>
+            </td>
+            <td>
+              <a target="_blank" rel="noopener noreferrer" href="audio_samples/extemporaneous/example2.gemini-1.5-pro-002.txt">.txt file</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+    </div>
+    
+
+    <!-- Section for SpeechSSM System Architecture -->
+    <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+      <h3>System Overview of SpeechSSM</h3>
+      <p><i>Left</i>: A causally-masked hybrid state-space model (Griffin) is trained with an LM objective on semantic tokens (USM-v2) encoded via overlapping fixed-size windows. <i>Right</i>: A non-autoregressive synthesizer (SoundStorm) converts overlapping fixed-size windows of semantic tokens to the acoustic tokens of a neural codec (SoundStream) in a speaker-conditioned manner.</p>
+      <!-- Placeholder for System Architecture Diagram -->
+      <div class="text-center">
+        <img src="figures/SpeechSSM.png" alt="SpeechSSM System Architecture Diagram" class="img-fluid" width="800" >
+      </div>
+      <style>
+        img {
+          image-rendering: optimizeQuality; /* Enhances the sharpness and quality of the image */
+        }
+      </style>
+    </div>
+
+    <!-- Template for each section -->
+    <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+      <h3>LibriSpeech test-clean 10s continuation</h3>
+      <ul>
+        <li><strong>Ground Truth:</strong> 10s from the original LibriSpeech test-clean set.</li>
+        <li><strong>Others, Ours:</strong> initial 3s are resynthesized, then the audio is continued to 10s.</li>
+      </ul>
+      <p><strong>No text is used during prompting or generation.</strong> Only Spirit LM uses text during finetuning. <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style="border-right-width: 1px;" rowspan="2">Ground Truth</th>
+              <th colspan="4">Others</th>
+              <th style="border-left-width: 1px;" colspan="2">Ours</th>
+            </tr>
+            <tr>
+              <th>GSLM</th>
+              <th>TWIST-1.3B</th>
+              <th>TWIST-7B</th>
+              <th>Spirit LM Expressive (7B)</th>
+              <th style="border-left-width: 1px;">SpeechTransformer (2B)</th>
+              <th>SpeechSSM (2B)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row template for each sample -->
+            <tr>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gt.wav"></audio>
+                <div class="transcription">He reached up among the branches and began to pick the sweet, insipid fruit.  Long, ivory-colored berries tipped with faint pink, like white coral that
+                </div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gslm.wav"></audio>
+                <div class="transcription">He reached off among the branches and began to pick all the old paved wooden staircase to see what he wanted. Molly had come to a station</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist1.3b.wav"></audio>
+                <div class="transcription">He reached up among the branches and began to pick out what a close cut he was.  He watched the movement moving and he knew the slope of an ice-filled without under the brick.
+                </div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist7b.wav"></audio>
+                <div class="transcription">He reached up among the branches and began to pick the hardest pieces of seaweed he could find. On the way down the tree he finished a large piece and put it in his pocket.
+                </div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_spiritlm.wav"></audio>
+                <div class="transcription">He reached up among the branches and began to pick poppies and rose briars to gather them in abundantly, for he loved planting flowers and called himself an already gardener.
+                </div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechtransformer.wav""></audio>
+                <div class="transcription">He reached up among the branches and began to pick young roses, binding and attaching them with the slender branches peering worthworthly like a shining swat.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechssm.wav"></audio>
+                <div class="transcription">He reached up among the branches and began to pick the dry branches from the weeds.  And this went on in his mind all the day long. Although he did not get to</div>
+              </td>
+            </tr>
+            <!-- Add more rows as needed -->
+            <tr>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gt.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly and to spread abroad its widening tail.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gslm.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the pieces of the glove. He would have done, and he was glad, and threw the glove over it. But the glove—but—</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist1.3b.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the pale faces of the stars than the light begins to fill again. The torch lights, the shadows, the white form.
+                </div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist7b.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the pale little face the child had left to his charge. The poor stricken face bent over her, and never lost its expression.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_spiritlm.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the pastry cook now, and she was still seemed receiving some substance from the fire. Not all in her posture but something that was fascinating like a.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechtransformer.wav""></audio>
+                <div class="transcription">The dull light fell more faintly upon the page as the interest with which he taut the old bedclothes. He held the paper slightly straight as if there were to be employed on the</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechssm.wav"></audio>
+                <div class="transcription">The dull light fell more faintly upon the pavements than I ever saw that morning. And when I had finished, the entire city was in a blaze.</div>
+              </td>
+            </tr>
+            <!-- Add more rows as needed -->
+            <tr>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gt.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman, as she watched the growth and the beauty that became every day more brilliant, and the intelligence that threw its quivering sunshine,</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gslm.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman as she noticed her neighbour to be a beautiful boy and a kind-hearted proverb with all party clothing company.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist1.3b.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman and the parsing spirit, that she was no third person, neither quite conscious of what might be affected and intruded,</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist7b.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman, and to the good man who was sitting with his eyes turned up towards Heaven, that the room where a great man had wept was in this house.</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_spiritlm.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman, as she laid away the hair now turned so long by that pocketful of blushes, to feel her pocket and gratefully for the unremented, but</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechtransformer.wav""></audio>
+                <div class="transcription">How strange it seemed to the sad woman as she saw Anne Boleyn marching from one of the finest services of the castle and coming with a green scarf and streamer</div>
+              </td>
+              <td>
+                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechssm.wav"></audio>
+                <div class="transcription">How strange it seemed to the sad woman as she sat waiting with a long scrutiny and one eager little hand, with a face which was almost as bright as the sun itself.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- LibriSpeech-Long 4min continuation -->
+    <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+      <h3>LibriSpeech-Long test-clean 4min continuation</h3>
+      <ul>
+        <li><strong>Prompt:</strong> initial 10s from the proposed LibriSpeech-Long's test-clean.</li>
+        <li><strong>Models:</strong> initial 10s are resynthesized, then the audio is continued to 4min.</li>
+        <li><strong>Ground Truth:</strong> the ground truth continuation (up to 4min) from the LibriSpeech-Long set.</li>
+      </ul>
+      <p><strong>No text is used during prompting or generation.</strong> Only Spirit LM uses text during finetuning. <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
+      <!-- Table for a single sample -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="width: 30%;">Prompt</th>
+            <th style="width: 70%;">Generated Audio and Transcripts (including the prompt)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row for sample 1 -->
+          <tr>
+            <!-- First Column: Prompt -->
+            <td>
+              <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_4970_29093_29093_0000_0:0_gt.wav"></audio>
+              <div class="transcription">"Oh, it's easy enough to make a fortune," Henry said.<br>
+                "It seems to be easier than it is, I begin to think," replied Philip.<br></div>
+            </td>
+
+            <!-- Second Column: Generated Results -->
+            <td>
+              <!-- GSLM -->
+              <div>
+                <div class="subheader"><strong>GSLM</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_gslm.wav"></audio>
+                <div class="transcription"> Oh, it’s easy enough to make a fortune. Henry said. It seems to be easier than it is, I begin to think.
+                  Perhaps I’d fill up. Well, said the other. <span class="noise">[Noise]</span> <br> Mother. I’d like to see how the grass is taken off.
+                  I mustn’t say that so, said the other, and this poor fellow loves me. <br> And before he could speak broke Molly’s 
+                  <span class="noise">[Noise]</span>.<br>
+                  She had to think of it, and then, perhaps, an actual intrusion. She had to go back to herself.
+                  Only now it would bring her immense satisfaction. That her eyes were dim, and her eyes were bright and sparkling and bright.
+                  And Love and Pleasure loved her. But there was no time to lose, and she went <span class="noise">[Noise]</span> <br> on in an unbroken 
+                  voice and said, “I’m going to church and tell Mr. Parker how to convey his letters to do a Saturday afternoon to his wor-” 
+                  <span class="noise">[Noise]</span> <br> and something downtown. Don’t at first call them to ask you Susan.<br>
+                  <span class="more-speech">(more speech...)<br></span> <span class="noise">[Noise]</span> Though I am murderous.
+                  </div>
+              </div>
+              <hr class="divider" />
+              <!-- TWIST-1.3B -->
+              <div>
+                <div class="subheader"><strong>TWIST-1.3B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_twist1.3b.wav"></audio>
+                <div class="transcription"> Oh, it’s easy enough to make a fortune, Henry said. It seems to be easier than it is. I’m beginning to think, replied Philip.<br>
+                  Well, it wasn’t easy enough to make a fortune. You’re mistaken. I meant it. But it’s a very good word, said Henry.<br>
+                  I’m glad you paid me. I think so. Oh, what was it to you? Was it to Philip? No. It was to me? It really wasn’t. Was what you meant it?<br>
+                  In making fortunes, making fortunes master all five, and five times a star wise. I think and so brings us sweet and lances to suffice 
+                  <span class="noise">[Noise]</span><br>
+                  Thank you. Though, in fact today, we are hearing about this situation and addressing the qualifier deputy transport committee.<br>
+                  There is a need for the development of a plan for collaboration with the public and with those people to add value towards the FDA 
+                  and the contribution of late fighters for the EU white and devised because of pressures for 
+                  <span class="noise">[Noise]</span><br>
+                  <span class="more-speech">(more speech...)</span><br>
+                  <span class="noise">[Noise]</span><br></div>
+              </div>
+              <hr class="divider" />
+              <!-- TWIST-7B -->
+              <div>
+                <div class="subheader"><strong>TWIST-7B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_twist7b.wav"></audio>
+                <div class="transcription"> "For it easy enough to make a fortune," Henry said, "It seems to be easier than it is."  
+                  "I begin to think," replied Philip. "Well, we've already begun to think," said Henry Lennox,  
+                  "Whoever says we can ever think right, never draws right."  
+                  <span class="noise">[Noise]</span><br>  
+                  "You bet." "Well, I'm agreed with Henry," said Philip, "But I suppose I had better take his advice  
+                  than his word, and tell them to begin now."  
+                  "What is your story, Henry?" interrupted Philip. "What is yours?"  
+                  "Here are some circular sort of railing, which I wore to my father perhaps."  
+                  Philip repeated, "I may not be the kind of man you think me, but if you think me a good lad, I'll accept it willingly.  
+                  If you don't think me good, I'll write Sir Christopher, I'll tell the honour with my life, for if my lad is not a handsome scholar,  
+                  he gives a raging fit, and I am with him."  
+                  "I meant always had some twist in me. That diseased me and you can't be saucy with it."  
+                  "I don't know Christopher, but if there is a way to meet him, I'll set him fast and furious.  
+                  You don't know what he's capable of and I'm going to stick to him."  
+                  "The cat, I've told the Recollector he's worse than the poorest in his life.  
+                  Surely he's better than the poorest, and in truth he come to this, but I can't help you that."  
+                  "Carp rates a piece, and none of you are comparisons of your sister and me." "They're very peculiar."  
+                  "I don't think Emma understands you now." "The little pleasing side, something, I can't love the pill takes too.  
+                  They get to hear and the mistake. I never find it better, feel told, but nobody can, and say 'You look splendid and that  
+                  <span class="noise">[Noise]</span><br>  
+                  here's one of those absolutely ridiculous things that, that just annoyed me.  
+                  And this is a game that is confusing at times.  
+                  But this is a game that is built around a few key players to interesting extents, and is not geared towards specific powers.  
+                  And if 2016 you win this game, there is going to be no doubt that you are going to be faced with a two game lead at all, at all costs,<br>  
+                  <span class="more-speech">(more speech…)</span></div>
+              </div>
+              <hr class="divider" />
+              <!-- Spirit LM -->
+              <div>
+                <div class="subheader"><strong>Spirit LM Expressive (7B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_spiritlm.wav"></audio>
+                <div class="transcription">Oh, it’s easy enough to make a fortune. Henry said. It seems to be easier than it is, I begin to think. replied Philip. Well, you’ll see. said his brother, getting in his hat and coat. <br>
+                  Now here’s the second cup. <br>
+                  Here’s the second cup, unless you’d bear, take it. Huh. <br>
+                  Okay, pay five helper. <br>
+                  Go on, set down now, and now, this time, and don’t say is here. Well. <br>
+                  Depend on yourself. Alright. Here for quick off, two pence. <br>
+                  And with the thrust of his waist, to hasten his way, quick, he went off. <br>
+                  But then he’ll come back, top into again, well much to get back, Philip. <br>
+                  He filled the cup he was thought, he felt little cup, with much made thick thought, from bra. Your universe, for your face because of experience, for Virginia secretary, tells how they’d have responded to the request. <br>
+                  Well, the med director is, is it coming from fifty thousand students, and used the one and a half million dollars of funding for Confederate meets, lost war, urgent ascendancy, in possum hospital, over fourteen days, preparing for assemble, and questions for University of Momperson, Massachusetts, Medford Health and Medical Research and vulnerable training. <br>
+                  And we’ve been trying to have mock epic of any violent programs since 2017. Their for university and transfer program. For the simple part, freshly from droppin’. <br>
+                  Great. Possible photograph from 
+                  <br><span class="more-speech">(more speech…)</span> <br>
+                  This is PTSD. This likes me. This is great. This is great. This is great. This is what. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is great. This is meant. This is great. This is great. This is great. This is great. This is great. This is it. This is great. This is great. This is great. This is it. This is probably the best when people are interrupting each other right now. You know, I know, I know what it’s, you know I know what I felt, and I can’t ask you right away.
+                  <br><span class="more-speech">(more speech…)</span> <br>
+                  It’s going to be. It’s going to be. It’s going to be. It’s going to be. You can see it tonight. It’s going to be. It’s going to be. So freaking. So fun. So fricking fun. So fun. So fricking fun. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking. So fricking.</div>
+              </div>
+              <hr class="divider" />
+              <!-- SpeechTransformer -->
+              <div>
+                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_speechtransformer.wav"></audio>
+                <div class="transcription">"Oh, it’s easy enough to make a fortune." Henry said.<br>
+                  "It seems to be easier than it is, I begin to think," replied Philip.<br>
+                  "Well, that's what a Monty is built, but what does bring about what does, Henry, forty years since, Montem's post office, I may say, some fifteen millions strong, but it only gives you a section jargon, out of that Tum-um-Monte's un get, has 800 million pounds as the total price." <br><span class="more-speech">(more speech…)</span><br>
+                  I made one, two, three, and you, am I made to pass? Mr. Lombrosia, armed with Fairlie, mixed-down silk, I'm making a second bushel from a pulpit carried on my sledge. I will add to that a similar book, the whole of it alive, on the back.<br>
+                  Iaroma. Patino himself has written this book.<br>
+                  Wait a while, trim the main cover of the book to enclose it, and you shall cleanse the Tibetan's hair, a wondrous wave lead, in all its synthetics, Ernest. It was first made hideous with portrait paint, and civilian work in Florence, foolishly overlaid with marble of dishevelled end of James's times, or, which is more, of an aesthetic some shire nurse. Mr. Johan ordered it down to the finish. "That's too bad," he said, "you practically always go to sleep."<br>
+                  This book is now to be completed on the 30th of November. As for the future, make your own prices during the time. Henry at once burst out laughing.<br>
+                  "I did think of the typical pull, and then one is the typist," said Montem. "Isn't enough eel. But every afternoon in December feels the pulse, or disappointment of the evening" <br><span class="more-speech">(more speech…)</span><br>
+                  Chapter 9.<br>
+                  I had a dull, premeditated dream. We were free women with fleecy hair all over. Underclothing had a tired taste. It obscured the beauty of the impending calamity. Hollis had not shot himself this morning, but I had located him on the second floor of the gallery hallway. We got our hands full, and that showed, to clear the scene, the opening of the venture.<br>
+                  "By the way, Hollis," said Ernest, stumbling into my automobile, "Have you explained all this?"<br>
+                  "It it means that if I were to marry you, you'd have to own it better than poor Hollis like this. I I'm a bachelor, you know. We must just wake New York with a cleared house now."
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- SpeechSSM -->
+              <div>
+                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_speechssm.wav"></audio>
+                <div class="transcription">"Oh, it's easy enough to make a fortune," Henry said.<br>
+                  "It seems to be easier than it is, I begin to think," replied Philip.<br>
+                  "Well, if you've got your fortune in your head, it's not that yet," Philip said. "But you needn't be afraid of a Desert Mountain, or a Rosalind Coral Mountain, or with your name in the book, you know. When you mention that fortune, your head will get disturbed, and you'll find you have all sorts of pictures which give you a dinner time."<br>
+                  There was no telling what they had disturbed the day before. Philip, who had a tendency to see the failures of travel with a good deal of ambition, and a perfectly happy way, too, moved over to the gate.<br>
+                  The great buildings resembled the pile of beer, with the little river fronts hanging down in length before them. The weather temperature also, was very transversally clear. It would seem as if Philip had laid out a pair of scissors, and a little box, and tried to pull the panel and make money. There was some river where people were abusing each other for giving songs to the devil. And such a body of music had been given by Horace Barrows, who had come in from the world of Grossi and Tortel, to sing wonderful songs. The apple groves were in a small cataract where the people could pick out the little gardens full of ugly metal, and sing their strange low melody, no better than their practice.<br>
+                  "I don't think there's the nearest aerial to the traveling song to do," said Philip.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  It was four o'clock, when Pierre called Prince Albert and explained what had happened. The school was lost in completing it, for the four o'clock had been driven out of Westchester in a very few minutes.<br>
+                  At last Philip was exhausted. He didn't hear a word, but entered the coach and was driven by Prince Albert into the street. "I have some news to discuss. Captain Kidd will come for you presently," was the cordial response of the Princess Maria Theresa, who was still in her green satin. They all talked gallantly, and Philip believed that it was a genuine disaster.<br>
+                  "They would have to take him for supper, and Mr. Phineas, I suppose you wanted to join the sport. I told you he was a handsome fellow," said Philip smiling frankly at the boy.<br><span class="more-speech">(more speech…)</span><br>
+                  So Philip and Princess Maria went to look for him in the Dragon Springs garden, and there most of the guests were gone. Philip was terribly excited.<br>
+                  "They must get some of the guests in the kitchen," exclaimed the guests, selecting a bright fire in the bright, sunny spot. Philip had never felt so happy in his life before.<br>
+                  "Did you hear about the Dragon Springs?" he asked, after a pause.<br>
+                  "Yes, they say that when they were strong enough, the famous Albanians, British and Germans, were worthy."
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- Ground Truth -->
+              <div>
+                <div class="subheader"><strong>Ground Truth</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_gt.wav"></audio>
+                <div class="transcription">"Oh, it's easy enough to make a fortune," Henry said.<br>
+                  "It seems to be easier than it is, I begin to think," replied Philip.<br>
+                  "Well, why don't you go into something? You'll never dig it out of the Astor Library." <br>
+              
+                  To the young American, here or elsewhere, the paths to fortune are innumerable and all open. There is invitation in the air and success in all his wide horizon. He is embarrassed which to choose, and is not likely to waste years in dallying with his chances before giving himself to the serious tug and strain of a single object. He has no traditions to bind him or guide him, and his impulse is to break away from the occupation his father has followed and make a new way for himself.<br>
+              
+                  Philip Sterling used to say that if he should seriously set himself for 10 years to any one of the dozen projects that were in his brain, he felt that he could be a rich man.<br>
+                  He wanted to be rich, he had a sincere desire for a fortune, but for some unaccountable reason he hesitated about addressing himself to the narrow work of getting it.<br>
+              
+                  He never walked Broadway, a part of its tide of abundant shifting life, without feeling something of the flush of wealth, and unconsciously taking the elastic step of one well-to-do in this prosperous world. Especially at night in the crowded theater—Philip was too young to remember the old Chambers Street box where the serious Burton led his hilarious and pagan crew—in the intervals of the screaming comedy when the orchestra scraped and grunted and tooted its dissolute tunes, the world seemed full of opportunities to Philip, and his heart exulted with a conscious ability to take any of its prizes he chose to pluck.<br>
+                  <span class="more-speech">(more speech…)</span><br>
+              
+                  "He who lays his hand on a woman except in the way of kindness." <br>
+                  Do we not all applaud so as to drown the rest of the sentence?<br>
+                  Philip never was fortunate enough to hear what would become of a man who should lay his hand on a woman, with the exception named, but he learned afterwards that the woman who lays her hand on a man, without any exception whatsoever, is always acquitted by the jury.<br>
+                  <span class="more-speech">(more speech…)</span><br>
+              
+                  He was unable to decide exactly what it should be. Sometimes he thought he would like to stand in a conspicuous pulpit and humbly preach the gospel of repentance; and it even crossed his mind that it would be noble to give himself to a missionary life to some benighted region where the date palm grows and the nightingale's voice is in tune, and the bulbul sings on the off nights. Philip had a good appetite, a sunny temper, and a clear, hearty laugh.
+              
+              </div>
+              </div>
+            </td>
+          </tr>
+          <!-- Repeat for additional samples -->
+          <!-- Row for sample 2 -->
+          <tr>
+            <!-- First Column: Prompt -->
+            <td>
+              <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_237_126133_126133_0000_0:0_gt.wav"></audio>
+              <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she</div>
+            </td>
+
+            <!-- Second Column: Generated Results -->
+            <td>
+              <!-- GSLM -->
+              <div>
+                <div class="subheader"><strong>GSLM</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_gslm.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her till she felt the weight of their last fraction. And then she paused, pausing upon the poor child, while George was waiting for her.<br>
+                  "What? What?" <span class="noise">[Noise]</span> What kind of a man could he be in his house if he's going to...? He turned his head and stepped across the lawn, looking down at the window, then turned to her with a grave smile—<span class="noise">[Noise]</span>—at which all the rest of that piece of sound came, and Bonnie's face was pale. His hair grew full and stately. His head began to brag and faint, and he breathed heavily, feeling quite certain that Polly could be in his house by digging bread for money for his poor child, and having bread for money, and having bread in his hand for Bonnie's.<br>
+                  "Oh, mother," cried Polly indignantly, "You ought to wait on Polly." <span class="noise">[Noise]</span> "That's me, too." There I lay as if she did not laugh and entreat.<br>
+                  How long, no one could tell. The magistrate suddenly assumed surprise, followed by a burst of delight, and the more today. Now, the milk and supper with those words of selfishness, she had written home better than she was before, <span class="noise">[Noise]</span><br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  Thoughtful that the man <span class="noise">[Noise]</span>, who is wonderful, would not be the slave, but the master. He opposed his limbs to be upon the top with the worthy company. Accordingly,
+              
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- TWIST-1.3B -->
+              <div>
+                <div class="subheader"><strong>TWIST-1.3B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_twist1.3b.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her 'til teatime. The little boy was suddenly cold and told of his trouble. Two of the poor old black women whom she had visited for the purpose of looking at the scene, and contemplating the wretchedness of the crime. The purchase of a prison, the pardoning Babylon and apology. The incorruptible tidurage for toic with epicures, <span class="noise">[Noise]</span><br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  However, the burger. Burger, burger, burger, burger, burger, burger, burger. Burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger. Burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger, burger.
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- TWIST-7B -->
+              <div>
+                <div class="subheader"><strong>TWIST-7B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_twist7b.wav"></audio>
+                <div class="transcription"> Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she was ashamed to continue her studies, and he could not keep her thoughts from occupying herself with Abby, who was so devoted to her. He had put her in the way of enjoying herself when she was young, and now she was in the way of giving herself her willingly to others. He rang a hand bell at the door. "Mrs. Manstay, if you please," said the housekeeper in halting tones, giving Hannah to stand as he brought her to the door. "Where's Hannah Winnyard?" Mrs. Manstay went again to her window, and heard and saw, or felt she did in what the schoolmaster was doing. The boy was dressed in the dark blue gown and broad white collar that she might keep her sight of him. <span class="noise">[Noise]</span> Mrs. Manstay said nothing, putting her temp to him. <span class="noise">[Noise]</span> She had two families to attend to. She got out to catch the night train, but the meaning which the moment of felt gave her a slight shock, and she looked down at the piece of paper without a word. <span class="noise">[Noise]</span><br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  So, one thing that I want to do, I want to know when you think of Star Trek, what do you think of? <span class="noise">[Noise]</span>  Star Trek. You think about this. Okay. What do you think of Star Trek? You Star Trek. What do you think of? What do people <span class="noise">[Noise]</span>  That would be Star Trek. I mean, that would be Star That would be Star That would be Star Trek and then you're like "Isn't Star Trek a trend?" <span class="noise">[Noise]</span>  like medieval of Star Trek. No, it's not a trend.<span class="noise">[Noise]</span>
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- Spirit LM Expressive (7B) -->
+              <div>
+                <div class="subheader"><strong>Spirit LM Expressive (7B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_spiritlm.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till they seemed a reality. She was a trifle prettier than usual, but she is not a child of one any longer. And there was no optimism here for the paid-to hope that she would be able to keep Java completely supplemented by the family happiness. At the time Lucy was a child of 14. She might taken make that worried to the village public school to Caesar, the rotations of the bullion had been completed, she could kind of hide the math global music time in public education for a little while perhaps and then go sit down amongst successful students. But it would be better not to try to earn the money to pay some students by compromising discriminate traders of under the provisions of the United States Constitution. Thank you. Coming up. Thank you, your honor. Think you satisfy that request as relates to tax compilers promotion amount of money damages, that crossed the line between constitutional and state forums.<br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  There is also different impression on the record which are entirely distinct from this case. There was no suppression, but no distraction in the telling X plus the member of suspicion him committing taking down turning him back to the carriage and looking for him in order to get rid of him which was wanting to take him something closer to the Larson but she wouldn't to going back that he's close to death and he couldn't wait for him so he went back to get the arm chair.<br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  That's why I feel like a high school student. I feel like I'm in a 1960 student. That's why I can't go back to secure me. That's why I can't be put in, they can be stealing coffins, I can't put that in the end of comparisons. That's why I can't be put a field of leadership and comparison. That's why I can be a teacher so cares. That's why dad said I can't be, that's why I can't be practical. That's why I can't be see.
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- SpeechTransformer -->
+              <div>
+                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_speechtransformer.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she hardly remembered them nor anyone else. She was, for a boarding girl, 18 years old, and any man who had some influence over her that was to be would find it out. Your kennel men, you see, she was for a choral business. I do believe you would call more work on a professional matter, a day or two, young ladies, with you at nights to catch sight of. She's that grown up, isn't she?" "Oh, it's a pity, uncle," Annie exploded with feeling. There's six boys, and the lads and one, I don't know which. The widow here has a little girl of her own, Geoffrey and Chuffy, before whom you two meet on Shendent Bullen platforms. "Allow me to select for you a girl." said Polly, and Dolly came. Her mother raised her up springless, and Billy marshaled his friends in thick garments. She had to go down to his office next and take her place at his hotel. The boarder of Grace's offices came in, all smiles and greetings, and Dolly made a call.<br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  He brooded over her until he contemplated his new dress. "Don't you look as homely as all that, Bobby dear?" murmured Pinocchio solemnly. "Oh, don't I wear?" asserted Annie. And smiled brightly after the little Gustave, who was half menacing in his goat. His face grew very pale, and his rumpled brown hair fell in drags in front of him. Held up in benignant readiness as a long tunic of just that shape she had left. "There's something telling, Mr. Cart," began Dolly, looking silently down. "Nothing, I'd rather the overseer do it in this name." <br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  How many more came out? Three chains and old stuff. "Where?" demanded Polly. Three for Miss Gould, who had silver beads. I'm sure she didn't wear any of her old beads. Annie gathered herself together, and patting her adoring head back at the doorstep, strutted away over the clearing. Polly lowered her old, gentlemanly head. I didn't have time to go over to Lady's Place. Then Miss Gibson is up. And I'm sure she wants.
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- SpeechSSM -->
+              <div>
+                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_speechssm.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she hardly remembered them nor anyone else. She was, for a boarding girl, 18 years old, and any man who had some influence over her that was to be would find it out. Your kennel men, you see, she was for a choral business. I do believe you would call more work on a professional matter, a day or two, young ladies, with you at nights to catch sight of. She's that grown up, isn't she?" "Oh, it's a pity, uncle," Annie exploded with feeling. There's six boys, and the lads and one, I don't know which. The widow here has a little girl of her own, Geoffrey and Chuffy, before whom you two meet on Shendent Bullen platforms. "Allow me to select for you a girl." said Polly, and Dolly came. Her mother raised her up springless, and Billy marshaled his friends in thick garments. She had to go down to his office next and take her place at his hotel. The boarder of Grace's offices came in, all smiles and greetings, and Dolly made a call.<br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  He brooded over her until he contemplated his new dress. "Don't you look as homely as all that, Bobby dear?" murmured Pinocchio solemnly. "Oh, don't I wear?" asserted Annie. And smiled brightly after the little Gustave, who was half menacing in his goat. His face grew very pale, and his rumpled brown hair fell in drags in front of him. Held up in benignant readiness as a long tunic of just that shape she had left. "There's something telling, Mr. Cart," began Dolly, looking silently down. "Nothing, I'd rather the overseer do it in this name." <br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  How many more came out? Three chains and old stuff. "Where?" demanded Polly. Three for Miss Gould, who had silver beads. I'm sure she didn't wear any of her old beads. Annie gathered herself together, and patting her adoring head back at the doorstep, strutted away over the clearing. Polly lowered her old, gentlemanly head. I didn't have time to go over to Lady's Place. Then Miss Gibson is up. And I'm sure she wants.
+              </div>
+              </div>
+              <hr class="divider" />
+              <!-- Ground Truth -->
+              <div>
+                <div class="subheader"><strong>Ground Truth</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_gt.wav"></audio>
+                <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother’s hard work, increased by her absence, loomed up before her, till she was almost ready to fly home without a minute's warning. At night, when no one knew it, the tears would come racing over the poor forlorn little face and would not be squeezed back. It got to be noticed finally and one and all redoubled their exertions to make everything twice as pleasant as ever. The only place, except in front of the grand piano where Polly approached a state of comparative happiness, was in the greenhouse. Here she would stay, comforted and soothed among the lovely plants and rich exotics, rejoicing the heart of old Turner the gardener, who since Polly’s first rapturous entrance had taken her into his good graces for all time. Every chance she could steal after practice hours were over, and after the clamorous demands of the boys upon her time were fully satisfied, was seized to fly on the wings of the wind to the flowers. But even with the music and flowers, the dancing light in the eyes went down a little, and Polly, growing more silent and pale, <br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+              
+                  “Well,” said Van, and he showed signs of relenting a little at that, “but Percy is perfectly awful, mamma, you don’t know. And he feels so smart too!” he said vindictively. “Well,” said Mrs. Whitney softly, “let’s think what we can do for Polly. It makes me feel very badly to see her sad little face.”<br>
+              
+                  “I don’t know,” said Van, running over in his mind all the possible ways he could think of for entertaining anybody, “unless she’d like my new book of travels, or my velocipede,” he added. <br>
+              
+                  <span class="more-speech">(more speech…)</span><br>
+              
+                  Polly sat up very straight, and whisked off the tears quickly. “Here, Polly, hold your arms!” he had only strength to gasp. At this the bundle opened suddenly, and out popped Phronsie! “Here I am! I’m here, Polly!” But Polly couldn’t speak, and if Jasper hadn’t caught her just in time, she would have tumbled over backward from the stool, Phronsie and all. “Aren’t you glad I’ve come, Polly?” asked Phronsie, with her little face close to Polly’s own. That brought Polly to.
+              </div>
+              </div>
+            </td>
+          </tr>
+          <!-- Repeat for additional samples -->
+          <tr>
+            <!-- Prompt for Sample 3 -->
+            <td>
+              <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_4446_2273_2273_0000_0:0_gt.wav"></audio>
+              <div class="transcription">On Sunday afternoon Alexander remembered Miss Boin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.</div>
+            </td>
+            <td>
+              <div>
+                <div class="subheader"><strong>GSLM</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_gslm.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Burgoyne's invitation and called at her apartment. He found it a delightful little place, and he met charming people there. <span class="noise">[Noise]</span> She had a pleasant sense of joy and gluttony, but here she was much pleased at the present time, and in the first place it came from occasional manner, <span class="noise">[Noise]</span> as alas, from a counting house. He had rendered her hers and he himself had seen her deeply relieved that her reluctances were of the kind. And it seemed that <span class="noise">[Noise]</span> there were a prospect of adopting her to him. To be perfectly clear, as he wrote, the place was but a bridge. She had been so fresh and pleased that the people <span class="noise">[Noise]</span> let her away in peaceful life. She was ready to say what they could to learn for what they live to do in connection with the previous topic and to enjoy <span class="noise">[Noise]</span> <br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  is really ashamed of every business and he does not give it his personal appearance. He is perfectly safe without the character of the superior. <span class="noise">[Noise]</span> And he is a man of chief circumstances and he is taught. He, his personal appearance is all alike. He is a man of talent.
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>TWIST-1.3B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_twist1.3b.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Delvoin's invitation and called at her apartment. He found it a delightful little place and he met charming people there. There was plenty of subscribed place to be accommodated. <span class="noise">[Noise]</span><br>
+    
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  all these implementation. <span class="noise">[Noise]</span> Sorry, that's why <span class="noise">[Noise]</span>
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>TWIST-7B</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_twist7b.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Boin's invitation and called at her apartment. He found it a delightful little place and he met charming people there. There were William's daughter, Alice Middleton, Louis Mason, <span class="noise">[Noise]</span> and Beck, two visitors. So what's wrong with you? <span class="noise">[Noise]</span> That which means there is two more in London Bridge, back again. <span class="noise">[Noise]</span> That I saw the great and <span class="noise">[Noise]</span> in person, this and impartial. <span class="noise">[Noise]</span> There you are. <span class="noise">[Noise]</span> There you are. <span class="noise">[Noise]</span>
+                  <br>
+                  <span class="more-speech">(more speech…)</span><br>
+                  Hello podcast and welcome to the show. I am your host Trace Gloss. And with me your ex, and your miss, sinus say. <span class="noise">[Noise]</span> A weighty we are back we back start we're back. <span class="noise">[Noise]</span> Welcome back everyone.
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>Spirit LM Expressive (7B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_spiritlm.wav"></audio>
+                <div class="transcription">    
+                  On Sunday afternoon Alexander remembered Miss Bourgoin's invitation and called at her apartment. He found it a delightful little place, and he met charming people there. He did not mention the World War and the winter Belcher, and only saw half a body that he was beginning to learn English just before the war. Mr. Ellis had mistakenly added that Mr. Wilkinson was enormously fond of all American overtures. Moth Man and Chinese Raleigh would come to the builders someday on a prescription in the Department of Justice to collect Pennsylvania for a classic Syfacare. 
+                  Apparently, taking hard London Starr to tear your life, married to the World War, and Mr. Wilkinson implored at the West Lease Syfacare classic side care to be made in cross place of the president awards in years to come up to his SB 5 location at United States Consideration Center. And he was elected to report as assistant chief in the fiscal science security to Senator, but present a VP and I tell you that's to besides the PDCHF out.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  From students probably want me to do that first instance if you think may conduct or any places for everywhere you also go do that right after these remarks.
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_speechtransformer.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Bourgoin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.
+                  <br>
+                  At six feet away and happily not in any of the little darkened corridors, a pile of front ovens showed below and without a sofa or a cleaner bed in which under her bright eyes Estelle lived. In a room almost as bright as the moon and the flowers in the attics, the view was so interesting that in the office cameras painted the picture white with the moth wing being on the ceiling. Brybead offended and Mary signed up "student friend." He was fortunate in a speciality on rye glasses as far as it could be called special; he thought he would receive one aside from that it had a good taste for carbon and which astonished him so he did not fail to bother. The two early characters were straightforward. Today, though not satisfactorily, the daring idea was carried far and lost its force here by the rhythm always came on the lines. Is this worth trying? Ebo reached for the shells, her eyes were green, her cheeks puffy and sweet. She emptied them on the man. "If your nature angers you," he assured her, "Anger me how?"
+                  <br>
+                  <span class="more-speech">(more speech…)</span>
+                  <br>
+                  "Can I shall sleep again tonight?" Estelle shrinks and hides her face in the sleeve of her warador. Since the night that I saw her, she had been just as she had been a very few minutes. It's lovely funny on no trot to be so energetic. I see you've been so enthralled asleep." She ran a header on the piano and a clump of worn blossoms at my feet and began to rough her movements on other six weeks now on the 21st. "I want the hiding place of the sub souls of this guy again."
+                  <br>
+                  <span class="more-speech">(more speech…)</span>
+                  <br>
+                  "I suffered terribly that way from my brainy budge about putting this up again. Oh, that's the greatest sin I ever knew." He paused then moved his chair back. She rose gravely and walked around. "I've been in a ridiculous position," he growled. His rusty footfall climbed fairly up the stairs and a quarter of an hour later, Director Trent stopped by the front door with a distinction.
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_speechssm.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Bourgoin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.<br>
+                  For five minutes when Alexander came downstairs, talking as long as he had time to know, he said that Miss Bourgoin had been shown some pictures. He seemed to be quite satisfied. He was afraid to talk to Alexander, not much of him. He was afraid of no one but Alexander and on this afternoon's recreation he heard her chattering away in his dining room.<br>
+                  He was very anxious to get to a picture for short but the picture pleased him and helped him much. At the first glance he found it decidedly refined and ornamental. He was wearing a handsome, dark mustache autumn. And the impression he made on him was especially great at the beginning, a large strip of pink and blue.<br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  There was one little picture which Mr. Bourgoin tried to put in his way but when he had one, he really carried it with him. If that wasn't all the entertainment they'd have to wait, he mentioned, and began putting it into his pocketbook, which was written on huge black needles, and which was surrounded by a confusion of rounded tiles and someone had a large scattered notebook in it. It was written in a pair of rather large crinoline boots that appeared every minute and made a pleasant dream. Mademoiselle did not make more than half a picture. This was a great experience with some pictures containing Alexander's pocketbook.<br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  "What time is it?" I asked, looking up at the handsome disembodied sky.<br>
+                  "You know, Mr. Bourgoin calls for it."<br>
+                  Mr. Bourgoin came downstairs and everyone came to see us. I liked the picture, and I found Mr. Bourgoin in the same attitude with a family card in his hands and having a private trouble face before him.<br>
+                  "I hope so, mademoiselle," I said. "I suppose it is a shame to bang with a horse when he has not got any food."
+              </div>
+              </div>
+              </div>
+              <hr class="divider" />
+              <div>
+                <div class="subheader"><strong>Ground Truth</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_gt.wav"></audio>
+                <div class="transcription">On Sunday afternoon Alexander remembered Miss Bergoyne's invitation and called at her apartment. He found it a delightful little place, and he met charming people there. Hilda lived alone, attended by a very pretty and competent French servant who answered the door and brought in the tea.<br>
+                  Alexander arrived early, and some twenty odd people dropped in during the course of the afternoon.<br>
+                  Hugh McConnell came with his sister and stood about managing his tea cup awkwardly and watching everyone out of his deep set, faded eyes. He was never so witty or so sharp here as elsewhere, and Alexander thought he behaved as if he were an elderly relative come into a young girl's party.<br>
+                  The editor of a monthly review came with his wife, and Lady Kildare, the Irish philanthropist, brought her young nephew, Robert Owen, who had come up from Oxford and who was visibly excited and gratified by his first introduction to Miss Bergoyne. Hilda was very nice to him, and he sat on the edge of his chair, flushed with his conversational efforts and moving his chin about nervously over his high collar.<br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  He had a long talk with McConnell, but he got no word with Hilda alone, and he left in a discontented state of mind. For the rest of the week he was nervous and unsettled and kept rushing his work as if he were preparing for immediate departure.<br>
+                  On Thursday afternoon he cut short a committee meeting, jumped into a hansom and drove to Bedford Square.<br>
+                  When Bartley arrived at Bedford Square on Sunday evening, Marie, the pretty little French girl, met him at the door and conducted him upstairs.<br>
+                  
+                  <span class="more-speech">(more speech…)</span><br>
+                  
+                  "I can't tell you how glad I am to have you so pretty and comfortable here, and to hear everyone saying such nice things about you. You've got awfully nice friends," he added humbly, picking up a little jade elephant from her desk. "Those fellows are all very loyal, even Mainhall. They don't talk of anyone else as they do of you." <br>
+                  Hilda sat down on the couch and said seriously: "I've a neat little sum in the bank, too, now, and I own a mite of a hut in Galway. It's not worth much, but I love it."
+              </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <!-- LibriSpeech-Long 16min continuation -->
+    <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+      <h3>LibriSpeech-Long test-clean 4min continuation</h3>
+      <ul>
+        <li><strong>Prompt:</strong> initial 10s from the proposed LibriSpeech-Long's test-clean.</li>
+        <li><strong>Ours:</strong> initial 10s are resynthesized, then the audio is continued to 16min.</li>
+      </ul>
+      <p><strong>No text is used during finetuning, prompting, or generation.</strong> <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
+
+      <!-- Table for a single sample -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="width: 30%;">Prompt</th>
+            <th style="width: 70%;">Generated Audio and Transcripts (including the prompt)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Row for sample 1 -->
+          <tr>
+            <!-- First Column: Prompt -->
+            <td>
+              <audio controls src="audio_samples/LibriSpeech-Long_16min/prompt_121_127105_127105_0001_0_0_gt.wav"></audio>
+              <div class="transcription">She was the most agreeable woman I've ever known in her position. She would have been worthy of any whatever. It was long ago. And this episode was long before. Since</div>
+            </td>
+            <td>
+              <!-- SpeechSM -->
+              <div>
+                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <audio controls src="audio_samples/LibriSpeech-Long_16min/121_127105_127105_0001_0_0_speechssm_16min.mp3"></audio>
+                <div class="transcription">She was the most agreeable woman I've ever known in her position. She would have been worthy of any whatever. It was long ago. And this episode was long before. Since since I was warming my hands at the animals, she was a child. She was the most peculiar woman I ever saw. You seem to understand.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  We must find someone by accident. You are trying to discover something. I know the secret of the animal cover. You are not quite easy to find. And again he shook his head, abstractedly. Mr. Emerson would never have disputed that question, said Voice dryly. But you don't in the least disregard it. Who is the animal? Well, you shall have time before I find my master. Allen left the room and started furiously to his feet. He hurried on. And how pleased he was with the things that came before him. He had forbidden it. But nothing of his dream followed. And then he saw that he was going not quite as fast as he could have wished himself. What was the next course ahead of him? He had no preference, but he found the third, and they led him home. He wondered if he could find another place, indeed, in that strange place two weeks before. The rest were boarded. So he thought, it doesn't look very bad work. It's quite the best place for me. And I would like to go by the road and buy some food. He felt indisposed. But he found expedient. He had sat in that room, on one corner of his face. He was in no hurry to hurry on. And yet, he was convinced that he had found his way.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                   He looked down at the animal, hiding his body and mind from hope. Then lifted them again. "Scree, scree," cried the beast. And before Mildred could speak, he was going to her, and clinging strongly to his arm. "Oh, what is that?" in a voice from somewhere beyond the clutch of the magic dog tree. "Help! Help!" Someone coming quickly found she was gone, and hardly had her foot slipped when, running in the dark, she was lifted up and turned about for it to tell the story of the strong creature she was going to save up. 
+                   <br><span class="more-speech">(more speech…)</span><br>
+                  And Park watched to see what was going on. He went to his people and asked them to eat and drink. They had another room, and before they wanted, they dropped off. "I am glad to see you, my friend, Lily," said Dick. "I feel better. Will you have the goodness to tell me what I am doing here? I want to do just this or that particular thing," returned Park. "We must have a longer road." He fell down upon his hands and knees. "The consequences are," he said, "that wild beasts can stay in the desert." After this, they began to finish their business. The meal kept going from morning to night, but after a while it was cleaned up, and he took from them as much as he could carry away as well. He was all shaken and twisted, but in another moment Lily came to him. "Don't we dare shoot a bear in the desert," he said. "And she has told me that I shall not go near the desert. It is very terrible," they murmured. "Lily, we don't want to hear you." The cobbler shouted, "Oh, please, Miss Carne. We must go back again." But he did not go back, for Park was watching for him at the house opposite him. 
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  The bear followed him, but after a time, they came to another meadow, where there was a larger one. Only the beasts had nothing to eat. Just as the children had started, the bear came to an end. He could hunt for a minute, and as he waited, he saw someone coming, and leaning out of the middle of the field, he saw someone coming at a lower altitude. Lily lifted his jacket up, and the beast ran across the meadow to him. "Go back." And off they went, for they were perplexed. "What have you got to do with me?" the cobbler shouted. 
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  It was all his only chance. And then he thought of what he had been over and above to guard against, for his own sake, with everything he had. He sat down on the rough bush bench without looking behind him. He hurried along by the branches until it was so dark.
+                  
+                  </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Repeat for additional samples -->
+          <tr>
+            <!-- Prompt for Sample 2 -->
+            <td>
+              <audio controls src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"></audio>
+              <div class="transcription">From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their</div>
+            </td>
+            <td>
+              <div>
+                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <audio controls style="width: 400px; max-width: 400px;">
+                  <source src="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_16min.mp3" type="audio/wav">
+                </audio>
+                <div class="transcription">From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their subsequent life, memory of poverty kindling the anger of the judge. Hairy, staining clothes of brothers, rum slaving sisterly and dear children in a pitiless passion. The white spots and sober face and rough, hard-mannered features, but wealth of evidence to decide. This distress would not be terrible.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  "And so you give me a reason for it." Said Tobinos. "Why then should you choose a reason for it? For why could I not accept what I believed to be good?" The yeast answered with an effort, "Lord, what is this that I have not said? You are skillful hatchet. I am a very little one to you." He added, "Ah, how fine is your friend! You were not at all fit to walk alone like a fox. And I am going to sit with you here. I labor to have my yeast among you in a better place. It will make you ask."
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  "I want you to understand." Said Tobinos. "You want to know whether you deserve what you have given me to believe. Would you still like to believe it? Lord, I want to know whether I can believe and love all and such a man. I was there thinking, Lord, what will not I do? Lord, what will not I do?" Thereupon, Gorab lifted himself lightly from the wizard's chest, coughed, took his foot out of the chest, and said, "Lord, I labor to give you life and strength.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                  "Go straight up. Be thou one of the men in the world and bless your pride." Came from Gorab as he opened his eyes. The red king was really blinded in body. And his glances contracted with a fixed look. He felt the coffer coming and going fast. Gorab stepped towards him and shouted some new well-known word to him, and ordered the wizard to bound him in a bowl of bread into the cave. "Mumgulul, Samko, wake up." Said Tobinos.
+                  <br><span class="more-speech">(more speech…)</span><br>
+                   And he approached the worker at the same instant. "What is the consequence?" He said. A short time later, the young man, his body bent, showing one leg above the knee. His hands dropped to his cheek, and he sat up in the depths of his berth. "I must follow," said Tobinos, "and send the strongest of the soldiers." It was not possible to pass like a flash, as it is generally understood for a stranger to be so lying on the hammer. "Yes, who cometh forward to disgrace us? The Brazilian? Yes, but thou hast sold thy goods to the Brazilian? No, but I have already bought the Brazilian." Said Tobinos. He went, however, not in good humor, but with a desperate desire to delude his enemy by calling out the old man,
+                   <br><span class="more-speech">(more speech…)</span><br>
+                  Her right foot, with its long brown fingers, her fair hair, the truth sprang from her eyes. "Arthur can't afford to do this." She said. "And it's no use scolding me or me alone. And besides, he might well feel the wrong way with his gun." She turned her face away, but still, he went on, "Let me look at the man who did those things." 
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </body>
+</html>
