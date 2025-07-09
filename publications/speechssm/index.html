@@ -50,35 +50,50 @@
     <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
       <div class="text-center">
         <h1>Long-Form Speech Generation with Spoken Language Models</h1>
+        <p style="font-size: 14pt">
+          ICML 2025 (Oral)
+        </p>
         <br/>
         <p class="fw-bold mb-0" style="font-size: 14pt">
           Se Jin Park<sup>2,*,&dagger;</sup>&nbsp;&nbsp;&nbsp;&nbsp;Julian Salazar<sup>1,*</sup><br/>Aren Jansen<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;Keisuke Kinoshita<sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;Yong Man Ro<sup>2</sup>&nbsp;&nbsp;&nbsp;&nbsp;RJ Skerry-Ryan<sup>1</sup>
         </p>
         <p class="fst-italic">1: Google DeepMind (GDM)&nbsp;&nbsp;&nbsp;&nbsp;2: IVLLab, KAIST&nbsp;&nbsp;&nbsp;&nbsp;*: primary contributors&nbsp;&nbsp;&nbsp;&nbsp;&dagger;: work done as an intern at GDM</p>
-        <p class="lead fw-bold">
+        <p class="lead">
           <a
-            href="https://arxiv.org/abs/2412.18603"
+            href="https://openreview.net/pdf?id=4AmFA0qNQ2"
             class="border-white bg-white fw-bold" style="font-size: 14pt"
-            >arXiv (paper)</a
+            >Paper</a
           >
           &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             href="https://github.com/google-deepmind/librispeech-long"
             class="border-white bg-white fw-bold" style="font-size: 14pt"
-            >LibriSpeech-Long (dataset)</a
+            >LibriSpeech-Long</a
+          >
+          &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            href="https://openreview.net/forum?id=4AmFA0qNQ2"
+            class="border-white bg-white" style="font-size: 14pt"
+            >Reviews</a
+          >
+          &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+          <a
+            href="https://icml.cc/virtual/2025/oral/47262"
+            class="border-white bg-white" style="font-size: 14pt"
+            >ICML page</a
           >
           &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
           <a
             href="mailto:jinny960812@kaist.ac.kr,julsal@google.com"
-            class="border-white bg-white fw-bold" style="font-size: 14pt"
-            >contact us</a
+            class="border-white bg-white" style="font-size: 14pt"
+            >Contact us</a
           >
         </p>
       </div>
 
       <p>Our work makes initial progress on naturalistic, audio-native, long-form speech generation:
         <ul>
-          <li>We introduce <strong>SpeechSSM</strong>, the <strong>first spoken language model for long-form speech</strong>. Our 2B model:</li>
+          <li>We introduce <strong>SpeechSSM</strong>, the <strong>first spoken language model for long-form speech</strong>. Our 2B and 9B models:</li>
           <ul>
             <li>produces speech <strong>textlessly and in constant memory</strong>, for <strong>unbounded real-time generation</strong>;</li>
             <li>demonstrates <strong>generative length extrapolation</strong>, e.g. 4 min. in training to 16 min;</li>
@@ -88,7 +103,6 @@
           <li>We release <strong>LibriSpeech-Long</strong>, a 3-4min reformat of <a href="https://www.openslr.org/12">LibriSpeech dev+test sets</a> for future long-form speech processing research.</li>
         </ul>
       </p>
-      <p><em>The associated preprint is a work in progress; results below may be subject to change.</em></p>
       <div class="text-center">
         <img width="500px" src="figures/supported-lengths.png" alt="Supported lengths of spoken LMs in previous works versus ours." class="img-fluid" width="800" >
       </div>
@@ -107,10 +121,10 @@
           <!-- Repeat for additional samples -->
           <tr>
             <td>
-              <strong>SpeechSSM, 4min ver. (2B)</strong><br>
+              <strong>SpeechSSM (2B)</strong><br>
               trained on LibriLight (60k hours)<br>
               read speech (audio-only)<br>
-              <u>max training length: 4min</u>
+              max training length: <u>4min</u>
             </td>
             <td>
               <audio controls  style="width: 250px; max-width: 250px;" src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"></audio>
