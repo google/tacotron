@@ -8,22 +8,24 @@
     />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="helper.js" defer></script>
     <style>
       td {
-        vertical-align: middle;
+        vertical-align: top;
         text-align: center;
       }
+      #hero-table td {
+        vertical-align: middle;
+      }
+
       audio {
-        width: 15vw; /* Reduced width to fit multiple columns */
+        width: 100%;
         min-width: 80px;
-        max-width: 150px;
+        max-width: 400px;
       }
       .transcription {
         font-size: 0.75rem; /* Smaller transcription font */
         font-style: italic;
-        text-align: left; 
+        text-align: left;
       }
       table {
         table-layout: fixed; /* Ensures columns are of fixed width */
@@ -31,18 +33,53 @@
       }
       th, td {
         text-align: center;
-        <!-- overflow: hidden; -->
         white-space: normal; /* Allow line breaks in cells */
       }
       .noise {
-          font-style: italic;
-          font-weight: bold;
-          color: #333333;
+        font-style: italic;
+        font-weight: bold;
+        color: #333333;
       }
       .more-speech {
-          font-style: italic;
+        font-style: italic;
+        font-weight: bold;
+        color: #333333;
+      }
+
+      /* Responsive Card Styles */
+      @media screen and (max-width: 992px) {
+        .responsive-card-table thead {
+          display: none; /* Hide table headers on mobile */
+        }
+        .responsive-card-table tr {
+          display: block;
+          margin-bottom: 1rem;
+          border: 1px solid #dee2e6;
+          border-radius: 0.25rem;
+        }
+        .responsive-card-table td {
+          display: block;
+          border: none;
+          border-bottom: 1px solid #dee2e6;
+          padding: 1rem;
+          text-align: left; /* Align cell content left in card view */
+        }
+        .responsive-card-table tr td:last-child {
+          border-bottom: none;
+        }
+        /* Use data-label for card headers */
+        .responsive-card-table td::before {
+          content: attr(data-label);
+          display: block;
           font-weight: bold;
-          color: #333333;
+          margin-bottom: 0.5rem;
+        }
+        /* Adjust audio player width for card view */
+        .responsive-card-table td audio,
+        .responsive-card-table td div audio {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
       }
     </style>
   </head>
@@ -109,85 +146,127 @@
       <br>
       <p><strong>No text is used during finetuning, prompting, or generation.</strong> <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
 
-      <table class="table table-bordered">
+      <table id="hero-table" class="table table-bordered table-hover responsive-card-table">
         <thead>
           <tr>
-            <th style="width: 25%;">Model</th>
-            <th style="width: 25%;">Prompt</th>
-            <th style="width: 40%;">Resynthesized Prompt + Speech Continuation</th>
-            <th style="width: 10%;">Transcript</th>
+            <th style="width: 25%">Model</th>
+            <th style="width: 25%">Prompt</th>
+            <th style="width: 40%">Resynthesized Prompt + Speech Continuation</th>
+            <th style="width: 10%">Transcript</th>
           </tr>
         </thead>
+        <tbody>
           <!-- Repeat for additional samples -->
           <tr>
-            <td>
-              <strong>SpeechSSM (2B)</strong><br>
-              trained on LibriLight (60k hours)<br>
-              read speech (audio-only)<br>
+            <td data-label="Model">
+              <strong>SpeechSSM (2B)</strong><br />
+              trained on LibriLight (60k hours)<br />
+              read speech (audio-only)<br />
               max training length: <u>4min</u>
             </td>
-            <td>
-              <audio controls  style="width: 250px; max-width: 250px;" src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"></audio>
+            <td data-label="Prompt">
+              <audio
+                controls
+                style="max-width: 250px"
+                src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"
+              ></audio>
               <div class="transcription">From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their</div>
             </td>
-            <td>
+            <td data-label="Resynthesized Prompt + Speech Continuation">
               <div>
-                <audio controls style="width: 400px; max-width: 400px;">
-                  <source src="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_4min.mp3" type="audio/wav">
+                <audio controls style="max-width: 400px">
+                  <source
+                    src="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_4min.mp3"
+                    type="audio/wav"
+                  />
                 </audio>
                 <div class="transcription">
                   From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their subsequent life, memory of poverty kindling the anger of the judge. Hairy, staining clothes of brothers, rum slaving sisterly and dear children in a pitiless passion. The white spots and sober face and rough, hard-mannered features, but wealth of evidence to decide. This distress would not be terrible. <span class="more-speech">(more speech…)</span>
+                </div>
               </div>
             </td>
-            <td>
-              <a target="_blank" rel="noopener noreferrer" href="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_4min.gemini-1.5-pro-002.txt">.txt file</a>
+            <td data-label="Transcript">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_4min.gemini-1.5-pro-002.txt"
+                >.txt file</a
+              >
             </td>
           </tr>
           <tr>
-            <td>
-              <strong>SpeechSSM-X (2B)</strong><br>
-              trained on 200k hours<br>
+            <td data-label="Model">
+              <strong>SpeechSSM-X (2B)</strong><br />
+              trained on 200k hours<br />
               extemporaneous speech (audio-only)
             </td>
-            <td>
-              <audio controls style="width: 250px; max-width: 250px;" src="audio_samples/extemporaneous/example1_prompt.mp3"></audio>
+            <td data-label="Prompt">
+              <audio
+                controls
+                style="max-width: 250px"
+                src="audio_samples/extemporaneous/example1_prompt.mp3"
+              ></audio>
               <div class="transcription">and his, uh, younger half-sister, but she, so she just turned, well, not just, but she's 11 and a half</div>
             </td>
-            <td>
+            <td data-label="Resynthesized Prompt + Speech Continuation">
               <div>
-                <audio controls style="width: 400px; max-width: 400px;" src="audio_samples/extemporaneous/example1.mp3"></audio>
+                <audio
+                  controls
+                  style="max-width: 400px"
+                  src="audio_samples/extemporaneous/example1.mp3"
+                ></audio>
                 <div class="transcription">and his, uh, younger half-sister,
                   but she, so she just turned, well, not just, but she's 11 and a half, and then she's, the pants are too much for him.
                   She said he minds her about stepping back, so she's going to try to turn them back and get it.
                   Um, but definitely, he's not alone.
                   And yet, this thing goes through someone's only job as a nervous <span class="more-speech">(more speech…)</span>
+                </div>
               </div>
             </td>
-            <td>
-              <a target="_blank" rel="noopener noreferrer" href="audio_samples/extemporaneous/example1.gemini-1.5-pro-002.txt">.txt file</a>
+            <td data-label="Transcript">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="audio_samples/extemporaneous/example1.gemini-1.5-pro-002.txt"
+                >.txt file</a
+              >
             </td>
           </tr>
           <tr>
-            <td>
-              <strong>SpeechSSM-X (2B)</strong><br>
-              trained on 200k hours<br>
+            <td data-label="Model">
+              <strong>SpeechSSM-X (2B)</strong><br />
+              trained on 200k hours<br />
               extemporaneous speech (audio-only)
             </td>
-            <td>
-              <audio controls style="width: 250px; max-width: 250px;" src="audio_samples/extemporaneous/example2_prompt.mp3"></audio>
+            <td data-label="Prompt">
+              <audio
+                controls
+                style="max-width: 250px"
+                src="audio_samples/extemporaneous/example2_prompt.mp3"
+              ></audio>
               <div class="transcription">Um, but when you're so when you're playing against something like that, you know,</div>
             </td>
-            <td>
+            <td data-label="Resynthesized Prompt + Speech Continuation">
               <div>
-                <audio controls style="width: 400px; max-width: 400px;" src="audio_samples/extemporaneous/example2.mp3"></audio>
+                <audio
+                  controls
+                  style="max-width: 400px"
+                  src="audio_samples/extemporaneous/example2.mp3"
+                ></audio>
                 <div class="transcription">Um, but when you're so when you're playing against something like that, you know,
                   you know, you know, that you, you know, you'll be able to play on something like this.
                   Um, the representation of the Senate, or a social dispute, or a committee, uh, you know, or the DOJ, or or whatever. They, they, they were lazy.
                   You know, lazier than some of the the other players, uh, just because you want something like that. <span class="more-speech">(more speech…)</span>
+                </div>
               </div>
             </td>
-            <td>
-              <a target="_blank" rel="noopener noreferrer" href="audio_samples/extemporaneous/example2.gemini-1.5-pro-002.txt">.txt file</a>
+            <td data-label="Transcript">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="audio_samples/extemporaneous/example2.gemini-1.5-pro-002.txt"
+                >.txt file</a
+              >
             </td>
           </tr>
         </tbody>
@@ -219,129 +298,122 @@
         <li><strong>Others, Ours:</strong> initial 3s are resynthesized, then the audio is continued to 10s.</li>
       </ul>
       <p><strong>No text is used during prompting or generation.</strong> Only Spirit LM uses text during finetuning. <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
-      <div class="table-responsive">
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th style="border-right-width: 1px;" rowspan="2">Ground Truth</th>
-              <th colspan="4">Others</th>
-              <th style="border-left-width: 1px;" colspan="2">Ours</th>
-            </tr>
-            <tr>
-              <th>GSLM</th>
-              <th>TWIST-1.3B</th>
-              <th>TWIST-7B</th>
-              <th>Spirit LM Expressive (7B)</th>
-              <th style="border-left-width: 1px;">SpeechTransformer (2B)</th>
-              <th>SpeechSSM (2B)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Row template for each sample -->
-            <tr>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gt.wav"></audio>
-                <div class="transcription">He reached up among the branches and began to pick the sweet, insipid fruit.  Long, ivory-colored berries tipped with faint pink, like white coral that
-                </div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gslm.wav"></audio>
-                <div class="transcription">He reached off among the branches and began to pick all the old paved wooden staircase to see what he wanted. Molly had come to a station</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist1.3b.wav"></audio>
-                <div class="transcription">He reached up among the branches and began to pick out what a close cut he was.  He watched the movement moving and he knew the slope of an ice-filled without under the brick.
-                </div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist7b.wav"></audio>
-                <div class="transcription">He reached up among the branches and began to pick the hardest pieces of seaweed he could find. On the way down the tree he finished a large piece and put it in his pocket.
-                </div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_spiritlm.wav"></audio>
-                <div class="transcription">He reached up among the branches and began to pick poppies and rose briars to gather them in abundantly, for he loved planting flowers and called himself an already gardener.
-                </div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechtransformer.wav""></audio>
-                <div class="transcription">He reached up among the branches and began to pick young roses, binding and attaching them with the slender branches peering worthworthly like a shining swat.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechssm.wav"></audio>
-                <div class="transcription">He reached up among the branches and began to pick the dry branches from the weeds.  And this went on in his mind all the day long. Although he did not get to</div>
-              </td>
-            </tr>
-            <!-- Add more rows as needed -->
-            <tr>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gt.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly and to spread abroad its widening tail.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gslm.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the pieces of the glove. He would have done, and he was glad, and threw the glove over it. But the glove—but—</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist1.3b.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the pale faces of the stars than the light begins to fill again. The torch lights, the shadows, the white form.
-                </div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist7b.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the pale little face the child had left to his charge. The poor stricken face bent over her, and never lost its expression.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_spiritlm.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the pastry cook now, and she was still seemed receiving some substance from the fire. Not all in her posture but something that was fascinating like a.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechtransformer.wav""></audio>
-                <div class="transcription">The dull light fell more faintly upon the page as the interest with which he taut the old bedclothes. He held the paper slightly straight as if there were to be employed on the</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechssm.wav"></audio>
-                <div class="transcription">The dull light fell more faintly upon the pavements than I ever saw that morning. And when I had finished, the entire city was in a blaze.</div>
-              </td>
-            </tr>
-            <!-- Add more rows as needed -->
-            <tr>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gt.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman, as she watched the growth and the beauty that became every day more brilliant, and the intelligence that threw its quivering sunshine,</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gslm.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman as she noticed her neighbour to be a beautiful boy and a kind-hearted proverb with all party clothing company.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist1.3b.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman and the parsing spirit, that she was no third person, neither quite conscious of what might be affected and intruded,</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist7b.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman, and to the good man who was sitting with his eyes turned up towards Heaven, that the room where a great man had wept was in this house.</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_spiritlm.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman, as she laid away the hair now turned so long by that pocketful of blushes, to feel her pocket and gratefully for the unremented, but</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechtransformer.wav""></audio>
-                <div class="transcription">How strange it seemed to the sad woman as she saw Anne Boleyn marching from one of the finest services of the castle and coming with a green scarf and streamer</div>
-              </td>
-              <td>
-                <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechssm.wav"></audio>
-                <div class="transcription">How strange it seemed to the sad woman as she sat waiting with a long scrutiny and one eager little hand, with a face which was almost as bright as the sun itself.</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <table class="table table-bordered table-hover responsive-card-table">
+        <thead>
+          <tr>
+            <th style="border-right-width: 1px;" rowspan="2">Ground Truth</th>
+            <th colspan="4">Others</th>
+            <th style="border-left-width: 1px;" colspan="2">Ours</th>
+          </tr>
+          <tr>
+            <th>GSLM</th>
+            <th>TWIST-1.3B</th>
+            <th>TWIST-7B</th>
+            <th>Spirit LM Expressive (7B)</th>
+            <th style="border-left-width: 1px;">SpeechTrans. (2B)</th>
+            <th>SpeechSSM (2B)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Ground Truth">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gt.wav"></audio>
+              <div class="transcription">He reached up among the branches and began to pick the sweet, insipid fruit.  Long, ivory-colored berries tipped with faint pink, like white coral that
+              </div>
+            </td>
+            <td data-label="GSLM">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_gslm.wav"></audio>
+              <div class="transcription">He reached off among the branches and began to pick all the old paved wooden staircase to see what he wanted. Molly had come to a station</div>
+            </td>
+            <td data-label="TWIST-1.3B">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist1.3b.wav"></audio>
+              <div class="transcription">He reached up among the branches and began to pick out what a close cut he was.  He watched the movement moving and he knew the slope of an ice-filled without under the brick.
+              </div>
+            </td>
+            <td data-label="TWIST-7B">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_twist7b.wav"></audio>
+              <div class="transcription">He reached up among the branches and began to pick the hardest pieces of seaweed he could find. On the way down the tree he finished a large piece and put it in his pocket.
+              </div>
+            </td>
+            <td data-label="Spirit LM Expressive (7B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_spiritlm.wav"></audio>
+              <div class="transcription">He reached up among the branches and began to pick poppies and rose briars to gather them in abundantly, for he loved planting flowers and called himself an already gardener.
+              </div>
+            </td>
+            <td data-label="Ours: SpeechTransformer (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechtransformer.wav""></audio>
+              <div class="transcription">He reached up among the branches and began to pick young roses, binding and attaching them with the slender branches peering worthworthly like a shining swat.</div>
+            </td>
+            <td data-label="Ours: SpeechSSM (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/237-134500-0018_0:0_speechssm.wav"></audio>
+              <div class="transcription">He reached up among the branches and began to pick the dry branches from the weeds.  And this went on in his mind all the day long. Although he did not get to</div>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="Ground Truth">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gt.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly and to spread abroad its widening tail.</div>
+            </td>
+            <td data-label="GSLM">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_gslm.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the pieces of the glove. He would have done, and he was glad, and threw the glove over it. But the glove—but—</div>
+            </td>
+            <td data-label="TWIST-1.3B">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist1.3b.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the pale faces of the stars than the light begins to fill again. The torch lights, the shadows, the white form.
+              </div>
+            </td>
+            <td data-label="TWIST-7B">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_twist7b.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the pale little face the child had left to his charge. The poor stricken face bent over her, and never lost its expression.</div>
+            </td>
+            <td data-label="Spirit LM Expressive (7B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_spiritlm.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the pastry cook now, and she was still seemed receiving some substance from the fire. Not all in her posture but something that was fascinating like a.</div>
+            </td>
+            <td data-label="Ours: SpeechTransformer (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechtransformer.wav""></audio>
+              <div class="transcription">The dull light fell more faintly upon the page as the interest with which he taut the old bedclothes. He held the paper slightly straight as if there were to be employed on the</div>
+            </td>
+            <td data-label="Ours: SpeechSSM (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1089-134686-0006_0:0_speechssm.wav"></audio>
+              <div class="transcription">The dull light fell more faintly upon the pavements than I ever saw that morning. And when I had finished, the entire city was in a blaze.</div>
+            </td>
+          </tr>
+          <tr>
+            <td data-label="Ground Truth">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gt.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman, as she watched the growth and the beauty that became every day more brilliant, and the intelligence that threw its quivering sunshine,</div>
+            </td>
+            <td data-label="GSLM">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_gslm.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman as she noticed her neighbour to be a beautiful boy and a kind-hearted proverb with all party clothing company.</div>
+            </td>
+            <td data-label="TWIST-1.3B">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist1.3b.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman and the parsing spirit, that she was no third person, neither quite conscious of what might be affected and intruded,</div>
+            </td>
+            <td data-label="TWIST-7B">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_twist7b.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman, and to the good man who was sitting with his eyes turned up towards Heaven, that the room where a great man had wept was in this house.</div>
+            </td>
+            <td data-label="Spirit LM Expressive (7B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_spiritlm.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman, as she laid away the hair now turned so long by that pocketful of blushes, to feel her pocket and gratefully for the unremented, but</div>
+            </td>
+            <td data-label="Ours: SpeechTransformer (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechtransformer.wav""></audio>
+              <div class="transcription">How strange it seemed to the sad woman as she saw Anne Boleyn marching from one of the finest services of the castle and coming with a green scarf and streamer</div>
+            </td>
+            <td data-label="Ours: SpeechSSM (2B)">
+              <audio controls src="audio_samples/LibriSpeech_10s/1221-135766-0000_0:0_speechssm.wav"></audio>
+              <div class="transcription">How strange it seemed to the sad woman as she sat waiting with a long scrutiny and one eager little hand, with a face which was almost as bright as the sun itself.</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-
-    <!-- LibriSpeech-Long 4min continuation -->
     <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
       <h3>LibriSpeech-Long test-clean 4min continuation</h3>
       <ul>
@@ -351,7 +423,7 @@
       </ul>
       <p><strong>No text is used during prompting or generation.</strong> Only Spirit LM uses text during finetuning. <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
       <!-- Table for a single sample -->
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover responsive-card-table">
         <thead>
           <tr>
             <th style="width: 30%;">Prompt</th>
@@ -362,7 +434,7 @@
           <!-- Row for sample 1 -->
           <tr>
             <!-- First Column: Prompt -->
-            <td>
+            <td data-label="Prompt">
               <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_4970_29093_29093_0000_0:0_gt.wav"></audio>
               <div class="transcription">"Oh, it's easy enough to make a fortune," Henry said.<br>
                 "It seems to be easier than it is, I begin to think," replied Philip.<br></div>
@@ -459,7 +531,7 @@
               <hr class="divider" />
               <!-- SpeechTransformer -->
               <div>
-                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechTransformer (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_speechtransformer.wav"></audio>
                 <div class="transcription">"Oh, it’s easy enough to make a fortune." Henry said.<br>
                   "It seems to be easier than it is, I begin to think," replied Philip.<br>
@@ -478,7 +550,7 @@
               <hr class="divider" />
               <!-- SpeechSSM -->
               <div>
-                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechSSM (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/4970_29093_29093_0000_0:0_speechssm.wav"></audio>
                 <div class="transcription">"Oh, it's easy enough to make a fortune," Henry said.<br>
                   "It seems to be easier than it is, I begin to think," replied Philip.<br>
@@ -528,7 +600,7 @@
           <!-- Row for sample 2 -->
           <tr>
             <!-- First Column: Prompt -->
-            <td>
+            <td data-label="Prompt">
               <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_237_126133_126133_0000_0:0_gt.wav"></audio>
               <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she</div>
             </td>
@@ -593,7 +665,7 @@
               <hr class="divider" />
               <!-- SpeechTransformer -->
               <div>
-                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechTransformer (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_speechtransformer.wav"></audio>
                 <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she hardly remembered them nor anyone else. She was, for a boarding girl, 18 years old, and any man who had some influence over her that was to be would find it out. Your kennel men, you see, she was for a choral business. I do believe you would call more work on a professional matter, a day or two, young ladies, with you at nights to catch sight of. She's that grown up, isn't she?" "Oh, it's a pity, uncle," Annie exploded with feeling. There's six boys, and the lads and one, I don't know which. The widow here has a little girl of her own, Geoffrey and Chuffy, before whom you two meet on Shendent Bullen platforms. "Allow me to select for you a girl." said Polly, and Dolly came. Her mother raised her up springless, and Billy marshaled his friends in thick garments. She had to go down to his office next and take her place at his hotel. The boarder of Grace's offices came in, all smiles and greetings, and Dolly made a call.<br>
     
@@ -609,7 +681,7 @@
               <hr class="divider" />
               <!-- SpeechSSM -->
               <div>
-                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechSSM (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/237_126133_126133_0000_0:0_speechssm.wav"></audio>
                 <div class="transcription">Yes, it must be confessed, Polly was homesick. All her imaginations of her mother's hard work, increased by her absence, loomed up before her, till she hardly remembered them nor anyone else. She was, for a boarding girl, 18 years old, and any man who had some influence over her that was to be would find it out. Your kennel men, you see, she was for a choral business. I do believe you would call more work on a professional matter, a day or two, young ladies, with you at nights to catch sight of. She's that grown up, isn't she?" "Oh, it's a pity, uncle," Annie exploded with feeling. There's six boys, and the lads and one, I don't know which. The widow here has a little girl of her own, Geoffrey and Chuffy, before whom you two meet on Shendent Bullen platforms. "Allow me to select for you a girl." said Polly, and Dolly came. Her mother raised her up springless, and Billy marshaled his friends in thick garments. She had to go down to his office next and take her place at his hotel. The boarder of Grace's offices came in, all smiles and greetings, and Dolly made a call.<br>
     
@@ -645,7 +717,7 @@
           <!-- Repeat for additional samples -->
           <tr>
             <!-- Prompt for Sample 3 -->
-            <td>
+            <td data-label="Prompt">
               <audio controls src="audio_samples/LibriSpeech-Long_4min/prompt_4446_2273_2273_0000_0:0_gt.wav"></audio>
               <div class="transcription">On Sunday afternoon Alexander remembered Miss Boin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.</div>
             </td>
@@ -694,7 +766,7 @@
               </div>
               <hr class="divider" />
               <div>
-                <div class="subheader"><strong>SpeechTransformer (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechTransformer (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_speechtransformer.wav"></audio>
                 <div class="transcription">On Sunday afternoon Alexander remembered Miss Bourgoin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.
                   <br>
@@ -711,7 +783,7 @@
               </div>
               <hr class="divider" />
               <div>
-                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechSSM (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_4min/4446_2273_2273_0000_0:0_speechssm.wav"></audio>
                 <div class="transcription">On Sunday afternoon Alexander remembered Miss Bourgoin's invitation and called at her apartment. He found it a delightful little place and he met charming people there.<br>
                   For five minutes when Alexander came downstairs, talking as long as he had time to know, he said that Miss Bourgoin had been shown some pictures. He seemed to be quite satisfied. He was afraid to talk to Alexander, not much of him. He was afraid of no one but Alexander and on this afternoon's recreation he heard her chattering away in his dining room.<br>
@@ -760,7 +832,7 @@
 
     <!-- LibriSpeech-Long 16min continuation -->
     <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
-      <h3>LibriSpeech-Long test-clean 4min continuation</h3>
+      <h3>LibriSpeech-Long test-clean 16min continuation</h3>
       <ul>
         <li><strong>Prompt:</strong> initial 10s from the proposed LibriSpeech-Long's test-clean.</li>
         <li><strong>Ours:</strong> initial 10s are resynthesized, then the audio is continued to 16min.</li>
@@ -768,7 +840,7 @@
       <p><strong>No text is used during finetuning, prompting, or generation.</strong> <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
 
       <!-- Table for a single sample -->
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover responsive-card-table">
         <thead>
           <tr>
             <th style="width: 30%;">Prompt</th>
@@ -779,14 +851,14 @@
           <!-- Row for sample 1 -->
           <tr>
             <!-- First Column: Prompt -->
-            <td>
+            <td data-label="Prompt">
               <audio controls src="audio_samples/LibriSpeech-Long_16min/prompt_121_127105_127105_0001_0_0_gt.wav"></audio>
               <div class="transcription">She was the most agreeable woman I've ever known in her position. She would have been worthy of any whatever. It was long ago. And this episode was long before. Since</div>
             </td>
             <td>
               <!-- SpeechSM -->
               <div>
-                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechSSM (2B)</strong></div>
                 <audio controls src="audio_samples/LibriSpeech-Long_16min/121_127105_127105_0001_0_0_speechssm_16min.mp3"></audio>
                 <div class="transcription">She was the most agreeable woman I've ever known in her position. She would have been worthy of any whatever. It was long ago. And this episode was long before. Since since I was warming my hands at the animals, she was a child. She was the most peculiar woman I ever saw. You seem to understand.
                   <br><span class="more-speech">(more speech…)</span><br>
@@ -808,13 +880,13 @@
           <!-- Repeat for additional samples -->
           <tr>
             <!-- Prompt for Sample 2 -->
-            <td>
+            <td data-label="Prompt">
               <audio controls src="audio_samples/LibriSpeech-Long_16min/prompt_1089_134686_134686_0002_0:0_gt.wav"></audio>
               <div class="transcription">From the evil seed of lust, all other deadly sins had sprung forth. Pride in himself and contempt of others, covetousness in using money for their</div>
             </td>
             <td>
               <div>
-                <div class="subheader"><strong>SpeechSSM (2B)</strong></div>
+                <div class="subheader"><strong>Ours: SpeechSSM (2B)</strong></div>
                 <audio controls style="width: 400px; max-width: 400px;">
                   <source src="audio_samples/LibriSpeech-Long_16min/1089_134686_134686_0002_0_0_speechssm_16min.mp3" type="audio/wav">
                 </audio>
