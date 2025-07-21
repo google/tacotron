@@ -45,11 +45,40 @@
         font-weight: bold;
         color: #333333;
       }
+      #hero-media {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      video {
+        max-width: 540px;
+        width: 100%;
+      }
+      #hero-media td {
+        text-align: center;
+        vertical-align: middle;
+      }
+      #hero-media td.video {
+        width: 60%;
+      }
+      #hero-media td.video video {
+        margin-top: -15px;
+      }
+      #hero-media td.plot {
+        width: 40%;
+      }
+      #hero-media td.plot img {
+        width: 100%;
+        max-height: 416px;
+        max-width: 384px;
+      }
 
       /* Responsive Card Styles */
       @media screen and (max-width: 992px) {
         .responsive-card-table thead {
           display: none; /* Hide table headers on mobile */
+        }
+        #hero-media td.video, #hero-media td.plot {
+          width: 100%;
         }
         .responsive-card-table tr {
           display: block;
@@ -128,21 +157,34 @@
         </p>
       </div>
 
-      <p>Our work makes initial progress on naturalistic, audio-native, long-form speech generation:
+      <p>Our work makes initial progress on naturalistic, audio-native, long-form speech generation:</p>
+      <ul>
+        <li>We introduce <strong>SpeechSSM</strong>, the <strong>first spoken language model for long-form speech</strong>. Our 2B and 9B models:</li>
         <ul>
-          <li>We introduce <strong>SpeechSSM</strong>, the <strong>first spoken language model for long-form speech</strong>. Our 2B and 9B models:</li>
-          <ul>
-            <li>produces speech <strong>textlessly and in constant memory</strong>, for <strong>unbounded real-time generation</strong>;</li>
-            <li>demonstrates <strong>generative length extrapolation</strong>, e.g. 4 min. in training to 16 min;</li>
-            <li>can be trained for either read speech or <strong>extemporaneous speech (SpeechSSM-X)</strong>.</li>
-          </ul>
-          <li>We define <strong>evaluations for long-form speech continuation</strong>, from time-stratified evaluations to modern NLG metrics like LLM-as-judge.</li>
-          <li>We release <strong>LibriSpeech-Long</strong>, a 3-4min reformat of <a href="https://www.openslr.org/12">LibriSpeech dev+test sets</a> for future long-form speech processing research.</li>
+          <li>produces speech <strong>textlessly and in constant memory</strong>, for <strong>unbounded real-time generation</strong>;</li>
+          <li>demonstrates <strong>generative length extrapolation</strong>, e.g. 4 min. in training to 16 min;</li>
+          <li>can be trained for either read speech or <strong>extemporaneous speech (SpeechSSM-X)</strong>.</li>
         </ul>
-      </p>
-      <div class="text-center">
-        <img width="500px" src="figures/supported-lengths.png" alt="Supported lengths of spoken LMs in previous works versus ours." class="img-fluid" width="800" >
-      </div>
+        <li>We define <strong>evaluations for long-form speech continuation</strong>, from time-stratified evaluations to modern NLG metrics like LLM-as-judge.</li>
+        <li>We release <strong>LibriSpeech-Long</strong>, a 3-4min reformat of <a href="https://www.openslr.org/12">LibriSpeech dev+test sets</a> for future long-form speech processing research.</li>
+      </ul>
+
+      <table id="hero-media" class="responsive-card-table">
+        <tbody>
+          <tr>
+            <td class="video" style="">
+              <video controls="">
+                <source src="video/speechssm-x_example.mp4">
+              </video>
+            </td>
+            <td class="plot">
+              <!-- width=500px -->
+              <img src="figures/supported-lengths.png" alt="Plot depicting the supported lengths of spoken LMs in previous works versus ours.">
+              <br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <br>
       <p><strong>No text is used during finetuning, prompting, or generation.</strong> <em>Automatic transcripts</em> (Gemini 1.5 Pro-002) provided for convenience.</p>
 
